@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>#logo{
+  width: 100%;
+}
+#buttonsContainer{
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin: 0px;
+}
+#loginButton, #signUpButton{
+  border-radius: 20px;
+  background-color: white;
+  padding: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 80px;
+  height: 30px;
+}
+#navBar{
+  margin: 10px;
+  padding: 0;
+}
+#navBarList{
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+ul li{
+  color: black;
+}
+#searchBar{
+  width: 75%;
+  margin: 0px;
+}
+#searchContainer{
+  display: flex;
+  justify-content: center;
+}</style>
+  </head>
+  <body>
+    <main>
+    <img id="logo" src="https://assets.onecompiler.app/42xjnjtme/42xjmguq8/Gemini_Generated_Image_mgsx28mgsx28mgsx%20(1).jpeg">
+    <div id="buttonsContainer">
+      <button id="loginButton" onclick='window.location.href="examplelogin"'>Login</button>
+      <button id="signUpButton" onclick='window.location.href="examplesignup"'>Sign up</button>
+    </div>
+    <div id="searchContainer">
+      <input id="searchBar" type="text" placeholder="Search for items"><span><button id="searchButton">Search</button></span>
+    </div>
+    <nav id="navBar">
+      <ul id="navBarList">
+        <li><a href="exampleelectronics">Electronics</a></li>
+        <li><a href="exampleclothes">Clothing</a></li>
+        <li><a href="examplejewelry">Jewelry</a></li>
+      </ul>
+    </nav>
+    <div id="promotedItemsContainer">
+    </div>
+    <footer>Copyright 2024</footer>
+    </main>
+    <script>function displayRecommendedItems(items){
+  items.forEach(item => { 
+    const createdDiv1 = document.createElement('div');
+    const createdDiv2 = document.createElement('div');
+    const createdImg = document.createElement('img');
+    const createdP = document.createElement('p');
+    const createdSpan1 = document.createElement('span');
+    const createdSpan2 = document.createElement('span');
+    const createdH2 = document.createElement('h2');
+    createdImg.src = item.src;
+    createdP.textContent = item.descr;
+    createdH2.textContent = `$${item.price}`;
+    document.getElementById('promotedItemsContainer').appendChild(createdDiv1);
+    createdDiv1.appendChild(createdImg);
+    createdDiv1.appendChild(createdSpan1);
+    createdSpan1.appendChild(createdDiv2);
+    createdDiv2.appendChild(createdH2);
+    createdDiv2.appendChild(createdP);
+    createdDiv1.style.display = 'flex';
+    createdDiv1.style.flexDirection = 'row';
+    createdDiv1.style.justifyContent = 'left';
+    createdDiv1.style.alignItems = 'center';
+    createdDiv1.style.width = '25%';
+    createdDiv2.style.display = 'flex';
+    createdDiv2.style.flexDirection = 'column';
+    createdDiv2.style.justifyContent = 'left';
+    createdDiv2.style.alignItems = 'left';
+    createdDiv2.style.width = '60%';
+  });
+}
+document.addEventListener('DOMContentLoaded', async function(){ 
+  try {
+  const response = await fetch('/api/recommended');
+  const recommendedItems = await response.json();
+  displayRecommendedItems(recommendedItems);
+  } catch(error) {
+    console.error('Error fetching the recommended items', error)
+  }
+});
+document.getElementById('searchButton').addEventListener('click', async function() {
+  const currentSearched = document.getElementById('searchBar').value;
+  const response = await fetch('/api/search', {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({query: currentSearched})
+  });
+});
+const elements = document.querySelectorAll('div, li, p, header, span');
+const textBlocks = [];
+elements.forEach((el, index) => {
+  let textBlock = el.innerText.trim();
+  if(textBlock.length > 0){
+    textBlocks.push(textBlock);
+  }
+});
+async function sendPageText() {
+  try {
+  const response = await fetch('/api/pageText', {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({query: textBlocks})
+    });
+  } catch(error) {
+      console.error('Error sending webpage all text', error);
+  }
+}
+sendPageText();</script>
+  </body>
+        </html>
