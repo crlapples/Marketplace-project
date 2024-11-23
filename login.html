@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <style>#logo{
+  width: 100%;
+}
+#loginForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+#usernameInput, #passwordInput{
+  border-radius: 10px;
+  margin-bottom: 25px;
+  width: 285px;
+  height: 25px;
+  border-color: lightblue;
+}
+#loginButton, #signupButton{
+  border-radius: 20px;
+  width: 300px;
+  background-color: white;
+  height: 35px;
+}
+#signupContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+}
+#signupNotification{
+  color: gray;
+  font-size: 12px;
+}
+</style>
+  </head>
+  <body>
+    <main>
+      <img id="logo" src="https://assets.onecompiler.app/42xjnjtme/42xjmguq8/Gemini_Generated_Image_mgsx28mgsx28mgsx%20(1).jpeg">
+      <form id="loginForm">
+        <input id="usernameInput" type="text" placeholder="Username">
+        <input id="passwordInput" type="password" placeholder="Password">
+        <button id="loginButton" type="submit">Login</button>
+      </form>
+      <div id="signupContainer">
+        <p id="signupNotification">Don't have an account? Sign up</p>
+        <button id="signupButton" href="crlapples.github.io/Marketplace-project/signup.html">Sign-up</button>
+      </div>
+    </main>
+    <script>
+      document.getElementById('loginForm').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const username = document.getElementById('usernameInput').value;
+  const password = document.getElementById('passwordInput').value;
+  const response = await fetch('/login', {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(username, password)
+  });
+  if(await response.json() === 'Login succeeded'){
+    window.location.href="crlapples.github.io/Marketplace-project/index.html";
+  } else if(await response.json() === 'Username not found') {
+    const div1 = document.createElement('div');
+    const p1 = document.createElement('p');
+    p1.textContent = "Your username does not exist"
+    div1.appendChild(p1);
+    document.getElementById('loginForm').prepend(div1);
+    div1.classList.add('loginErrorContainer');
+    p1.classList.add('loginError');
+  } else {
+    const div1 = document.createElement('div');
+    const p1 = document.createElement('p');
+    p1.textContent = "Your password does not match our records"
+    div1.appendChild(p1);
+    document.getElementById('loginForm').prepend(div1);
+    div1.classList.add('loginErrorContainer');
+    p1.classList.add('loginError');
+  }
+});
+    </script>
+  </body>
+  </html>
