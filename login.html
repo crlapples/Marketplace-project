@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 75px;
+  margin-top: 10px;
 }
 #usernameInput, #passwordInput{
   border-radius: 10px;
@@ -37,13 +37,47 @@
   color: gray;
   font-size: 12px;
 }
+#errorContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  height: 30px;
+}
+.loginError{
+  color: red;
+  font-size: 13px;
+}
+@keyframes loadingBackground {
+  0% { background-color: #b3d9ff; 
+  }
+  50% { background-color: white; 
+  }
+  100% { background-color: #b3d9ff; 
+  }
+}
+.loading{
+  animation: loadingBackground 3s linear infinite;
+}
+@keyframes shake{
+  0%, 100% {transform: translateX(0px);}
+  25% {transform: translateX(5px);}
+  50% {transform: translateX(-5px);}
+  75% {transform: translateX(5px);}
+}
+.shake{
+  animation: shake 0.2s;
+}
 </style>
   </head>
   <body>
     <main>
       <img id="logo" src="https://assets.onecompiler.app/42xjnjtme/42xjmguq8/Gemini_Generated_Image_mgsx28mgsx28mgsx%20(1).jpeg">
+      <div id="errorContainer">
+      </div>
       <form id="loginForm">
-        <input id="usernameInput" type="text" placeholder="Username">
+        <input id="usernameInput" type="text" placeholder="Email">
         <input id="passwordInput" type="password" placeholder="Password">
         <button id="loginButton" type="submit">Login</button>
       </form>
@@ -53,35 +87,56 @@
       </div>
     </main>
     <script>
-      document.getElementById('loginForm').addEventListener('submit', async (event) => {
+document.getElementById('loginForm').addEventListener('submit', async (event) => {
   event.preventDefault();
-  const username = document.getElementById('usernameInput').value;
+  const email = document.getElementById('usernameInput').value;
   const password = document.getElementById('passwordInput').value;
+  const previousError = document.querySelector('.loginErrorContainer');
+  const loginButton = document.getElementById('loginButton');
+  loginButton.classList.add('loading');
+  if(previousError){
+    previousError.remove();
+  }
+  if(!email || !password){
+    showError("Please enter your email and password");
+    loginButton.classList.remove('loading');
+    return;
+  }
+  try {
   const response = await fetch('/login', {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(username, password)
+    body: JSON.stringify({ email, password })
   });
-  if(await response.json() === 'Login succeeded'){
-    window.location.href="crlapples.github.io/Marketplace-project/index.html";
-  } else if(await response.json() === 'Username not found') {
-    const div1 = document.createElement('div');
-    const p1 = document.createElement('p');
-    p1.textContent = "Your username does not exist"
-    div1.appendChild(p1);
-    document.getElementById('loginForm').prepend(div1);
-    div1.classList.add('loginErrorContainer');
-    p1.classList.add('loginError');
-  } else {
-    const div1 = document.createElement('div');
-    const p1 = document.createElement('p');
-    p1.textContent = "Your password does not match our records"
-    div1.appendChild(p1);
-    document.getElementById('loginForm').prepend(div1);
-    div1.classList.add('loginErrorContainer');
-    p1.classList.add('loginError');
+  const responseData = await response.json();
+  if(responseData === 'Login succeeded'){
+    window.location.href="https://crlapples.github.io/Marketplace-project/index.html";
+  } else if(responseData === 'Email not found') {
+    showError("The email does not exist");
+    loginButton.classList.remove('spinning');
+  } else if(responseData === 'Password not synced with stored password') {
+    showError("Password does not match our records");
+    loginButton.classList.remove('loading');
+  }
+  } catch(error) {
+    console.error('Error logging in', error);
+    showError('Failed logging in, try again later');
+    loginButton.classList.remove('loading');
   }
 });
+function showError(message){
+  document.getElementById('errorContainer').innerHTML = '';
+    const div1 = document.createElement('div');
+    const p1 = document.createElement('p');
+    p1.textContent = `${message}`
+    div1.appendChild(p1);
+    document.getElementById('errorContainer').appendChild(div1);
+    div1.classList.add('loginErrorContainer');
+    p1.classList.add('loginError');
+    document.body.classList.add('shake');
+    setTimeout(() => {
+      document.body.classList.remove('shake');}, 200);
+  }
     </script>
   </body>
-  </html>
+</html>
