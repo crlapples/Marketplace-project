@@ -31,42 +31,135 @@
   gap: 15px;
   margin: 0;
   padding: 0;
+  background-color: none;
 }
-ul li{
+#navBarList li a{
   color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  border-color: lightblue;
+}
+#navBarList li a button{
+  border-radius: 5px;
+  border-color: lightblue;
+  background-color: white;
 }
 #searchBar{
   width: 75%;
   margin: 0px;
+  border-radius: 0px;
 }
 #searchContainer{
   display: flex;
   justify-content: center;
+}
+#searchButton{
+  background-color: white;
+  border-color: solid lightblue;
+  border-radius: 0px;
+}
+.atc{
+  background-color: lightyellow;
+  width: 60%;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+.cart-container{
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: height 0.3s ease;
+  height: 50px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+}
+.expand-button{
+  background-color: white;
+  font-size: 25px;
+  width: 100px;
+}
+.cart-items{
+  display: none;
+  height: 100%;
+}
+.cart-container.expanded{
+  height: 35%;
+}
+.cart-container.expanded .cart-items{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+}
+.deleteCartItem{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+#promotedItemsContainer{
+  margin-top: 50px;
+  margin-bottom: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }</style>
   </head>
   <body>
     <main>
     <img id="logo" src="https://assets.onecompiler.app/42xjnjtme/42xjmguq8/Gemini_Generated_Image_mgsx28mgsx28mgsx%20(1).jpeg">
     <div id="buttonsContainer">
-      <button id="loginButton" onclick='window.location.href="https://crlapples.github.io/Marketplace-project/login.html"'>Login</button>
-      <button id="signUpButton" onclick='window.location.href="examplesignup"'>Sign up</button>
+      <button id="loginButton" onclick='window.location.href="examplelogin"'>Login</button>
+      <button id="signUpButton" onclick='window.location.href="examplesignup"'>Sign-up</button>
     </div>
     <div id="searchContainer">
       <input id="searchBar" type="text" placeholder="Search for items"><span><button id="searchButton">Search</button></span>
     </div>
     <nav id="navBar">
       <ul id="navBarList">
-        <li><a href="exampleelectronics">Electronics</a></li>
-        <li><a href="exampleclothes">Clothing</a></li>
-        <li><a href="examplejewelry">Jewelry</a></li>
+        <li><a href="exampleelectronics"><button>Electronics</button></a></li>
+        <li><a href="exampleclothes"><button>Clothing</button></a></li>
+        <li><a href="examplejewelry"><button>Jewelry</button></a></li>
       </ul>
     </nav>
     <div id="promotedItemsContainer">
     </div>
     <footer>Copyright 2024</footer>
     </main>
-    <script>function displayRecommendedItems(items){
+    <script>// Create static items to showcase items without db on github pages
+    const exampleItems = [{
+      src: 'https://assets.onecompiler.app/42xjnjtme/42xscdrjg/Gemini_Generated_Image_icswdmicswdmicsw.jpeg',
+      price: '999.99',
+      url: 'example',
+      descr: "Hey there, I'm the laptop of your dreams - sleek, stylish, and totally ready to turn heads. With my ultra-thin design and stunning display, I'll make you look twice. Need speed? I've got a powerful processor to keep things running smoothly, no lag, just pure performance. Whether you're working hard or playing harder, I've got your back with all the storage you need and more. Plus, my battery life? Oh, it's so long, you won't have to worry about charging me up every five seconds. I'm the one you've been looking for - intelligent, fast, and oh-so-chic. Let's make magic together."
+    }, {
+    src: 'https://assets.onecompiler.app/42xjnjtme/42z4p2e2h/Gemini_Generated_Image_d7peatd7peatd7pe.jpeg',
+    price: '129.99',
+    url: 'example',
+    descr: "Hey, I'm the jacket you've been waiting for - flawless fit, chic design, and ready to make you look hot and stay cozy. Whether you're hitting the streets or just stepping out for coffee, I've got you covered in all the right ways. My sleek silhouette hugs you just right, and those pockets? Perfect for keeping your essentials (or your secrets). I'm warm, I'm stylish, and I'm always down for a little adventure. Trust me, you'll be turning heads wherever you go - and let's be real, who wouldn't want to look this good?"
+    }, {
+    src: 'https://assets.onecompiler.app/42xjnjtme/42z4p2e2h/Gemini_Generated_Image_9415499415499415.jpeg',
+    price: '5999.99',
+    url: 'example',
+    descr: "Well hello, gorgeous. I'm the piece of jewelry that's going to make you feel like a total queen. Delicate, yet bold, I'll add the perfect touch of sparkle to any outfit. Whether you're out on the town or just adding some extra flair to your look, I've got that 'wow' factor. The shine? Unmatched. The design? Unforgettable. I'm that subtle statement that speaks volumes, and trust me, everyone will be noticing you. So, if you're ready to shine a little brighter, I'm all yours."
+    }];
+    displayRecommendedItems(exampleItems);
+    function sliceText(text){
+      const words = text.split(' ');
+      const slicedText = words.slice(0, 15).join(' ');
+      return slicedText;
+    }
+    function displayRecommendedItems(items){
   items.forEach(item => { 
+    item.descr = sliceText(item.descr);
     const createdDiv1 = document.createElement('div');
     const createdDiv2 = document.createElement('div');
     const createdImg = document.createElement('img');
@@ -82,18 +175,93 @@ ul li{
     createdDiv1.appendChild(createdSpan1);
     createdSpan1.appendChild(createdDiv2);
     createdDiv2.appendChild(createdH2);
-    createdDiv2.appendChild(createdP);
-    createdDiv1.style.display = 'flex';
+    createdDiv2.appendChild(createdP);createdDiv1.style.display = 'flex';
     createdDiv1.style.flexDirection = 'row';
-    createdDiv1.style.justifyContent = 'left';
+    createdDiv1.style.justifyContent = 'center';
     createdDiv1.style.alignItems = 'center';
-    createdDiv1.style.width = '25%';
+    createdDiv1.style.width = '75%';
     createdDiv2.style.display = 'flex';
     createdDiv2.style.flexDirection = 'column';
-    createdDiv2.style.justifyContent = 'left';
+    createdDiv2.style.justifyContent = 'center';
     createdDiv2.style.alignItems = 'left';
-    createdDiv2.style.width = '60%';
+    createdDiv2.style.width = '100%';
+    createdImg.style.width = '50%';
+    createdDiv2.style.marginLeft = '10px';
+    createdDiv2.style.padding = '15px';
+    const atcButton = document.createElement('button');
+    atcButton.textContent = 'add to cart';
+    atcButton.classList.add('atc');
+    createdDiv2.appendChild(atcButton);
+    atcButton.addEventListener('click', function(){
+      let cartContainer = document.querySelector('.cart-container');
+      if(!cartContainer) {
+        cartContainer = document.createElement('div');
+        const expandButton = document.createElement('button');
+        const cartItems = document.createElement('div');
+        document.body.appendChild(cartContainer);
+        cartContainer.appendChild(expandButton);
+        cartContainer.appendChild(cartItems);
+        cartContainer.classList.add('cart-container');
+        expandButton.classList.add('expand-button');
+        expandButton.textContent = '^';
+        expandButton.addEventListener('click', function(){
+          cartContainer.classList.toggle('expanded');
+        });
+      }
+      const cartItems = cartContainer.querySelector('.cart-items') || document.createElement('div');
+      cartItems.classList.add('cart-items');
+      const img = document.createElement('img');
+        const div = document.createElement('div');
+        const h2 = document.createElement('h2');
+        const p = document.createElement('p');
+        div.appendChild(h2);
+        div.appendChild(p);
+        img.src = item.src;
+        h2.textContent = `$${item.price}`;
+        p.textContent = item.descr;
+        img.style.width = '25%';
+        div.style.marginLeft = '10px';
+        div.style.display = 'flex';
+        div.style.flexDirection = 'column';
+        const div3 = document.createElement('div');
+        div3.style.display = 'flex';
+        div3.style.alignItems = 'center';
+        cartItems.appendChild(div3);
+        div3.appendChild(img);
+        div3.appendChild(div);
+        div3.style.justifyContent = 'center';
+        div3.style.border = 'none';
+        const deleteItem = document.createElement('button');
+        deleteItem.textContent = 'x';
+        deleteItem.classList.add('deleteCartItem');
+        div3.appendChild(deleteItem);
+        div3.style.marginLeft = '10px';
+        deleteItem.addEventListener('click', function() {
+          div3.remove();
+        });
+        cartItems.appendChild(div3);
+        cartContainer.appendChild(cartItems);
+        const cart = getCartFromLocalStorage();
+        cart.push(item);
+        saveCartToLocalStorage(cart);
+    });
+    createdImg.addEventListener('click', function(){
+      window.location.href = `${exampleItems.url}`;
+    });
+    createdH2.addEventListener('click', function(){
+      window.location.href = `${exampleItems.url}`;
+    });
+    createdP.addEventListener('click', function(){
+      window.location.href = `${exampleItems.url}`;
+    });
   });
+}
+function getCartFromLocalStorage(){
+  const cart = localStorage.getItem(cart);
+  return cart ? JSON.parse(cart) : [];
+}
+function saveCartToLocalStorage(cart){
+  localStorage.setItem('cart', JSON.stringify(cart));
 }
 document.addEventListener('DOMContentLoaded', async function(){ 
   try {
@@ -133,4 +301,5 @@ async function sendPageText() {
 }
 sendPageText();</script>
   </body>
-        </html>
+  </html>
+  
