@@ -110,6 +110,9 @@
   border-radius: 5px;
   margin-right: 10px;
 }
+.rating{
+  margin-right: 2px;
+}
 .rating span{
   color: gray;
 }
@@ -192,13 +195,15 @@
     const quantityInput = document.createElement('input');
     const div5 = document.createElement('div');
     const title = document.createElement('h2');
-    const rating = document.createElement('h2');
+    const rating = document.createElement('p');
+    const totalRatings = document.createElement('p');
     div5.style.display = 'flex';
     div5.style.alignItems = 'center';
     div5.style.marginBottom = '-35px';
-    div5.style.gap = '10px';
+    title.style.marginRight = '20px';
     div5.style.justifyContent = 'center';
     title.textContent = item.title;
+    totalRatings.textContent = `(${item.reviewTotal})`;
     rating.classList.add('rating');
     for(let i = 0; i < 5; i++){
       const span = document.createElement('span');
@@ -220,6 +225,7 @@
     document.getElementById('promotedItemsContainer').appendChild(createdDiv1);
     div5.appendChild(title);
     div5.appendChild(rating);
+    div5.appendChild(totalRatings);
     createdDiv1.appendChild(createdImg);
     createdDiv1.appendChild(createdSpan1);
     createdSpan1.appendChild(createdDiv2);
