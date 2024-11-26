@@ -122,7 +122,7 @@
 }
 #promotedItemsContainer{
   margin-top: 50px;
-  margin-bottom: 250px;
+  margin-bottom: 550px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -194,6 +194,11 @@
       const lastQuery = localStorage.getItem('lastSearchQuery');
       const filteredItems = exampleItems.filter(item => item.title.toLowerCase().includes(lastQuery));
       displayRecommendedItems(filteredItems);
+      if(filteredItems.length === 0){
+        const noMatchNote = document.createElement('p');
+        noMatchNote.textContent = 'No items matched your search';
+        document.getElementById('promotedItemsContainer').appendChild(noMatchNote);
+      };
     });
     function sliceText(text){
       const words = text.split(' ');
