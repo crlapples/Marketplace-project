@@ -137,7 +137,7 @@
       <button id="signUpButton" onclick='window.location.href="https://crlapples.github.io/Marketplace-project/signup.html"'>Sign-up</button>
     </div>
     <div id="searchContainer">
-      <input id="searchBar" type="text" placeholder="Search for items"><span><button id="searchButton">Search</button></span>
+      <input id="searchBar" type="text" placeholder="Search for items"><span><a href="https://crlapples.github.io/Marketplace-project/search.html"><button id="searchButton">Search</button></a></span>
     </div>
     <nav id="navBar">
       <ul id="navBarList">
@@ -160,6 +160,10 @@
     reviewTotal: '225',
     descr: "Well hello, gorgeous. I'm the piece of jewelry that's going to make you feel like a total queen. Delicate, yet bold, I'll add the perfect touch of sparkle to any outfit. Whether you're out on the town or just adding some extra flair to your look, I've got that 'wow' factor. The shine? Unmatched. The design? Unforgettable. I'm that subtle statement that speaks volumes, and trust me, everyone will be noticing you. So, if you're ready to shine a little brighter, I'm all yours."
     }];
+    document.getElementById('searchButton').addEventListener('click', function() {
+    const query = document.getElementById('searchBar').value.trim().toLowerCase();
+    localStorage.setItem('lastSearchQuery', query);
+    });
     let totalQuantity = 0;
     displayRecommendedItems(exampleItems);
     function sliceText(text){
