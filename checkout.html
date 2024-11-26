@@ -232,14 +232,14 @@ div2.style.alignItems = 'right';
 div2.style.borderTop = '2px solid black';
 let totalQuantity = 0;
 cart.forEach(cartItem => {
-  totalQuantity += cartItem.quantity;
+  totalQuantity += parseInt(cartItem.quantity);
 });
 p3.textContent = `Quantity - ${totalQuantity}`;
 let totalPrice = 0;
 cart.forEach(cartItem => {
   totalPrice = totalPrice += (cartItem.quantity * cartItem.price);
 });
-p4.textContent = `Total: $${totalPrice}`;
+p4.textContent = `Total: $${totalPrice.toFixed(2)}`;
 div2.appendChild(p3);
 div2.appendChild(p4);
 div2.style.gap = '35px';
