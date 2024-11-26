@@ -346,7 +346,9 @@ function saveCartToLocalStorage(cart){
 }
 function updateCartDisplay(items){
   let sum = 0;
-  if(items === []) return;
+  if(items === [] || items.length === 0 || !items){
+    return;
+  };
     let cartContainer = document.querySelector('.cart-container');
       if(!cartContainer) {
         cartContainer = document.createElement('div');
