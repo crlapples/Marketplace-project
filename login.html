@@ -6,6 +6,44 @@
     <style>#logo{
   width: 100%;
 }
+#navBar{
+  margin: 10px;
+  padding: 0;
+}
+#navBarList{
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  background-color: none;
+}
+#navBarList li a{
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  border-color: lightblue;
+}
+#navBarList li a button{
+  border-radius: 5px;
+  border-color: lightblue;
+  background-color: white;
+}
+#searchBar{
+  width: 75%;
+  margin: 0px;
+  border-radius: 0px;
+}
+#searchContainer{
+  display: flex;
+  justify-content: center;
+}
+#searchButton{
+  background-color: white;
+  border-color: solid lightblue;
+  border-radius: 0px;
+}
 #loginForm{
   display: flex;
   flex-direction: column;
@@ -74,6 +112,17 @@
   <body>
     <main>
       <img id="logo" src="https://assets.onecompiler.app/42xjnjtme/42xjmguq8/Gemini_Generated_Image_mgsx28mgsx28mgsx%20(1).jpeg">
+      <div id="searchContainer">
+      <input id="searchBar" type="text" placeholder="Search for items"><span><a href="https://crlapples.github.io/Marketplace-project/search.html"><button id="searchButton">Search</button></a></span>
+    </div>
+    <nav id="navBar">
+      <ul id="navBarList">
+        <li><a href="https://crlapples.github.io/Marketplace-project/index.html"><button>Home</button></a></li>
+        <li><a href="https://crlapples.github.io/Marketplace-project/electronics.html"><button>Electronics</button></a></li>
+        <li><a href="https://crlapples.github.io/Marketplace-project/clothing.html"><button>Clothing</button></a></li>
+        <li><a href="https://crlapples.github.io/Marketplace-project/jewelry.html"><button>Jewelry</button></a></li>
+      </ul>
+    </nav>
       <div id="errorContainer">
       </div>
       <form id="loginForm">
@@ -87,6 +136,10 @@
       </div>
     </main>
     <script>
+      document.getElementById('searchButton').addEventListener('click', function() {
+    const query = document.getElementById('searchBar').value.trim().toLowerCase();
+    localStorage.setItem('lastSearchQuery', query);
+    });
 document.getElementById('loginForm').addEventListener('submit', async (event) => {
   event.preventDefault();
   const email = document.getElementById('usernameInput').value;
