@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewelry webpage</title>
+    <style>#logo{
+  width: 100%;
+}
+#buttonsContainer{
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin: 0px;
+}
+#loginButton, #signUpButton{
+  border-radius: 20px;
+  background-color: white;
+  padding: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 80px;
+  height: 30px;
+}
+#navBar{
+  margin: 10px;
+  padding: 0;
+}
+#navBarList{
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  background-color: none;
+}
+#navBarList li a{
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  border-color: lightblue;
+}
+#navBarList li a button{
+  border-radius: 5px;
+  border-color: lightblue;
+  background-color: white;
+}
+#searchBar{
+  width: 75%;
+  margin: 0px;
+  border-radius: 0px;
+}
+#searchContainer{
+  display: flex;
+  justify-content: center;
+}
+#searchButton{
+  background-color: white;
+  border-color: solid lightblue;
+  border-radius: 0px;
+}
+.quantity{
+  width: 25px;
+  height: 15px;
+  margin-right: 10px;
+  margin-top: 15px;
+}
+.atc{
+  background-color: lightyellow;
+  width: 60%;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+.cart-container{
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: height 0.3s ease;
+  height: 50px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+}
+.expand-button{
+  background-color: white;
+  font-size: 25px;
+  width: 100px;
+}
+.cart-items{
+  display: none;
+  height: 100%;
+}
+.cart-container.expanded{
+  height: 35%;
+}
+.cart-container.expanded .cart-items{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+}
+.deleteCartItem{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.rating{
+  margin-right: 2px;
+}
+.rating span{
+  color: gray;
+}
+.rating span.filled{
+  color: gold;
+}
+#promotedItemsContainer{
+  margin-top: 50px;
+  margin-bottom: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}</style>
+  </head>
+  <body>
+    <main>
+    <img id="logo" src="https://assets.onecompiler.app/42xjnjtme/42xjmguq8/Gemini_Generated_Image_mgsx28mgsx28mgsx%20(1).jpeg">
+    <div id="buttonsContainer">
+      <button id="loginButton" onclick='window.location.href="https://crlapples.github.io/Marketplace-project/login.html"'>Login</button>
+      <button id="signUpButton" onclick='window.location.href="https://crlapples.github.io/Marketplace-project/signup.html"'>Sign-up</button>
+    </div>
+    <div id="searchContainer">
+      <input id="searchBar" type="text" placeholder="Search for items"><span><button id="searchButton">Search</button></span>
+    </div>
+    <nav id="navBar">
+      <ul id="navBarList">
+        <li><a href="exampleelectronics"><button>Electronics</button></a></li>
+        <li><a href="exampleclothes"><button>Clothing</button></a></li>
+        <li><a href="examplejewelry"><button>Jewelry</button></a></li>
+      </ul>
+    </nav>
+    <div id="promotedItemsContainer">
+    </div>
+    <footer>Copyright 2024</footer>
+    </main>
+    <script>// Create static items to showcase items without db on github pages
+    const exampleItems = [{
+    title: 'Luxey ring',
+    src: 'https://crlapples.github.io/Marketplace-project/ring.jpeg',
+    price: '5999.99',
+    url: 'https://crlapples.github.io/Marketplace-project/ring.html',
+    review: '5',
+    reviewTotal: '225',
+    descr: "Well hello, gorgeous. I'm the piece of jewelry that's going to make you feel like a total queen. Delicate, yet bold, I'll add the perfect touch of sparkle to any outfit. Whether you're out on the town or just adding some extra flair to your look, I've got that 'wow' factor. The shine? Unmatched. The design? Unforgettable. I'm that subtle statement that speaks volumes, and trust me, everyone will be noticing you. So, if you're ready to shine a little brighter, I'm all yours."
+    }];
+    let totalQuantity = 0;
+    displayRecommendedItems(exampleItems);
+    function sliceText(text){
+      const words = text.split(' ');
+      const slicedText = words.slice(0, 15).join(' ');
+      return slicedText;
+    }
+    function displayRecommendedItems(items){
+  items.forEach(item => { 
+    item.descr = sliceText(item.descr);
+    const createdDiv1 = document.createElement('div');
+    const createdDiv2 = document.createElement('div');
+    const createdImg = document.createElement('img');
+    const createdP = document.createElement('p');
+    const createdSpan1 = document.createElement('span');
+    const createdSpan2 = document.createElement('span');
+    const createdH2 = document.createElement('h2');
+    const quantityInput = document.createElement('input');
+    const div5 = document.createElement('div');
+    const title = document.createElement('h2');
+    const rating = document.createElement('p');
+    const totalRatings = document.createElement('p');
+    div5.style.display = 'flex';
+    div5.style.alignItems = 'center';
+    div5.style.marginBottom = '-35px';
+    title.style.marginRight = '20px';
+    div5.style.justifyContent = 'center';
+    title.textContent = item.title;
+    totalRatings.textContent = `(${item.reviewTotal})`;
+    rating.classList.add('rating');
+    for(let i = 0; i < 5; i++){
+      const span = document.createElement('span');
+      span.textContent = '*';
+      if(i < Number(item.review)){
+        span.classList.add('filled');
+      }
+      rating.appendChild(span);
+    }
+    quantityInput.classList.add('quantity');
+    quantityInput.value = 1;
+    quantityInput.type = 'number';
+    quantityInput.min = 1;
+    const div4 = document.createElement('div');
+    createdImg.src = item.src;
+    createdP.textContent = item.descr;
+    createdH2.textContent = `$${item.price}`;
+    document.getElementById('promotedItemsContainer').appendChild(div5);
+    document.getElementById('promotedItemsContainer').appendChild(createdDiv1);
+    div5.appendChild(title);
+    div5.appendChild(rating);
+    div5.appendChild(totalRatings);
+    createdDiv1.appendChild(createdImg);
+    createdDiv1.appendChild(createdSpan1);
+    createdSpan1.appendChild(createdDiv2);
+    createdDiv2.appendChild(createdH2);
+    createdDiv2.appendChild(createdP);
+    div4.style.display = 'flex';
+    div4.style.alignItems = 'left';
+    createdDiv2.appendChild(div4);
+    div4.appendChild(quantityInput);
+    createdDiv1.style.display = 'flex';
+    createdDiv1.style.flexDirection = 'row';
+    createdDiv1.style.justifyContent = 'center';
+    createdDiv1.style.alignItems = 'center';
+    createdDiv1.style.width = '75%';
+    createdDiv2.style.display = 'flex';
+    createdDiv2.style.flexDirection = 'column';
+    createdDiv2.style.justifyContent = 'center';
+    createdDiv2.style.alignItems = 'left';
+    createdDiv2.style.width = '100%';
+    createdImg.style.width = '50%';
+    createdDiv2.style.marginLeft = '10px';
+    createdDiv2.style.padding = '15px';
+    const atcButton = document.createElement('button');
+    atcButton.textContent = 'add to cart';
+    atcButton.classList.add('atc');
+    div4.appendChild(atcButton);
+    atcButton.addEventListener('click', function(){
+      let cartContainer = document.querySelector('.cart-container');
+      if(!cartContainer) {
+        cartContainer = document.createElement('div');
+        const expandButton = document.createElement('button');
+        const cartItems = document.createElement('div');
+        const checkoutButton = document.createElement('button');
+        const totalCartQuantity = document.createElement('p');
+        totalCartQuantity.classList.add('totalCartQuantity');
+        checkoutButton.textContent = 'Checkout';
+        checkoutButton.style.borderRadius = '5px';
+        checkoutButton.style.borderColor = 'lightblue';
+        checkoutButton.addEventListener('click', function(){
+          window.location.href = 'https://crlapples.github.io/Marketplace-project/checkout.html';
+        });
+        document.body.appendChild(cartContainer);
+        const div6 = document.createElement('div');
+        div6.style.display = 'flex';
+        div6.style.alignItems = 'center';
+        div6.style.gap = '30px';
+        cartContainer.appendChild(div6);
+        cartContainer.appendChild(cartItems);
+        div6.appendChild(checkoutButton);
+        div6.appendChild(expandButton);
+        div6.appendChild(totalCartQuantity);
+        cartContainer.classList.add('cart-container');
+        expandButton.classList.add('expand-button');
+        expandButton.textContent = '^';
+        expandButton.addEventListener('click', function(){
+          cartContainer.classList.toggle('expanded');
+        });
+      }
+      const cartItems = cartContainer.querySelector('.cart-items') || document.createElement('div');
+      cartItems.classList.add('cart-items');
+      const quantity = parseInt(quantityInput.value, 10);
+      totalQuantity = quantity + totalQuantity;
+      const totalCart = document.querySelector('.totalCartQuantity');
+      const img = document.createElement('img');
+        const div = document.createElement('div');
+        const h2 = document.createElement('h2');
+        const p = document.createElement('p');
+        const p2 = document.createElement('p');
+        p2.textContent = `x${quantity}`;
+        div.appendChild(h2);
+        div.appendChild(p2);
+        div.appendChild(p);
+        img.src = item.src;
+        h2.textContent = `$${item.price}`;
+        p.textContent = item.title;
+        img.style.width = '25%';
+        div.style.marginLeft = '10px';
+        div.style.display = 'flex';
+        div.style.flexDirection = 'column';
+        const div3 = document.createElement('div');
+        div3.style.display = 'flex';
+        div3.style.alignItems = 'center';
+        cartItems.appendChild(div3);
+        div3.appendChild(img);
+        div3.appendChild(div);
+        div3.style.justifyContent = 'center';
+        div3.style.border = 'none';
+        const deleteItem = document.createElement('button');
+        deleteItem.textContent = 'x';
+        deleteItem.classList.add('deleteCartItem');
+        div3.appendChild(deleteItem);
+        div3.style.marginLeft = '10px';
+        deleteItem.addEventListener('click', function() {
+          div3.remove();
+          totalQuantity -= quantity;
+          const totalCart = document.querySelector('.totalCartQuantity');
+          totalCart.textContent = `Cart(${totalQuantity})`;
+          let cart = getCartFromLocalStorage();
+          const itemIndex = cart.findIndex(cartItem => cartItem.title === item.title && cartItem.quantity === item.quantity);
+          if(itemIndex !== -1){
+            cart.splice(itemIndex, 1);
+          }
+          saveCartToLocalStorage(cart);
+        });
+        cartItems.appendChild(div3);
+        cartContainer.appendChild(cartItems);
+        totalCart.textContent = `Cart(${totalQuantity})`;
+        item.quantity = `${quantity}`;
+        const cart = getCartFromLocalStorage();
+        cart.push(item);
+        saveCartToLocalStorage(cart);
+    });
+    createdImg.addEventListener('click', function(){
+      window.location.href = `${item.url}`;
+    });
+    createdH2.addEventListener('click', function(){
+      window.location.href = `${item.url}`;
+    });
+    createdP.addEventListener('click', function(){
+      window.location.href = `${item.url}`;
+    });
+  });
+}
+function getCartFromLocalStorage(){
+  const cart = localStorage.getItem('cart');
+  return cart ? JSON.parse(cart) : [];
+}
+function saveCartToLocalStorage(cart){
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+function updateCartDisplay(items){
+  let sum = 0;
+  if(!items || items.length === 0 || items === []) {
+    if(cartContainer){
+      cartContainer.remove();
+    }
+    return;
+  };
+    let cartContainer = document.querySelector('.cart-container');
+      if(!cartContainer) {
+        cartContainer = document.createElement('div');
+        cartContainer.classList.add('cart-container');
+        const expandButton = document.createElement('button');
+        const cartItems = document.createElement('div');
+        const checkoutButton = document.createElement('button');
+        const totalCartQuantity = document.createElement('p');
+        totalCartQuantity.classList.add('totalCartQuantity');
+        checkoutButton.textContent = 'Checkout';
+        checkoutButton.style.borderRadius = '5px';
+        checkoutButton.style.borderColor = 'lightblue';
+        checkoutButton.addEventListener('click', function(){
+          window.location.href = 'https://crlapples.github.io/Marketplace-project/checkout.html';
+        });
+        const div6 = document.createElement('div');
+        div6.style.display = 'flex';
+        div6.style.alignItems = 'center';
+        div6.style.gap = '30px';
+        document.body.appendChild(cartContainer);
+        cartContainer.appendChild(cartItems);
+        div6.appendChild(checkoutButton);
+        div6.appendChild(expandButton);
+        div6.appendChild(totalCartQuantity);
+        cartContainer.appendChild(div6);
+        expandButton.classList.add('expand-button');
+        expandButton.textContent = '^';
+        expandButton.addEventListener('click', function(){
+          cartContainer.classList.toggle('expanded');
+        });
+        totalCartQuantity.textContent = `Cart(${totalQuantity})`;
+      }
+      const cartItems = cartContainer.querySelector('.cart-items') || document.createElement('div');
+      cartItems.classList.add('cart-items');
+      items.forEach(item => {
+        const quantity = parseInt(item.quantity, 10) || 1;
+      totalQuantity = quantity + totalQuantity;
+      item.descr = sliceText(item.descr);
+      const totalCart = document.querySelector('.totalCartQuantity');
+      const img = document.createElement('img');
+        const div = document.createElement('div');
+        const h2 = document.createElement('h2');
+        const p = document.createElement('p');
+        const p2 = document.createElement('p');
+        p2.textContent = `x${quantity}`;
+        div.appendChild(h2);
+        div.appendChild(p2);
+        div.appendChild(p);
+        img.src = item.src;
+        h2.textContent = `$${item.price}`;
+        p.textContent = item.title;
+        img.style.width = '25%';
+        div.style.marginLeft = '10px';
+        div.style.display = 'flex';
+        div.style.flexDirection = 'column';
+        const div3 = document.createElement('div');
+        div3.style.display = 'flex';
+        div3.style.alignItems = 'center';
+        cartItems.appendChild(div3);
+        div3.appendChild(img);
+        div3.appendChild(div);
+        div3.style.justifyContent = 'center';
+        div3.style.border = 'none';
+        const deleteItem = document.createElement('button');
+        deleteItem.textContent = 'x';
+        deleteItem.classList.add('deleteCartItem');
+        div3.appendChild(deleteItem);
+        div3.style.marginLeft = '10px';
+        deleteItem.addEventListener('click', function() {
+          div3.remove();
+          totalQuantity -= quantity;
+          const totalCart = document.querySelector('.totalCartQuantity');
+          totalCart.textContent = `Cart(${totalQuantity})`;
+          let cart = getCartFromLocalStorage();
+          const itemIndex = cart.findIndex(cartItem => cartItem.title === item.title && cartItem.quantity === item.quantity);
+          if(itemIndex !== -1){
+            cart.splice(itemIndex, 1);
+          }
+          saveCartToLocalStorage(cart);
+        });
+        cartItems.appendChild(div3);
+        cartContainer.appendChild(cartItems);
+        totalCart.textContent = `Cart(${totalQuantity})`;
+  });
+}
+const cart = getCartFromLocalStorage();
+updateCartDisplay(cart);
+document.addEventListener('DOMContentLoaded', async function(){ 
+  try {
+  const response = await fetch('/api/jewelry');
+  const recommendedItems = await response.json();
+  displayRecommendedItems(recommendedItems);
+  } catch(error) {
+    console.error('Error fetching the recommended items', error)
+  }
+});
+document.getElementById('searchButton').addEventListener('click', async function() {
+  const currentSearched = document.getElementById('searchBar').value;
+  const response = await fetch('/api/search', {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({query: currentSearched})
+  });
+});
+const elements = document.querySelectorAll('div, li, p, header, span');
+const textBlocks = [];
+elements.forEach((el, index) => {
+  let textBlock = el.innerText.trim();
+  if(textBlock.length > 0){
+    textBlocks.push(textBlock);
+  }
+});
+async function sendPageText() {
+  try {
+  const response = await fetch('/api/pageText', {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({query: textBlocks})
+    });
+  } catch(error) {
+      console.error('Error sending webpage all text', error);
+  }
+}
+sendPageText();</script>
+  </body>
+</html>
