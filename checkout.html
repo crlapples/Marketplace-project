@@ -189,6 +189,10 @@
 function saveCartToLocalStorage(cart){
   localStorage.setItem('cart', JSON.stringify(cart));
 }
+document.getElementById('searchButton').addEventListener('click', function() {
+    const query = document.getElementById('searchBar').value.trim().toLowerCase();
+    localStorage.setItem('lastSearchQuery', query);
+    });
 const cart = getCartFromLocalStorage();
 if(cart.length === 0){
   document.getElementById('infoForm').style.display = 'none';
