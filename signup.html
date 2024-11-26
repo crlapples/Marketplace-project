@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up page</title>
+    <style>#logo{
+  width: 100%;
+}
+#signupForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+#usernameInput, #passwordInput, #verifyPasswordInput{
+  border-radius: 10px;
+  margin-bottom: 25px;
+  width: 285px;
+  height: 25px;
+  border-color: lightblue;
+}
+#signupButton{
+  border-radius: 20px;
+  width: 300px;
+  background-color: white;
+  height: 35px;
+  margin-top: 35px;
+}
+#signupContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+}
+#signupNotification{
+  color: gray;
+  font-size: 12px;
+}
+#errorContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  height: 30px;
+}
+.signupError{
+  color: red;
+  font-size: 13px;
+}
+footer{
+  margin-top: 190px;
+}
+@keyframes loadingBackground {
+  0% { background-color: #b3d9ff; 
+  }
+  50% { background-color: white; 
+  }
+  100% { background-color: #b3d9ff; 
+  }
+}
+.loading{
+  animation: loadingBackground 3s linear infinite;
+}
+@keyframes shake{
+  0%, 100% {transform: translateX(0px);}
+  25% {transform: translateX(5px);}
+  50% {transform: translateX(-5px);}
+  75% {transform: translateX(5px);}
+}
+.shake{
+  animation: shake 0.2s;
+}
+</style>
+  </head>
+  <body>
+    <main>
+      <img id="logo" src="https://assets.onecompiler.app/42xjnjtme/42xjmguq8/Gemini_Generated_Image_mgsx28mgsx28mgsx%20(1).jpeg">
+      <div id="errorContainer">
+      </div>
+      <form id="signupForm">
+        <input id="usernameInput" type="text" placeholder="Email">
+        <input id="passwordInput" type="password" placeholder="Password">
+        <input id="verifyPasswordInput" type="password" placeholder="Repeat password">
+        <button id="signupButton" type="submit">Create account</button>
+      </form>
+    </main>
+    <script>
+document.getElementById('signupForm').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const email = document.getElementById('usernameInput').value;
+  const password = document.getElementById('passwordInput').value;
+  const verifyPassword = document.getElementById('verifyPasswordInput').value;
+  const previousError = document.querySelector('.signupErrorContainer');
+  const signupButton = document.getElementById('signupButton');
+  signupButton.classList.add('loading');
+  if(previousError){
+    previousError.remove();
+  }
+  if(!email || !password || !verifyPassword){
+    showError("Please enter your email and password");
+    signupButton.classList.remove('loading');
+    return;
+  } else if(password !== verifyPassword) {
+    showError("Your passwords do not match");
+    signupButton.classList.remove('loading');
+    return;
+  }
+  try {
+  const response = await fetch('/signup',
+    {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ email, password })
+  });
+  const responseData = await response.json();
+  if(responseData === 'Account creation succeeded'){
+    window.location.href="https://crlapples.github.io/Marketplace-project/index.html";
+  } else if(responseData === 'Username taken') {
+    showError("Password does not match our records");
+    signupButton.classList.remove('loading');
+  }
+  } catch(error) {
+    console.error('Error signing up', error);
+    showError('Failed to sign up, try again later');
+    signupButton.classList.remove('loading');
+  }
+});
+function showError(message){
+  document.getElementById('errorContainer').innerHTML = '';
+    const div1 = document.createElement('div');
+    const p1 = document.createElement('p');
+    p1.textContent = `${message}`
+    div1.appendChild(p1);
+    document.getElementById('errorContainer').appendChild(div1);
+    div1.classList.add('signupErrorContainer');
+    p1.classList.add('signupError');
+    document.body.classList.add('shake');
+    setTimeout(() => {
+      document.body.classList.remove('shake');}, 200);
+  }
+    </script>
+    <footer>
+      Copyright 2024
+    </footer>
+  </body>
+</html>
