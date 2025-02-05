@@ -309,7 +309,11 @@
         checkoutButton.addEventListener('click', function(){
           window.location.href = 'https://crlapples.github.io/Marketplace-project/checkout.html';
         });
-        document.body.appendChild(cartContainer);
+        if (window.innerWidth < 768) {
+          document.body.appendChild(cartContainer);
+        } else {
+          document.getElementById('cart-sidebar').appendChild(cartContainer);
+        }
         const div6 = document.createElement('div');
         div6.style.display = 'flex';
         div6.style.alignItems = 'center';
