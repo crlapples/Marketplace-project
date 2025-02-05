@@ -124,14 +124,13 @@
   margin-top: 50px;
   margin-bottom: 250px;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
 @media (min-width: 768px) {
-  #promotedItemsContainer {
-    flex-direction: row;
+  #searchbar {
+    width: 50%;
   }
 }
 </style>
@@ -252,13 +251,13 @@
     createdDiv1.style.flexDirection = 'row';
     createdDiv1.style.justifyContent = 'center';
     createdDiv1.style.alignItems = 'center';
-    createdDiv1.style.width = '150px';
+    createdDiv1.style.width = '75%';
     createdDiv2.style.display = 'flex';
     createdDiv2.style.flexDirection = 'column';
     createdDiv2.style.justifyContent = 'center';
     createdDiv2.style.alignItems = 'left';
-    createdDiv2.style.width = '250px';
-    createdImg.style.width = '150px';
+    createdDiv2.style.width = '100%';
+    createdImg.style.width = '50%';
     createdDiv2.style.marginLeft = '10px';
     createdDiv2.style.padding = '15px';
     const atcButton = document.createElement('button');
