@@ -258,7 +258,7 @@
     rating.classList.add('rating');
     for(let i = 0; i < 5; i++){
       const span = document.createElement('span');
-      span.textContent = '*';
+      span.textContent = '★';
       if(i < Number(item.review)){
         span.classList.add('filled');
       }
@@ -356,7 +356,11 @@
         div6.appendChild(totalCartQuantity);
         cartContainer.classList.add('cart-container');
         expandButton.classList.add('expand-button');
-        expandButton.textContent = '^';
+        if (window.innerWidth < 768) {
+          expandButton.textContent = '↑';
+        } else {
+          expandButton.textContent = '↓';
+        }
         expandButton.addEventListener('click', function(){
           cartContainer.classList.toggle('expanded');
         });
@@ -473,7 +477,11 @@ function updateCartDisplay(items){
         div6.appendChild(expandButton);
         div6.appendChild(totalCartQuantity);
         expandButton.classList.add('expand-button');
-        expandButton.textContent = '^';
+        if (window.innerWidth < 768) {
+          expandButton.textContent = '↑';
+        } else {
+          expandButton.textContent = '↓';
+        }
         expandButton.addEventListener('click', function(){
           cartContainer.classList.toggle('expanded');
         });
