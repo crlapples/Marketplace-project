@@ -132,9 +132,11 @@
   overflow-y: scroll;
 }
 #main-container {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
 }
 @media (min-width: 768px) {
   #searchBar {
@@ -146,9 +148,7 @@
     width: 65%;
   }
   .cart-container{
-  position: fixed;
-  top: 50px;
-  right: 0;
+  position: static;
   margin-top: 0px;
   height: 50%;
   transform: translateX(0%);
@@ -164,7 +164,9 @@
   margin-top: 0;
   }
   #cart-sidebar {
-    position: relative;
+    position: fixed;
+    top: 50px;
+    right: 0;
     margin-left: auto;
   }
 }</style>
