@@ -221,6 +221,7 @@
     item.descr = sliceText(item.descr);
     const createdDiv1 = document.createElement('div');
     const createdDiv2 = document.createElement('div');
+    const createdDiv3 = document.createElement('div');
     const createdImg = document.createElement('img');
     const createdP = document.createElement('p');
     const createdSpan1 = document.createElement('span');
@@ -340,7 +341,11 @@
         div6.appendChild(totalCartQuantity);
         cartContainer.classList.add('cart-container');
         expandButton.classList.add('expand-button');
-        expandButton.textContent = '^';
+        if (window.innerWidth < 768) {
+          expandButton.textContent = '↑';
+        } else {
+          expandButton.textContent = '↓';
+        }
         expandButton.addEventListener('click', function(){
           cartContainer.classList.toggle('expanded');
         });
@@ -457,7 +462,11 @@ function updateCartDisplay(items){
         div6.appendChild(expandButton);
         div6.appendChild(totalCartQuantity);
         expandButton.classList.add('expand-button');
-        expandButton.textContent = '^';
+        if (window.innerWidth < 768) {
+          expandButton.textContent = '↑';
+        } else {
+          expandButton.textContent = '↓';
+        }
         expandButton.addEventListener('click', function(){
           cartContainer.classList.toggle('expanded');
         });
