@@ -141,7 +141,7 @@
   }
   #promotedItemsContainer {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
   .cart-container{
   position: static;
@@ -266,6 +266,7 @@
       createdDiv3.style.flexDirection = 'column';
       createdDiv3.style.justifyContent = 'center';
       createdDiv3.style.alignItems = 'center';
+      createdDiv3.style.margin = '15px';
       title.style.marginRight = '5px';
     } else {
       document.getElementById('promotedItemsContainer').appendChild(div5);
