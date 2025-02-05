@@ -330,11 +330,13 @@
         div6.style.display = 'flex';
         div6.style.alignItems = 'center';
         div6.style.gap = '30px';
-        cartContainer.appendChild(div6);
-        cartContainer.appendChild(cartItems);
-        div6.appendChild(checkoutButton);
-        div6.appendChild(expandButton);
-        div6.appendChild(totalCartQuantity);
+        if (window.innerWidth < 768) {
+          cartContainer.appendChild(div6);
+          cartContainer.appendChild(cartItems);
+          div6.appendChild(checkoutButton);
+          div6.appendChild(expandButton);
+          div6.appendChild(totalCartQuantity);
+        }
         cartContainer.classList.add('cart-container');
         expandButton.classList.add('expand-button');
         expandButton.textContent = '^';
