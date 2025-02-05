@@ -237,14 +237,8 @@
     createdImg.src = item.src;
     createdP.textContent = item.descr;
     createdH2.textContent = `$${item.price}`;
-    if (window.innerWidth > 768) {
-      document.getElementById('promotedItemsContainer').appendChild(createdDiv3);
-      createdDiv3.appendChild(div5);
-      createdDiv3.appendChild(createdDiv1);
-    } else {
-      document.getElementById('promotedItemsContainer').appendChild(div5);
-      document.getElementById('promotedItemsContainer').appendChild(createdDiv1);
-    }
+    document.getElementById('promotedItemsContainer').appendChild(div5);
+    document.getElementById('promotedItemsContainer').appendChild(createdDiv1);
     div5.appendChild(title);
     div5.appendChild(rating);
     div5.appendChild(totalRatings);
