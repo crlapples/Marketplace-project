@@ -124,6 +124,7 @@
   margin-top: 50px;
   margin-bottom: 250px;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -139,7 +140,8 @@
     width: 50%;
   }
   #promotedItemsContainer {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
 }</style>
   </head>
@@ -225,7 +227,14 @@
     div5.style.display = 'flex';
     div5.style.alignItems = 'center';
     div5.style.marginBottom = '-35px';
-    title.style.marginRight = '20px';
+    if (window.innerWidth < 768) {
+      title.style.marginRight = '20px';
+    } else {
+      title.style.marginRight = '5px';
+      div5.style.margin = '5px';
+      div5.style.transform = 'scale(0.6)';
+      div5.style.transformOrigin = 'top left';
+    }
     div5.style.justifyContent = 'center';
     title.textContent = item.title;
     totalRatings.textContent = `(${item.reviewTotal})`;
@@ -312,7 +321,8 @@
         if (window.innerWidth < 768) {
           document.body.appendChild(cartContainer);
         } else {
-          document.getElementById('cart-sidebar').appendChild(cartContainer);
+          document.getElementById('cart-sidebar').appendChild(div6);
+          document.getElementById('cart-sidebar').appendChild(cartItems);
         }
         const div6 = document.createElement('div');
         div6.style.display = 'flex';
