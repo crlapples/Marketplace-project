@@ -132,8 +132,9 @@
 #main-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
 }
 @media (min-width: 768px) {
   #searchBar {
@@ -144,6 +145,7 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     justify-content: center;
+    flex-grow: 1;
   }
   .cart-container{
   position: static;
@@ -154,6 +156,11 @@
   align-items: center;
   width: 100%;
   background-color: white;
+  }
+  #cart-sidebar {
+    width: 300px;
+    min-height: 100vh;
+    position: sticky;
   }
 }</style>
   </head>
