@@ -124,7 +124,6 @@
   margin-top: 50px;
   margin-bottom: 250px;
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -132,67 +131,43 @@
 #main-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
+
 @media (min-width: 768px) {
   #searchBar {
     width: 50%;
   }
   #promotedItemsContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
+    flex-direction: row;
   }
-  .cart-container{
-  position: static;
-  height: auto;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  background-color: white;
-  }
-  #cart-sidebar {
-    width: 300px;
-    min-height: 100vh;
-    position: sticky;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-}
-    </style>
+}</style>
   </head>
   <body>
     <main>
-      <img id="logo" src="https://assets.onecompiler.app/42xjnjtme/42xjmguq8/Gemini_Generated_Image_mgsx28mgsx28mgsx%20(1).jpeg">
-      <div id="buttonsContainer">
-        <button id="loginButton" onclick='window.location.href="https://crlapples.github.io/Marketplace-project/login.html"'>Login</button>
-        <button id="signUpButton" onclick='window.location.href="https://crlapples.github.io/Marketplace-project/signup.html"'>Sign-up</button>
+    <img id="logo" src="https://assets.onecompiler.app/42xjnjtme/42xjmguq8/Gemini_Generated_Image_mgsx28mgsx28mgsx%20(1).jpeg">
+    <div id="buttonsContainer">
+      <button id="loginButton" onclick='window.location.href="https://crlapples.github.io/Marketplace-project/login.html"'>Login</button>
+      <button id="signUpButton" onclick='window.location.href="https://crlapples.github.io/Marketplace-project/signup.html"'>Sign-up</button>
+    </div>
+    <div id="searchContainer">
+      <input id="searchBar" type="text" placeholder="Search for items"><span><button id="searchButton">Search</button></span>
+    </div>
+    <nav id="navBar">
+      <ul id="navBarList">
+        <li><a href="https://crlapples.github.io/Marketplace-project/electronics.html"><button>Electronics</button></a></li>
+        <li><a href="https://crlapples.github.io/Marketplace-project/clothing.html"><button>Clothing</button></a></li>
+        <li><a href="https://crlapples.github.io/Marketplace-project/jewelry.html"><button>Jewelry</button></a></li>
+      </ul>
+    </nav>
+    <div id="main-container">
+      <div id="promotedItemsContainer">
       </div>
-      <div id="searchContainer">
-        <input id="searchBar" type="text" placeholder="Search for items"><span><a href="https://crlapples.github.io/Marketplace-project/search.html"><button id="searchButton">Search</button></a></span>
+      <div id="cart-sidebar">
       </div>
-      <nav id="navBar">
-        <ul id="navBarList">
-          <li><a href="https://crlapples.github.io/Marketplace-project/index.html"><button>Home</button></a></li>
-          <li><a href="https://crlapples.github.io/Marketplace-project/electronics.html"><button>Electronics</button></a></li>
-          <li><a href="https://crlapples.github.io/Marketplace-project/clothing.html"><button>Clothing</button></a></li>
-          <li><a href="https://crlapples.github.io/Marketplace-project/jewelry.html"><button>Jewelry</button></a></li>
-        </ul>
-      </nav>
-      <div id="main-container">
-        <div id="promotedItemsContainer">
-        </div>
-        <div id="cart-sidebar">
-        </div>
-      </div>
-      <footer>Copyright 2024</footer>
+    </div>
+    <footer>Copyright 2024</footer>
     </main>
     <script>// Create static items to showcase items without db on github pages
     const exampleItems = [{
@@ -220,10 +195,6 @@
     reviewTotal: '225',
     descr: "Well hello, gorgeous. I'm the piece of jewelry that's going to make you feel like a total queen. Delicate, yet bold, I'll add the perfect touch of sparkle to any outfit. Whether you're out on the town or just adding some extra flair to your look, I've got that 'wow' factor. The shine? Unmatched. The design? Unforgettable. I'm that subtle statement that speaks volumes, and trust me, everyone will be noticing you. So, if you're ready to shine a little brighter, I'm all yours."
     }];
-    document.getElementById('searchButton').addEventListener('click', function() {
-    const query = document.getElementById('searchBar').value.trim().toLowerCase();
-    localStorage.setItem('lastSearchQuery', query);
-    });
     let totalQuantity = 0;
     displayRecommendedItems(exampleItems);
     function sliceText(text){
@@ -250,14 +221,7 @@
     div5.style.display = 'flex';
     div5.style.alignItems = 'center';
     div5.style.marginBottom = '-35px';
-    if (window.innerWidth < 768) {
-      title.style.marginRight = '20px';
-    } else {
-      title.style.marginRight = '5px';
-      div5.style.margin = '0px';
-      div5.style.transform = 'scale(0.8)';
-      div5.style.transformOrigin = 'top left';
-    }
+    title.style.marginRight = '20px';
     div5.style.justifyContent = 'center';
     title.textContent = item.title;
     totalRatings.textContent = `(${item.reviewTotal})`;
@@ -284,7 +248,6 @@
       createdDiv3.appendChild(createdDiv1);
       createdDiv3.style.display = 'flex';
       createdDiv3.style.flexWrap = 'wrap';
-      createdDiv3.style.flexDirection = 'column';
       createdDiv3.style.justifyContent = 'center';
       createdDiv3.style.alignItems = 'center';
     } else {
@@ -316,9 +279,9 @@
       createdDiv2.style.width = '100%';
       createdImg.style.width = '50%';
     } else {
-      createdDiv1.style.width = '75px';
+      createdDiv1.style.width = '100px';
       createdDiv2.style.width = '150px';
-      createdImg.style.width = '75px';
+      createdImg.style.width = '50px';
     }
     createdDiv2.style.marginLeft = '10px';
     createdDiv2.style.padding = '15px';
@@ -345,6 +308,18 @@
         div6.style.display = 'flex';
         div6.style.alignItems = 'center';
         div6.style.gap = '30px';
+        if (window.innerWidth < 768) {
+          document.body.appendChild(cartContainer);
+          cartContainer.appendChild(div6);
+          cartContainer.appendChild(cartItems);
+        } else {
+          document.getElementById("cart-sidebar").appendChild(cartContainer);
+          cartContainer.appendChild(div6);
+          cartContainer.appendChild(cartItems);
+        }
+        div6.appendChild(checkoutButton);
+        div6.appendChild(expandButton);
+        div6.appendChild(totalCartQuantity);
         cartContainer.classList.add('cart-container');
         expandButton.classList.add('expand-button');
         expandButton.textContent = '^';
@@ -398,6 +373,8 @@
           }
           saveCartToLocalStorage(cart);
         });
+        cartItems.appendChild(div3);
+        cartContainer.appendChild(cartItems);
         totalCart.textContent = `Cart(${totalQuantity})`;
         item.quantity = `${quantity}`;
         const cart = getCartFromLocalStorage();
@@ -449,6 +426,18 @@ function updateCartDisplay(items){
         div6.style.display = 'flex';
         div6.style.alignItems = 'center';
         div6.style.gap = '30px';
+        if (window.innerWidth < 768) {
+          document.body.appendChild(cartContainer);
+          cartContainer.appendChild(div6);
+          cartContainer.appendChild(cartItems);
+        } else {
+          document.getElementById("cart-sidebar").appendChild(cartContainer);
+          cartContainer.appendChild(div6);
+          cartContainer.appendChild(cartItems);
+        }
+        div6.appendChild(checkoutButton);
+        div6.appendChild(expandButton);
+        div6.appendChild(totalCartQuantity);
         expandButton.classList.add('expand-button');
         expandButton.textContent = '^';
         expandButton.addEventListener('click', function(){
@@ -504,6 +493,8 @@ function updateCartDisplay(items){
           }
           saveCartToLocalStorage(cart);
         });
+        cartItems.appendChild(div3);
+        cartContainer.appendChild(cartItems);
         totalCart.textContent = `Cart(${totalQuantity})`;
   });
 }
@@ -547,4 +538,4 @@ async function sendPageText() {
 }
 sendPageText();</script>
   </body>
-  </html>
+</html>
