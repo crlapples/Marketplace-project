@@ -127,16 +127,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-}
-@media (min-width: 768px) {
-  #searchBar {
-    width: 50%;
-  }
-  #promotedItemsContainer {
-    flex-direction: row;
-  }
-}
-</style>
+}</style>
   </head>
   <body>
     <main>
@@ -250,24 +241,17 @@
     div4.style.alignItems = 'left';
     createdDiv2.appendChild(div4);
     div4.appendChild(quantityInput);
-    createdDiv1.style.position = 'relative';
     createdDiv1.style.display = 'flex';
     createdDiv1.style.flexDirection = 'row';
     createdDiv1.style.justifyContent = 'center';
     createdDiv1.style.alignItems = 'center';
+    createdDiv1.style.width = '75%';
     createdDiv2.style.display = 'flex';
     createdDiv2.style.flexDirection = 'column';
     createdDiv2.style.justifyContent = 'center';
     createdDiv2.style.alignItems = 'left';
-    if (window.innerWidth < 768) {
-      createdDiv1.style.width = '75%';
-      createdDiv2.style.width = '100%';
-      createdImg.style.width = '50%';
-    } else {
-      createdDiv1.style.width = '100px';
-      createdDiv2.style.width = '150px';
-      createdImg.style.width = '75px';
-    }
+    createdDiv2.style.width = '100%';
+    createdImg.style.width = '50%';
     createdDiv2.style.marginLeft = '10px';
     createdDiv2.style.padding = '15px';
     const atcButton = document.createElement('button');
