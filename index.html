@@ -145,9 +145,9 @@
     justify-content: flex-start;
   }
   .cart-container{
-  position: static;
+  position: fixed;
   margin-top: 0px;
-  height: 35%;
+  height: 75%;
   transform: translateX(0%);
   z-index: 1000;
   display: flex;
@@ -155,6 +155,10 @@
   align-items: center;
   width: 300px;
   background-color: white;
+  }
+  .cart-container.expanded{
+  height: 75%;
+  margin-top: 0;
   }
   #cart-sidebar {
     position: relative;
