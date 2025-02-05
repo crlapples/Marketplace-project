@@ -142,6 +142,8 @@
   #promotedItemsContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: center;
   }
 }</style>
   </head>
@@ -232,7 +234,7 @@
     } else {
       title.style.marginRight = '5px';
       div5.style.margin = '5px';
-      div5.style.transform = 'scale(0.6)';
+      div5.style.transform = 'scale(0.8)';
       div5.style.transformOrigin = 'top left';
     }
     div5.style.justifyContent = 'center';
@@ -364,7 +366,11 @@
         const div3 = document.createElement('div');
         div3.style.display = 'flex';
         div3.style.alignItems = 'center';
-        cartItems.appendChild(div3);
+        if (window.innerWidth < 768) {
+          cartItems.appendChild(div3);
+        } else {
+          document.getElementById('cart-sidebar').appendChild(div3);
+        }
         div3.appendChild(img);
         div3.appendChild(div);
         div3.style.justifyContent = 'center';
@@ -386,7 +392,6 @@
           }
           saveCartToLocalStorage(cart);
         });
-        cartItems.appendChild(div3);
         cartContainer.appendChild(cartItems);
         totalCart.textContent = `Cart(${totalQuantity})`;
         item.quantity = `${quantity}`;
