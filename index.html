@@ -202,6 +202,7 @@
     item.descr = sliceText(item.descr);
     const createdDiv1 = document.createElement('div');
     const createdDiv2 = document.createElement('div');
+    const createdDiv3 = document.createElement('div');
     const createdImg = document.createElement('img');
     const createdP = document.createElement('p');
     const createdSpan1 = document.createElement('span');
@@ -236,8 +237,14 @@
     createdImg.src = item.src;
     createdP.textContent = item.descr;
     createdH2.textContent = `$${item.price}`;
-    document.getElementById('promotedItemsContainer').appendChild(div5);
-    document.getElementById('promotedItemsContainer').appendChild(createdDiv1);
+    if (window.innerWidth > 768) {
+      document.getElementById('promotedItemsContainer').appendChild(createdDiv3);
+      createdDiv3.appendChild(div5);
+      createdDiv3.appendChild(createdDiv1);
+    } else {
+      document.getElementById('promotedItemsContainer').appendChild(div5);
+      document.getElementById('promotedItemsContainer').appendChild(createdDiv1);
+    }
     div5.appendChild(title);
     div5.appendChild(rating);
     div5.appendChild(totalRatings);
@@ -246,6 +253,10 @@
     createdSpan1.appendChild(createdDiv2);
     createdDiv2.appendChild(createdH2);
     createdDiv2.appendChild(createdP);
+    createdDiv3.style.display = 'flex';
+    createdDiv3.style.flexWrap = 'wrap';
+    createdDiv3.style.justifyContent = 'center';
+    createdDiv3.style.alignItems = 'center';
     div4.style.display = 'flex';
     div4.style.alignItems = 'left';
     createdDiv2.appendChild(div4);
