@@ -246,7 +246,6 @@
     div5.style.display = 'flex';
     div5.style.alignItems = 'center';
     div5.style.marginBottom = '-35px';
-    title.style.marginRight = '20px';
     div5.style.justifyContent = 'center';
     title.textContent = item.title;
     totalRatings.textContent = `(${item.reviewTotal})`;
@@ -279,7 +278,7 @@
     } else {
       document.getElementById('promotedItemsContainer').appendChild(div5);
       document.getElementById('promotedItemsContainer').appendChild(createdDiv1);
-      title.style.marginRight = '5px';
+      title.style.marginRight = '20px';
     }
     div5.appendChild(title);
     div5.appendChild(rating);
@@ -310,7 +309,7 @@
       div5.style.transform = 'scale(0.8)';
       div5.style.transformOrigin = 'top left';
       createdDiv1.style.width = '50px';
-      createdDiv2.style.width = '150px';
+      createdDiv2.style.width = '100px';
       createdImg.style.width = '50px';
     }
     createdDiv2.style.padding = '15px';
