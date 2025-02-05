@@ -393,6 +393,7 @@
         const div3 = document.createElement('div');
         div3.style.display = 'flex';
         div3.style.alignItems = 'center';
+        cartItems.appendChild(div3);
         div3.appendChild(img);
         div3.appendChild(div);
         div3.style.justifyContent = 'center';
@@ -525,15 +526,7 @@ function updateCartDisplay(items){
         const div3 = document.createElement('div');
         div3.style.display = 'flex';
         div3.style.alignItems = 'center';
-        document.addEventListener("DOMContentLoaded", function () {
-          if (window.innerWidth < 768) {
-            cartContainer.appendChild(cartItems);
-            cartItems.appendChild(div3);
-          } else {
-            document.getElementById('cart-sidebar').appendChild(cartItems);
-            document.getElementById('cart-sidebar').appendChild(div3);
-          }
-        });
+        cartItems.appendChild(div3);
         div3.appendChild(img);
         div3.appendChild(div);
         div3.style.justifyContent = 'center';
