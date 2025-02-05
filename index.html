@@ -275,11 +275,11 @@
       createdDiv3.style.flexDirection = 'column';
       createdDiv3.style.justifyContent = 'center';
       createdDiv3.style.alignItems = 'center';
-      createdDiv3.style.margin = '15px';
-      title.style.marginRight = '5px';
+      createdDiv3.style.margin = '5px';
     } else {
       document.getElementById('promotedItemsContainer').appendChild(div5);
       document.getElementById('promotedItemsContainer').appendChild(createdDiv1);
+      title.style.marginRight = '5px';
     }
     div5.appendChild(title);
     div5.appendChild(rating);
@@ -306,7 +306,6 @@
       createdDiv2.style.width = '100%';
       createdImg.style.width = '50%';
       createdDiv2.style.marginLeft = '10px';
-      createdDiv2.style.padding = '15px';
     } else {
       div5.style.transform = 'scale(0.8)';
       div5.style.transformOrigin = 'top left';
@@ -314,6 +313,7 @@
       createdDiv2.style.width = '150px';
       createdImg.style.width = '50px';
     }
+    createdDiv2.style.padding = '15px';
     const atcButton = document.createElement('button');
     atcButton.textContent = 'add to cart';
     atcButton.classList.add('atc');
