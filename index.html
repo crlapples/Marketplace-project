@@ -345,7 +345,6 @@
         div6.style.display = 'flex';
         div6.style.alignItems = 'center';
         div6.style.gap = '30px';
-        document.addEventListener("DOMContentLoaded", function () {
           if (window.innerWidth < 768) {
             document.body.appendChild(cartContainer);
             cartContainer.appendChild(div6);
@@ -361,7 +360,6 @@
             document.getElementById('cart-sidebar').appendChild(div6);
             document.getElementById('cart-sidebar').appendChild(cartItems);
           }
-        });
         cartContainer.classList.add('cart-container');
         expandButton.classList.add('expand-button');
         expandButton.textContent = '^';
@@ -415,7 +413,6 @@
           }
           saveCartToLocalStorage(cart);
         });
-        document.addEventListener("DOMContentLoaded", function () {
           if (window.innerWidth < 768) {
             cartContainer.appendChild(cartItems);
             cartItems.appendChild(div3);
@@ -424,7 +421,6 @@
             cartContainer.appendChild(cartItems);
             cartItems.appendChild(div3);
           }
-        });
         totalCart.textContent = `Cart(${totalQuantity})`;
         item.quantity = `${quantity}`;
         const cart = getCartFromLocalStorage();
@@ -473,7 +469,6 @@ function updateCartDisplay(items){
           window.location.href = 'https://crlapples.github.io/Marketplace-project/checkout.html';
         });
         const div6 = document.createElement('div');
-        document.addEventListener("DOMContentLoaded", function () {
           if (window.innerWidth < 768) {
             document.body.appendChild(cartContainer);
             cartContainer.appendChild(div6);
@@ -489,7 +484,6 @@ function updateCartDisplay(items){
             document.getElementById('cart-sidebar').appendChild(div6);
             document.getElementById('cart-sidebar').appendChild(cartItems);
           }
-        });
         div6.style.display = 'flex';
         div6.style.alignItems = 'center';
         div6.style.gap = '30px';
@@ -548,7 +542,6 @@ function updateCartDisplay(items){
           }
           saveCartToLocalStorage(cart);
         });
-        document.addEventListener("DOMContentLoaded", function () {
           if (window.innerWidth < 768) {
             cartContainer.appendChild(cartItems);
             cartItems.appendChild(div3);
@@ -557,7 +550,6 @@ function updateCartDisplay(items){
             cartContainer.appendChild(cartItems);
             cartItems.appendChild(div3);
           }
-        });
         totalCart.textContent = `Cart(${totalQuantity})`;
   });
 }
