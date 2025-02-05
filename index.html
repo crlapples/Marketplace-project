@@ -322,9 +322,6 @@
         });
         if (window.innerWidth < 768) {
           document.body.appendChild(cartContainer);
-        } else {
-          document.getElementById('cart-sidebar').appendChild(div6);
-          document.getElementById('cart-sidebar').appendChild(cartItems);
         }
         const div6 = document.createElement('div');
         div6.style.display = 'flex';
@@ -371,6 +368,9 @@
         if (window.innerWidth < 768) {
           cartItems.appendChild(div3);
         } else {
+          document.getElementById('cart-sidebar').appendChild(div6);
+          expandButton.remove();
+          document.getElementById('cart-sidebar').appendChild(cartItems);
           document.getElementById('cart-sidebar').appendChild(div3);
         }
         div3.appendChild(img);
