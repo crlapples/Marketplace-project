@@ -320,20 +320,10 @@
         checkoutButton.addEventListener('click', function(){
           window.location.href = 'https://crlapples.github.io/Marketplace-project/checkout.html';
         });
-        if (window.innerWidth < 768) {
-          document.body.appendChild(cartContainer);
-        }
         const div6 = document.createElement('div');
         div6.style.display = 'flex';
         div6.style.alignItems = 'center';
         div6.style.gap = '30px';
-        if (window.innerWidth < 768) {
-          cartContainer.appendChild(div6);
-          cartContainer.appendChild(cartItems);
-          div6.appendChild(checkoutButton);
-          div6.appendChild(expandButton);
-          div6.appendChild(totalCartQuantity);
-        }
         cartContainer.classList.add('cart-container');
         expandButton.classList.add('expand-button');
         expandButton.textContent = '^';
@@ -366,6 +356,12 @@
         div3.style.display = 'flex';
         div3.style.alignItems = 'center';
         if (window.innerWidth < 768) {
+          document.body.appendChild(cartContainer);
+          cartContainer.appendChild(div6);
+          cartContainer.appendChild(cartItems);
+          div6.appendChild(checkoutButton);
+          div6.appendChild(expandButton);
+          div6.appendChild(totalCartQuantity);
           cartItems.appendChild(div3);
         } else {
           expandButton.remove();
