@@ -212,6 +212,10 @@
     const title = document.createElement('h2');
     const rating = document.createElement('p');
     const totalRatings = document.createElement('p');
+    div5.style.position = 'absolute';
+    div5.style.top = '0';
+    div5.style.left = '50%';
+    div5.style.padding = '5px';
     div5.style.display = 'flex';
     div5.style.alignItems = 'center';
     div5.style.marginBottom = '-35px';
@@ -236,11 +240,11 @@
     createdImg.src = item.src;
     createdP.textContent = item.descr;
     createdH2.textContent = `$${item.price}`;
-    document.getElementById('promotedItemsContainer').appendChild(div5);
     document.getElementById('promotedItemsContainer').appendChild(createdDiv1);
     div5.appendChild(title);
     div5.appendChild(rating);
     div5.appendChild(totalRatings);
+    createdDiv1.appendChild(div5);
     createdDiv1.appendChild(createdImg);
     createdDiv1.appendChild(createdSpan1);
     createdSpan1.appendChild(createdDiv2);
@@ -250,6 +254,7 @@
     div4.style.alignItems = 'left';
     createdDiv2.appendChild(div4);
     div4.appendChild(quantityInput);
+    createdDiv1.style.position = 'relative';
     createdDiv1.style.display = 'flex';
     createdDiv1.style.flexDirection = 'row';
     createdDiv1.style.justifyContent = 'center';
