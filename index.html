@@ -149,9 +149,9 @@
     width: 80%;
   }
   .cart-container{
-  position: static;
-  margin-top: 0px;
-  height: 100%;
+  position: fixed;
+  top: 500px;
+  right: 0;
   transform: translateX(0%);
   z-index: 1000;
   display: flex;
@@ -163,7 +163,6 @@
   border: 2px solid lightblue
   }
   .cart-container.expanded{
-  height: 100%;
   margin-top: 0;
   }
   #cart-sidebar {
@@ -283,6 +282,7 @@
       createdDiv3.style.justifyContent = 'center';
       createdDiv3.style.alignItems = 'center';
       createdDiv3.style.margin = '15px';
+      createdDiv3.style.width = '50%';
       title.style.marginRight = '5px';
     } else {
       document.getElementById('promotedItemsContainer').appendChild(div5);
