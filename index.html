@@ -128,6 +128,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll;
 }
 #main-container {
   display: flex;
@@ -144,7 +145,8 @@
     justify-content: flex-start;
   }
   .cart-container{
-  position: static;
+  position: absolute;
+  top: 0;
   height: auto;
   transform: translateX(0%);
   z-index: 1000;
