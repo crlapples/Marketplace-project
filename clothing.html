@@ -3,6 +3,12 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clothing webpage</title>
+    <script>
+    if (!sessionStorage.getItem('reloaded')) {
+      sessionStorage.setItem('reloaded', 'true');
+      window.location.reload();
+    }
+    </script>
     <style>#logo{
   width: 100%;
 }
@@ -196,11 +202,6 @@
     <footer>Copyright 2024</footer>
     </main>
     <script>// Create static items to showcase items without db on github pages
-    window.onload = function() {
-      if (document.referrer && !document.referrer.includes(window.location.hostname)) {
-        location.reload();
-      }
-    };
     const exampleItems = [{
     title: 'Staywarm Jacket',
     src: 'https://crlapples.github.io/Marketplace-project/jacket.jpeg',
