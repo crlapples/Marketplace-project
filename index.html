@@ -466,8 +466,8 @@ function updateCartDisplay(items){
     }
     return;
   };
+  document.addEventListener("DOMContentLoaded", function () {
       if(!cartContainer) {
-        document.addEventListener("DOMContentLoaded", function () {
         cartContainer = document.createElement('div');
         cartContainer.classList.add('cart-container');
         const expandButton = document.createElement('button');
