@@ -170,7 +170,6 @@
   gap: 25px;
   margin-bottom: 250px;
   margin-top: 75px;
-  width: 700px;
 }
 #cartItemsContainer{
   margin-top: 75px;
@@ -182,7 +181,7 @@
 }
 #billing-row {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 @media (min-width: 768px) {
@@ -232,10 +231,10 @@
       </div>
       <p>Shipping Address</p>
       <div id="billing-row">
-        <input id="sAddressStreet" type="text" placeholder="Street">
         <input id="sameAddressCheckbox" type="checkbox">
         <label for="sameAddressCheckbox">Same as billing address</label>
       </div>
+        <input id="sAddressStreet" type="text" placeholder="Street">
       <div id="billing-row">
         <input id="sAddressCity" type="text" placeholder="City">
         <input id="sAddressState" type="text" placeholder="NY">
