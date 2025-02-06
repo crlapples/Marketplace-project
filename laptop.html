@@ -124,9 +124,49 @@
   margin-top: 50px;
   margin-bottom: 250px;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll;
+}
+#main-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+@media (min-width: 768px) {
+  #searchBar {
+    width: 50%;
+  }
+  #promotedItemsContainer {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 80%;
+    margin-left: 25px;
+  }
+  .cart-container{
+  position: static;
+  transform: translateX(0%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid lightblue
+  }
+  .cart-container.expanded{
+  margin-top: 0;
+  height: 900px
+  }
+  #cart-sidebar {
+    height: 900px;
+  }
 }</style>
   </head>
   <body>
@@ -147,7 +187,11 @@
         <li><a href="https://crlapples.github.io/Marketplace-project/jewelry.html"><button>Jewelry</button></a></li>
       </ul>
     </nav>
-    <div id="promotedItemsContainer">
+    <div id="main-container">
+      <div id="promotedItemsContainer">
+      </div>
+      <div id="cart-sidebar">
+      </div>
     </div>
     <footer>Copyright 2024</footer>
     </main>
@@ -176,6 +220,7 @@
   items.forEach(item => { 
     const createdDiv1 = document.createElement('div');
     const createdDiv2 = document.createElement('div');
+    const createdDiv3 = document.createElement('div');
     const createdImg = document.createElement('img');
     const createdP = document.createElement('p');
     const createdSpan1 = document.createElement('span');
@@ -192,14 +237,13 @@
     div5.style.display = 'flex';
     div5.style.alignItems = 'left';
     div5.style.marginBottom = '-35px';
-    title.style.marginRight = '20px';
     div5.style.justifyContent = 'center';
     title.textContent = item.title;
     totalRatings.textContent = `(${item.reviewTotal})`;
     rating.classList.add('rating');
     for(let i = 0; i < 5; i++){
       const span = document.createElement('span');
-      span.textContent = '*';
+      span.textContent = '★';
       if(i < Number(item.review)){
         span.classList.add('filled');
       }
@@ -213,8 +257,20 @@
     createdImg.src = item.src;
     createdP.textContent = item.descr;
     createdH2.textContent = `$${item.price}`;
-    document.getElementById('promotedItemsContainer').appendChild(div5);
-    document.getElementById('promotedItemsContainer').appendChild(createdDiv1);
+    if (window.innerWidth > 768) {
+      document.getElementById('promotedItemsContainer').appendChild(createdDiv3);
+      createdDiv3.appendChild(div5);
+      createdDiv3.appendChild(createdDiv1);
+      createdDiv3.style.display = 'flex';
+      createdDiv3.style.flexDirection = 'column';
+      createdDiv3.style.justifyContent = 'center';
+      createdDiv3.style.alignItems = 'center';
+      createdDiv3.style.margin = '5px';
+    } else {
+      document.getElementById('promotedItemsContainer').appendChild(div5);
+      document.getElementById('promotedItemsContainer').appendChild(createdDiv1);
+      title.style.marginRight = '20px';
+    }
     div5.appendChild(title);
     createdDiv1.appendChild(createdImg);
     createdDiv1.appendChild(createdSpan1);
@@ -232,13 +288,23 @@
     createdDiv1.style.flexDirection = 'row';
     createdDiv1.style.justifyContent = 'center';
     createdDiv1.style.alignItems = 'center';
-    createdDiv1.style.width = '75%';
     createdDiv2.style.display = 'flex';
     createdDiv2.style.flexDirection = 'column';
     createdDiv2.style.justifyContent = 'center';
     createdDiv2.style.alignItems = 'left';
-    createdDiv2.style.width = '100%';
-    createdImg.style.width = '50%';
+    if (window.innerWidth < 768) {
+      createdDiv1.style.width = '75%';
+      createdDiv2.style.width = '100%';
+      createdImg.style.width = '50%';
+      createdDiv2.style.marginLeft = '10px';
+    } else {
+      div5.style.transform = 'scale(0.8)';
+      div5.style.transformOrigin = 'top left';
+      div5.style.marginLeft = '10%';
+      createdDiv1.style.width = '250px';
+      createdDiv2.style.width = '250px';
+      createdImg.style.width = '250px';
+    }
     createdDiv2.style.marginLeft = '10px';
     createdDiv2.style.padding = '15px';
     const atcButton = document.createElement('button');
@@ -260,19 +326,19 @@
         checkoutButton.addEventListener('click', function(){
           window.location.href = 'https://crlapples.github.io/Marketplace-project/checkout.html';
         });
-        document.body.appendChild(cartContainer);
         const div6 = document.createElement('div');
         div6.style.display = 'flex';
         div6.style.alignItems = 'center';
         div6.style.gap = '30px';
-        cartContainer.appendChild(div6);
-        cartContainer.appendChild(cartItems);
-        div6.appendChild(checkoutButton);
-        div6.appendChild(expandButton);
-        div6.appendChild(totalCartQuantity);
-        cartContainer.classList.add('cart-container');
-        expandButton.classList.add('expand-button');
-        expandButton.textContent = '^';
+        if (window.innerWidth < 768) {
+          document.body.appendChild(cartContainer);
+          cartContainer.appendChild(div6);
+          cartContainer.appendChild(cartItems);
+        } else {
+          document.getElementById("cart-sidebar").appendChild(cartContainer);
+          cartContainer.appendChild(div6);
+          cartContainer.appendChild(cartItems);
+        }
         expandButton.addEventListener('click', function(){
           cartContainer.classList.toggle('expanded');
         });
@@ -367,14 +433,15 @@ function updateCartDisplay(items){
         div6.style.display = 'flex';
         div6.style.alignItems = 'center';
         div6.style.gap = '30px';
-        document.body.appendChild(cartContainer);
-        cartContainer.appendChild(cartItems);
-        div6.appendChild(checkoutButton);
-        div6.appendChild(expandButton);
-        div6.appendChild(totalCartQuantity);
-        cartContainer.appendChild(div6);
-        expandButton.classList.add('expand-button');
-        expandButton.textContent = '^';
+        if (window.innerWidth < 768) {
+          document.body.appendChild(cartContainer);
+          cartContainer.appendChild(div6);
+          cartContainer.appendChild(cartItems);
+        } else {
+          document.getElementById("cart-sidebar").appendChild(cartContainer);
+          cartContainer.appendChild(div6);
+          cartContainer.appendChild(cartItems);
+        }
         expandButton.addEventListener('click', function(){
           cartContainer.classList.toggle('expanded');
         });
