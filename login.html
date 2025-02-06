@@ -107,6 +107,15 @@
 .shake{
   animation: shake 0.2s;
 }
+@media (min-width: 768px) {
+  #main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+}
 </style>
   </head>
   <body>
@@ -123,6 +132,7 @@
         <li><a href="https://crlapples.github.io/Marketplace-project/jewelry.html"><button>Jewelry</button></a></li>
       </ul>
     </nav>
+    <div id="main-container>
       <div id="errorContainer">
       </div>
       <form id="loginForm">
@@ -134,6 +144,7 @@
         <p id="signupNotification">Don't have an account? Sign up</p>
         <a href="https://crlapples.github.io/Marketplace-project/signup.html"><button id="signupButton">Sign-up</button></a>
       </div>
+    </div>
     </main>
     <script>
       document.getElementById('searchButton').addEventListener('click', function() {
