@@ -166,7 +166,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   gap: 25px;
   margin-bottom: 250px;
   margin-top: 75px;
@@ -184,11 +184,10 @@
   justify-content: flex-start;
   align-items: center;
 }
-input[type="text"], input[type="number"] {
-  width: 100%
-}
-#billing-row input {
-  width: calc(33.33% - 10px);
+#center-button {
+  display: flex;
+  justify-content: center;
+  align-items: center
 }
 @media (min-width: 768px) {
   #searchBar {
@@ -246,7 +245,9 @@ input[type="text"], input[type="number"] {
         <input id="sAddressState" type="text" placeholder="NY">
         <input id="sAddressZip" type="text" placeholder="Zip">
       </div>
-      <button id="orderButton" type="submit">Order</button>
+      <div id="center-button">
+        <button id="orderButton" type="submit">Order</button>
+      </div>
     </form>
     <footer>Copyright 2024</footer>
     </main>
