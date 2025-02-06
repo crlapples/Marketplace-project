@@ -184,6 +184,12 @@
   justify-content: flex-start;
   align-items: center;
 }
+input[type="text"], input[type="number"] {
+  width: 100%
+}
+#billing-row input {
+  width: calc(33.33% - 10px);
+}
 @media (min-width: 768px) {
   #searchBar {
     width: 50%;
@@ -218,7 +224,7 @@
       <h2>Billing details</h2>
       <input id="name" type="text" placeholder="Full name">
       <div id="billing-row">
-        <input id="number" type="number" placeholder="Credit card">
+        <input id="number" type="number" placeholder="Credit card number">
         <input id="cvv" type="text" placeholder="CVV">
         <input id="expDate" type="text" placeholder="MM/YY" maxlength="5">
       </div>
