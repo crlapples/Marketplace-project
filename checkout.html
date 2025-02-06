@@ -233,7 +233,8 @@ if(cart.length > 0){
   div2.style.flexDirection = 'column';
   div2.style.alignItems = 'center';
   div2.style.justifyContent = 'flex-start';
-  p3.textContent = `${cartItem.name}`;
+  p1.style.marginRight = '20px';
+  p3.textContent = `${cartItem.title}`;
   p1.textContent = `x${cartItem.quantity}`;
   p2.textContent = `$${cartItem.price * cartItem.quantity}`;
   div3.style.display = 'flex';
