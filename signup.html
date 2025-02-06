@@ -111,6 +111,18 @@ footer{
 .shake{
   animation: shake 0.2s;
 }
+@media (min-width: 768px) {
+  #main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  #searchBar {
+    width: 50%;
+  }
+}
 </style>
   </head>
   <body>
@@ -127,6 +139,7 @@ footer{
         <li><a href="https://crlapples.github.io/Marketplace-project/jewelry.html"><button>Jewelry</button></a></li>
       </ul>
     </nav>
+    <div id="main-container">
       <div id="errorContainer">
       </div>
       <form id="signupForm">
@@ -135,6 +148,7 @@ footer{
         <input id="verifyPasswordInput" type="password" placeholder="Repeat password">
         <button id="signupButton" type="submit">Create account</button>
       </form>
+    </div>
     </main>
     <script>
       document.getElementById('searchButton').addEventListener('click', function() {
