@@ -467,6 +467,7 @@ function updateCartDisplay(items){
     return;
   };
       if(!cartContainer) {
+        document.addEventListener("DOMContentLoaded", function () {
         cartContainer = document.createElement('div');
         cartContainer.classList.add('cart-container');
         const expandButton = document.createElement('button');
@@ -559,6 +560,7 @@ function updateCartDisplay(items){
         cartItems.appendChild(div3);
         cartContainer.appendChild(cartItems);
         totalCart.textContent = `Cart(${totalQuantity})`;
+      });
   });
 }
 const cart = getCartFromLocalStorage();
