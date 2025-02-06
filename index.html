@@ -203,6 +203,11 @@
     window.onload = () => {
       document.getElementById("main-style").disabled = false;
     };
+    window.onload = () => {
+      if (performance.navigation.type === 1) {
+        location.reload();
+      }
+    }
     const exampleItems = [{
       title: 'AB-C Laptop',
       src: 'https://crlapples.github.io/Marketplace-project/laptop.jpeg',
