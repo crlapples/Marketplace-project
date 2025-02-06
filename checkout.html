@@ -166,7 +166,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   gap: 25px;
   margin-bottom: 250px;
   margin-top: 75px;
@@ -189,6 +189,12 @@
   display: flex;
   justify-content: center;
   align-items: center
+}
+#align-vertically {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 @media (min-width: 768px) {
   #searchBar {
@@ -222,29 +228,35 @@
     </div>
     <form id="infoForm">
       <h2>Billing details</h2>
-      <input id="name" type="text" placeholder="Full name">
-      <div id="billing-row">
-        <input id="number" type="number" placeholder="Credit card number">
-        <input id="cvv" type="text" placeholder="CVV">
-        <input id="expDate" type="text" placeholder="MM/YY" maxlength="5">
+      <div id="align-vertically">
+        <input id="name" type="text" placeholder="Full name">
+        <div id="billing-row">
+          <input id="number" type="number" placeholder="Credit card number">
+          <input id="cvv" type="text" placeholder="CVV">
+          <input id="expDate" type="text" placeholder="MM/YY" maxlength="5">
+        </div>
       </div>
       <p>Billing Address</p>
-      <input id="bAddressStreet" type="text" placeholder="Street">
-      <div id="billing-row">
-        <input id="bAddressCity" type="text" placeholder="City">
-        <input id="bAddressState" type="text" placeholder="NY">
-        <input id="bAddressZip" type="text" placeholder="Zip">
+      <div id="align-vertically">
+        <input id="bAddressStreet" type="text" placeholder="Street">
+        <div id="billing-row">
+          <input id="bAddressCity" type="text" placeholder="City">
+          <input id="bAddressState" type="text" placeholder="NY">
+          <input id="bAddressZip" type="text" placeholder="Zip">
+        </div>
       </div>
       <p>Shipping Address</p>
       <div id="billing-row">
         <input id="sameAddressCheckbox" type="checkbox">
         <label for="sameAddressCheckbox">Same as billing address</label>
       </div>
+      <div id="align-vertically">
         <input id="sAddressStreet" type="text" placeholder="Street">
-      <div id="billing-row">
-        <input id="sAddressCity" type="text" placeholder="City">
-        <input id="sAddressState" type="text" placeholder="NY">
-        <input id="sAddressZip" type="text" placeholder="Zip">
+        <div id="billing-row">
+          <input id="sAddressCity" type="text" placeholder="City">
+          <input id="sAddressState" type="text" placeholder="NY">
+          <input id="sAddressZip" type="text" placeholder="Zip">
+        </div>
       </div>
       <div id="center-button">
         <button id="orderButton" type="submit">Order</button>
