@@ -144,7 +144,7 @@
   }
   #promotedItemsContainer {
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     width: 80%;
     margin-left: 25px;
   }
@@ -261,6 +261,7 @@
       document.getElementById('promotedItemsContainer').appendChild(createdDiv3);
       createdDiv3.appendChild(div5);
       createdDiv3.appendChild(createdDiv1);
+      createdDiv3.appendChild(createdP);
       createdDiv3.style.display = 'flex';
       createdDiv3.style.flexDirection = 'column';
       createdDiv3.style.justifyContent = 'center';
@@ -279,7 +280,6 @@
     createdDiv2.appendChild(span3);
     span3.appendChild(rating);
     span3.appendChild(totalRatings);
-    document.getElementById('promotedItemsContainer').appendChild(createdP);
     div4.style.display = 'flex';
     div4.style.alignItems = 'left';
     createdDiv2.appendChild(div4);
@@ -304,6 +304,7 @@
       createdDiv1.style.width = '250px';
       createdDiv2.style.width = '250px';
       createdImg.style.width = '250px';
+      createdP.style.width = '500px':
     }
     createdDiv2.style.marginLeft = '10px';
     createdDiv2.style.padding = '15px';
