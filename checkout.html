@@ -120,8 +120,32 @@
 .rating span.filled{
   color: gold;
 }
-#name, #card, #bAddress, #sAddress{
+#name, #number, #cvv, #expDate, #bAddressStreet, #sAddressStreet, #bAddressCity, #sAddressCity, #bAddressState, #sAddressState, #bAddressZip, #sAddressZip{
   border-radius: 5px;
+}
+#name {
+  width: 150px;
+}
+#number {
+  width: 75px;
+}
+#cvv {
+  width: 25px;
+}
+#expDate {
+  width: 35px;
+}
+#bAddressStreet, #sAddressStreet {
+  width: 150px;
+}
+#bAddressCity, #sAddressCity {
+  width: 100px;
+}
+#bAddressState, #sAddressState {
+  width: 16px;
+}
+#bAddressZip, #sAddressZip {
+  width: 40px;
 }
 #orderButton{
   border-radius: 5px;
@@ -149,6 +173,11 @@
   justify-content: center;
   align-items: center;
   gap: 15px;
+}
+#billing-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media (min-width: 768px) {
   #searchBar {
@@ -181,10 +210,31 @@
     <div id="cartItemsContainer">
     </div>
     <form id="infoForm">
+      <h2>Billing details</h2>
       <input id="name" type="text" placeholder="Full name">
-      <input id="card" type="text" placeholder="Credit card">
-      <input id="bAddress" type="text" placeholder="Billing address">
-      <input id="sAddress" type="text" placeholder="Shipping address">
+      <div id="billing-row">
+        <input id="number" type="number" placeholder="Credit card">
+        <input id="cvv" type="text" placeholder="CVV">
+        <input id="expDate" type="text" placeholder="MM/YY" maxlength="5">
+      </div>
+      <p>Billing Address</p>
+      <input id="bAddressStreet" type="text" placeholder="Street">
+      <div id="billing-row">
+        <input id="bAddressCity" type="text" placeholder="City">
+        <input id="bAddressState" type="text" placeholder="NY">
+        <input id="bAddressZip" type="text" placeholder="Zip">
+      </div>
+      <p>Shipping Address</p>
+      <div id="billing-row">
+        <input id="sAddressStreet" type="text" placeholder="Street">
+        <input id="sameAddressCheckbox" type="checkbox">
+        <label for="sameAddressCheckbox">Same as billing address</label>
+      </div>
+      <div id="billing-row">
+        <input id="sAddressCity" type="text" placeholder="City">
+        <input id="sAddressState" type="text" placeholder="NY">
+        <input id="sAddressZip" type="text" placeholder="Zip">
+      </div>
       <button id="orderButton" type="submit">Order</button>
     </form>
     <footer>Copyright 2024</footer>
@@ -196,6 +246,45 @@
 function saveCartToLocalStorage(cart){
   localStorage.setItem('cart', JSON.stringify(cart));
 }
+const baStreet = document.getElementById('bAddressStreet');
+const baCity = document.getElementById('bAddressCity');
+const baState = document.getElementById('bAddressState');
+const baZip = document.getElementById('bAddressZip');
+const saStreet = document.getElementById('sAddressStreet');
+const saCity = document.getElementById('sAddressCity');
+const saState = document.getElementById('sAddressState');
+const saZip = document.getElementById('sAddressZip');
+document.getElementById("sameAddressCheckbox").addEventListener("change", function() {
+  if (this.checked) {
+    saStreet.value = baStreet.value;
+    saCity.value = baCity.value;
+    saState.value = baState.value;
+    saZip.value = baZip.value;
+    saStreet.readOnly = true;
+    saCity.readOnly = true;
+    saState.readOnly = true;
+    saZip.readOnly = true;
+  } else {
+    saStreet.value = "";
+    saCity.value = "";
+    saState.value = "";
+    saZip.value = "";
+    saStreet.readOnly = false;
+    saCity.readOnly = false;
+    saState.readOnly = false;
+    saZip.readOnly = false;
+  }
+});
+
+const date = document.getElementById('expDate');
+date.addEventListener("input", function (e) {
+  let value = e.target.value.replace(/\D/g, "");
+  if (value.length >= 2) {
+    value = value.slice(0, 2) + "/" + value.slice(2, 4);
+  }
+  e.target.value = value.slice(0, 5);
+});
+      
 document.getElementById('searchButton').addEventListener('click', function() {
     const query = document.getElementById('searchBar').value.trim().toLowerCase();
     localStorage.setItem('lastSearchQuery', query);
@@ -267,7 +356,7 @@ let totalPrice = 0;
 cart.forEach(cartItem => {
   totalPrice = totalPrice += (cartItem.quantity * cartItem.price);
 });
-p4.textContent = `Total: $${totalPrice.toFixed(2)}`;
+p4.textContent = `Total: $${totalPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
 div2.appendChild(p3);
 div2.appendChild(p4);
 div2.style.gap = '35px';
