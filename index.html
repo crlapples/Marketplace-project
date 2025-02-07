@@ -425,14 +425,6 @@
         } else {
           button.classList.add('highlight');
         }
-        if (button.contains('highlight')) {
-          let divs = document.getElementsByTagName("div");
-          Array.from(divs).forEach(div => {
-            if (document.getElementById("promotedItemsContainer").contains(div)) {
-              div.style.display = 'flex';
-            }
-          });
-        }
       });
     });
     colors.forEach(button => {
@@ -447,14 +439,6 @@
         } else {
           button.classList.add('highlight');
         }
-        if (button.contains('highlight')) {
-          let divs = document.getElementsByTagName("div");
-          Array.from(divs).forEach(div => {
-            if (document.getElementById("promotedItemsContainer").contains(div)) {
-              div.style.display = 'flex';
-            }
-          });
-        }
       });
     });
     let on = false;
@@ -466,7 +450,7 @@
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (document.getElementById("promotedItemsContainer").contains(div)) {
-          if (lastButton === !document.getElementById("electronics-filter")) {
+          if (lastButton !== document.getElementById("electronics-filter")) {
             on = false;
             Array.from(divs).forEach(div => {
               if (document.getElementById("promotedItemsContainer").contains(div)) {
@@ -500,7 +484,7 @@
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (document.getElementById("promotedItemsContainer").contains(div)) {
-          if (lastButton === !document.getElementById("clothing-filter")) {
+          if (lastButton !== document.getElementById("clothing-filter")) {
             on = false;
             Array.from(divs).forEach(div => {
               if (document.getElementById("promotedItemsContainer").contains(div)) {
