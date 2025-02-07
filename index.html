@@ -225,7 +225,7 @@
   position: sticky;
   bottom: unset !important;
   top: 675;
-  right: 0;
+  right: 0px;
   margin-right: -1px;
   transform: translateX(0%);
   z-index: 1000;
@@ -450,7 +450,7 @@ document.getElementById("electronics-filter").addEventListener("click", function
   // Toggle visibility based on the filter
   Array.from(divs).forEach(div => {
     // Check if the div is not inside the "cart-sidebar" or "column-container"
-    if (document.getElementById("promotedItemsContainer").contains(div)) {
+    if (!document.getElementById("cart-sidebar").contains(div) && !document.getElementById("column-container").contains(div)) {
       
       // If last button clicked was the same, toggle the 'on' state
       if (lastButton === document.getElementById("electronics-filter")) {
