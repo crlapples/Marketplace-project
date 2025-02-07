@@ -411,8 +411,6 @@
     }
     div5.classList.add("item");
     createdDiv1.classList.add("item");
-    let on = false;
-    let lastButton = null;
     const categories = document.querySelectorAll(".category");
     const colors = document.querySelectorAll(".color");
     categories.forEach(button => {
@@ -443,36 +441,42 @@
         }
       });
     });
-    document.getElementById("electronics-filter").addEventListener("click", function () {
-      let divs = document.getElementsByTagName("div");
-      Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
-          if (lastButton === document.getElementById("electronics-filter")) {
-            on = false;
-          }
-          div.style.display = 'flex';
-          if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
-            if (div.style.display === 'none') {
-              div.style.display = 'flex';
-            } else {
-              div.style.display = 'none';
-            }
-          }
-          if (div.textContent.includes("jewelry") || div.textContent.includes("jacket")) {
-            if (div.style.display === 'none') {
-              div.style.display = 'flex';
-            } else {
-              div.style.display = 'none';
-            }
-          }
-          if (on) {
-            div.style.display = 'flex';
-          }
-          on = !on;
-          lastButton = document.getElementById("electronics-filter");
-        }
-      });
-    });
+    let on = false;
+let lastButton = null;
+
+document.getElementById("electronics-filter").addEventListener("click", function () {
+  let divs = document.getElementsByTagName("div");
+  
+  // Toggle visibility based on the filter
+  Array.from(divs).forEach(div => {
+    // Check if the div is not inside the "cart-sidebar" or "column-container"
+    if (!document.getElementById("cart-sidebar").contains(div) && !document.getElementById("column-container").contains(div)) {
+      
+      // If last button clicked was the same, toggle the 'on' state
+      if (lastButton === document.getElementById("electronics-filter")) {
+        on = false;
+      }
+      
+      // Check the content of each div for specific items to toggle visibility
+      if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
+        div.style.display = (div.style.display === 'none' || div.style.display === '') ? 'flex' : 'none';
+      } else if (div.textContent.includes("jewelry") || div.textContent.includes("laptop")) {
+        div.style.display = (div.style.display === 'none' || div.style.display === '') ? 'flex' : 'none';
+      } else {
+        div.style.display = 'none';  // Hide items that don't match the criteria
+      }
+
+      // Ensure that items are shown or hidden based on the `on` state
+      if (on) {
+        div.style.display = 'flex';
+      }
+    }
+  });
+  
+  // Toggle the `on` state for the next click
+  on = !on;
+  lastButton = document.getElementById("electronics-filter");
+});
     document.getElementById("clothing-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
