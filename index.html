@@ -248,29 +248,28 @@
         <li><a href="https://crlapples.github.io/Marketplace-project/jewelry.html"><button>Jewelry</button></a></li>
       </ul>
     </nav>
-    <div id="main-container">
-      <div id="column-container">
-        <button id="filters">Filters</button>
-        <div id="filter-options" class="hidden">
-          <div id="filter-with-types">
-            <label class="filter-category-name">Categories:</label>
-            <div class="types">
-              <button id="electronics-filter">Electronics</button>
-              <button id="clothing-filter">Clothing</button>
-              <button id="jewelry-filter">Jewelry</button>
-            </div>
-            <label class="filter-category-name">Colors:</label>
-            <div class="types">
-              <button id="red-filter">🟥</button>
-              <button id="blue-filter">🟦</button>
-              <button id="green-filter">🟩</button>
-              <button id="yellow-filter">🟨</button>
-              <button id="black-filter">⬛</button>
-            </div>
-            <button id="filters-close">Close</button>
+    <div id="column-container">
+      <button id="filters">Filters</button>
+      <div id="filter-options" class="hidden">
+        <div id="filter-with-types">
+          <label class="filter-category-name">Categories:</label>
+          <div class="types">
+            <button id="electronics-filter">Electronics</button>
+            <button id="clothing-filter">Clothing</button>
+            <button id="jewelry-filter">Jewelry</button>
           </div>
-          <
+          <label class="filter-category-name">Colors:</label>
+          <div class="types">
+            <button id="red-filter">🟥</button>
+            <button id="blue-filter">🟦</button>
+            <button id="green-filter">🟩</button>
+            <button id="yellow-filter">🟨</button>
+            <button id="black-filter">⬛</button>
+          </div>
+          <button id="filters-close">Close</button>
         </div>
+      </div>
+    <div id="main-container">
         <div id="promotedItemsContainer">
         </div>
       </div>
@@ -282,10 +281,12 @@
     <script>// Create static items to showcase items without db on github pages
     document.getElementById("filters").addEventListener("click", function () {
       let filters = document.getElementById("filter-options");
+      filters.classList.toggle("hidden");
       filters.classList.toggle("visible");
     });
     document.getElementById("filters-close").addEventListener("click", function () {
       let filters = document.getElementById("filter-options");
+      filters.classList.toggle("hidden");
       filters.classList.toggle("visible");
     });
     window.onload = () => {
