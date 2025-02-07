@@ -443,73 +443,89 @@
     });
     let on = false;
     let lastButton = null;
+    let selectedFilters = [];
     document.getElementById("electronics-filter").addEventListener("click", function () {
       if (!document.getElementById("black-filter").classList.contains("highlight")) {
         return;
       }
-      colors.forEach(color => {
-        if (!color.classList.contains('highlight')) {
-          return;
-        }
-      });
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton !== this) {
+      if (lastButton === document.getElementById("clothing-filter") || lastButton === document.getElementById("jewelry-filter")) {
         on = false;
-        divs.forEach(div => div.style.display = "flex");
       }
+      on = !on;
+      if (on) {
+        selectedFilters.push("Laptop");
+        selectedFilters.push("laptop");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
+        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
+      }
+      let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
       divs.forEach(div => {
-        let hasKeyword = div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("jewelry") || div.textContent.includes("jacket");
-        if (hasKeyword) {
-          div.style.display = on ? "flex" : "none";
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
         }
       });
-      on = !on;
       lastButton = this;
     });
     document.getElementById("clothing-filter").addEventListener("click", function () {
       if (!document.getElementById("red-filter").classList.contains("highlight")) {
         return;
       }
-      colors.forEach(color => {
-        if (!color.classList.contains('highlight')) {
-          return;
-        }
-      });
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton !== this) {
+      if (lastButton === document.getElementById("electronics-filter") || lastButton === document.getElementById("jewelry-filter")) {
         on = false;
-        divs.forEach(div => div.style.display = "flex");
       }
+      on = !on;
+      if (on) {
+        selectedFilters.push("Jacket");
+        selectedFilters.push("jacket");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "Jacket");
+        selectedFilters = selectedFilters.filter(filter => filter !== "jacket");
+      }
+      let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
       divs.forEach(div => {
-        let hasKeyword = div.textContent.includes("Ring") || div.textContent.includes("Laptop") || div.textContent.includes("jewelry") || div.textContent.includes("laptop");
-        if (hasKeyword) {
-          div.style.display = on ? "flex" : "none";
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
         }
       });
-      on = !on;
       lastButton = this;
     });
     document.getElementById("jewelry-filter").addEventListener("click", function () {
       if (!document.getElementById("yellow-filter").classList.contains("highlight")) {
         return;
       }
-      colors.forEach(color => {
-        if (!color.classList.contains('highlight')) {
-          return;
-        }
-      });
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton !== this) {
+      if (lastButton === document.getElementById("clothing-filter") || lastButton === document.getElementById("electronics-filter")) {
         on = false;
-        divs.forEach(div => div.style.display = "flex");
       }
+      on = !on;
+      if (on) {
+        selectedFilters.push("Laptop");
+        selectedFilters.push("laptop");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
+        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
+      }
+      let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
       divs.forEach(div => {
-        let hasKeyword = div.textContent.includes("Jacket") || div.textContent.includes("Laptop") || div.textContent.includes("jacket") || div.textContent.includes("laptop");
-        if (hasKeyword) {
-          div.style.display = on ? "flex" : "none";
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
         }
       });
-      on = !on;
       lastButton = this;
     });
     document.getElementById("red-filter").addEventListener("click", function () {
@@ -517,53 +533,72 @@
         return;
       } 
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      categories.forEach(category => {
-        if (!category.classList.contains('highlight')) {
-          divs.forEach(div => div.style.display = "none");
-          return;
-        }
-      });
-      if (lastButton !== this) {
+      if (lastButton === document.getElementById("blue-filter") || lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("yellow-filter") || lastButton === document.getElementById("black-filter")) {
         on = false;
-        divs.forEach(div => div.style.display = "flex");
       }
+      on = !on;
+      if (on) {
+        selectedFilters.push("red");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "red");
+      }
+      let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
       divs.forEach(div => {
-        let hasKeyword = div.textContent.includes("Ring") || div.textContent.includes("Laptop") || div.textContent.includes("jewelry") || div.textContent.includes("laptop");
-        if (hasKeyword) {
-          div.style.display = on ? "flex" : "none";
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
         }
       });
-      on = !on;
       lastButton = this;
     });
     document.getElementById("blue-filter").addEventListener("click", function () {
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton !== this) {
+      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("yellow-filter") || lastButton === document.getElementById("black-filter")) {
         on = false;
-        divs.forEach(div => div.style.display = "flex");
       }
+      on = !on;
+      if (on) {
+        selectedFilters.push("blue");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "blue");
+      }
+      let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
       divs.forEach(div => {
-        let hasKeyword = div.textContent.includes("Ring") || div.textContent.includes("Laptop") || div.textContent.includes("jewelry") || div.textContent.includes("laptop") || div.textContent.includes("Jacket") || div.textContent.includes("jacket");
-        if (hasKeyword) {
-          div.style.display = on ? "flex" : "none";
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
         }
       });
-      on = !on;
       lastButton = this;
     });
     document.getElementById("green-filter").addEventListener("click", function () {
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton !== this) {
+      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("blue-filter") || lastButton === document.getElementById("yellow-filter") || lastButton === document.getElementById("black-filter")) {
         on = false;
         divs.forEach(div => div.style.display = "flex");
       }
+      on = !on;
+      if (on) {
+        selectedFilters.push("green");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "green");
+      }
+      let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
       divs.forEach(div => {
-        let hasKeyword = div.textContent.includes("Ring") || div.textContent.includes("Laptop") || div.textContent.includes("jewelry") || div.textContent.includes("laptop") || div.textContent.includes("Jacket") || div.textContent.includes("jacket");
-        if (hasKeyword) {
-          div.style.display = on ? "flex" : "none";
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
         }
       });
-      on = !on;
       lastButton = this;
     });
     document.getElementById("yellow-filter").addEventListener("click", function () {
@@ -571,23 +606,25 @@
         return;
       }
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      categories.forEach(category => {
-        if (!category.classList.contains('highlight')) {
-          divs.forEach(div => div.style.display = "none");
-          return;
-        }
-      });
-      if (lastButton !== this) {
+      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("blue-filter") lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("black-filter")) {
         on = false;
-        divs.forEach(div => div.style.display = "flex");
       }
+      on = !on;
+      if (on) {
+        selectedFilters.push("yellow");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "yellow");
+      }
+      let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
       divs.forEach(div => {
-        let hasKeyword = div.textContent.includes("Jacket") || div.textContent.includes("Laptop") || div.textContent.includes("jacket") || div.textContent.includes("laptop");
-        if (hasKeyword) {
-          div.style.display = on ? "flex" : "none";
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
         }
       });
-      on = !on;
       lastButton = this;
     });
     document.getElementById("black-filter").addEventListener("click", function () {
@@ -595,23 +632,26 @@
         return;
       }
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      categories.forEach(category => {
-        if (!category.classList.contains('highlight')) {
-          divs.forEach(div => div.style.display = "none");
-          return;
-        }
-      });
-      if (lastButton !== this) {
+      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("blue-filter") || lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("yellow-filter")) {
         on = false;
         divs.forEach(div => div.style.display = "flex");
       }
+      on = !on;
+      if (on) {
+        selectedFilters.push("black");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "black");
+      }
+      let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
       divs.forEach(div => {
-        let hasKeyword = div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("jewelry") || div.textContent.includes("jacket");
-        if (hasKeyword) {
-          div.style.display = on ? "flex" : "none";
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
         }
       });
-      on = !on;
       lastButton = this;
     });
     div5.appendChild(title);
