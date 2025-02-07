@@ -180,7 +180,7 @@
 }
 .types button {
   border-radius: 5px;
-  background-color: white;
+  background-color: lightblue;
   padding: 5px;
   border: 1px solid lightblue;
 }
@@ -196,6 +196,9 @@
   background-color: lightblue;
   padding: 10px;
   top: 350px;
+}
+.highlight {
+  background-color: white;
 }
 .hidden {
   position: static;
@@ -265,17 +268,17 @@
         <div id="filter-with-types">
           <label class="filter-category-name">Categories:</label>
           <div class="types">
-            <button id="electronics-filter">Electronics</button>
-            <button id="clothing-filter">Clothing</button>
-            <button id="jewelry-filter">Jewelry</button>
+            <button id="electronics-filter" class="highlight">Electronics</button>
+            <button id="clothing-filter" class="highlight">Clothing</button>
+            <button id="jewelry-filter" class="highlight">Jewelry</button>
           </div>
           <label class="filter-category-name">Colors:</label>
           <div class="types">
-            <button id="red-filter">🟥</button>
-            <button id="blue-filter">🟦</button>
-            <button id="green-filter">🟩</button>
-            <button id="yellow-filter">🟨</button>
-            <button id="black-filter">⬛</button>
+            <button id="red-filter" class="highlight">🟥</button>
+            <button id="blue-filter" class="highlight">🟦</button>
+            <button id="green-filter" class="highlight">🟩</button>
+            <button id="yellow-filter" class="highlight">🟨</button>
+            <button id="black-filter" class="highlight">⬛</button>
           </div>
         </div>
       </div>
@@ -408,6 +411,13 @@
     createdDiv1.classList.add("item");
     let on = false;
     let lastButton = null;
+    const buttons = document.querySelectorAll(".highlight");
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(btn => btn.classList.add('highlight'));
+        button.classList.remove('highlight');
+      });
+    });
     document.getElementById("electronics-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
