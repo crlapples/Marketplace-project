@@ -450,7 +450,7 @@ document.getElementById("electronics-filter").addEventListener("click", function
   // Toggle visibility based on the filter
   Array.from(divs).forEach(div => {
     // Check if the div is not inside the "cart-sidebar" or "column-container"
-    if (!document.getElementById("cart-sidebar").contains(div) && !document.getElementById("column-container").contains(div)) {
+    if (document.getElementById("promotedItemsContainer").contains(div)) {
       
       // If last button clicked was the same, toggle the 'on' state
       if (lastButton === document.getElementById("electronics-filter")) {
@@ -460,8 +460,10 @@ document.getElementById("electronics-filter").addEventListener("click", function
       // Check the content of each div for specific items to toggle visibility
       if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
         div.style.display = (div.style.display === 'none' || div.style.display === '') ? 'flex' : 'none';
-      } else {
+      } else if (div.textContent.includes("jewelry") || div.textContent.includes("laptop")) {
         div.style.display = (div.style.display === 'none' || div.style.display === '') ? 'flex' : 'none';
+      } else {
+        div.style.display = 'none';  // Hide items that don't match the criteria
       }
 
       // Ensure that items are shown or hidden based on the `on` state
