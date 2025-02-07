@@ -417,7 +417,11 @@
     const colors = document.querySelectorAll(".color");
     categories.forEach(button => {
       button.addEventListener('click', () => {
-        categories.forEach(btn => btn.classList.add('highlight'));
+        categories.forEach(btn => {
+          if (btn !== button) {
+            btn.classList.add('highlight'));
+          }
+        }
         if (button.classList.contains('highlight')) {
           button.classList.remove('highlight');
         } else {
@@ -427,7 +431,11 @@
     });
     colors.forEach(button => {
       button.addEventListener('click', () => {
-        colors.forEach(btn => btn.classList.add('highlight'));
+        colors.forEach(btn => {
+          if (btn !== button) {
+            btn.classList.add('highlight'));
+          }
+        }
         if (button.classList.contains('highlight')) {
           button.classList.remove('highlight');
         } else {
