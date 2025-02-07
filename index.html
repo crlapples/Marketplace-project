@@ -294,6 +294,7 @@
     <footer>Copyright 2024</footer>
     </main>
     <script>// Create static items to showcase items without db on github pages
+    const buttons = document.querySelectorAll(".highlight");
     document.getElementById("filters").addEventListener("click", function () {
       let filters = document.getElementById("filter-options");
       let filtersButton = document.getElementById("filters-close");
@@ -412,7 +413,6 @@
     createdDiv1.classList.add("item");
     let on = false;
     let lastButton = null;
-    const buttons = document.querySelectorAll(".highlight");
     const categories = document.querySelectorAll(".category");
     const colors = document.querySelectorAll(".color");
     categories.forEach(button => {
@@ -446,7 +446,7 @@
     document.getElementById("electronics-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("filter-options").contains(div)) {
+        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
           if (lastButton === document.getElementById("electronics-filter")) {
             on = false;
           }
@@ -476,7 +476,7 @@
     document.getElementById("clothing-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("filter-options").contains(div)) {
+        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
           if (lastButton === document.getElementById("clothing-filter")) {
             on = false;
           }
@@ -506,7 +506,7 @@
     document.getElementById("jewelry-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("filter-options").contains(div)) {
+        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
           if (lastButton === document.getElementById("jewelry-filter")) {
             on = false;
           }
@@ -536,7 +536,7 @@
     document.getElementById("red-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("filter-options").contains(div)) {
+        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
           if (lastButton === document.getElementById("red-filter")) {
             on = false;
           }
@@ -566,7 +566,7 @@
     document.getElementById("blue-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("filter-options").contains(div)) {
+        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
           if (lastButton === document.getElementById("blue-filter")) {
             on = false;
           }
@@ -596,7 +596,7 @@
     document.getElementById("green-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("filter-options").contains(div)) {
+        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
           if (lastButton === document.getElementById("green-filter")) {
             on = false;
           }
@@ -626,7 +626,7 @@
     document.getElementById("yellow-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("filter-options").contains(div)) {
+        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
           if (lastButton === document.getElementById("yellow-filter")) {
             on = false;
           }
@@ -656,7 +656,7 @@
     document.getElementById("black-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("filter-options").contains(div)) {
+        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
           if (lastButton === document.getElementById("black-filter")) {
             on = false;
           }
