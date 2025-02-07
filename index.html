@@ -163,6 +163,8 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: 10px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 .filter-category-name {
   border-radius: 5px;
@@ -177,18 +179,25 @@
 }
 .types button {
   border-radius: 5px;
+  background-color: white;
   padding: 5px;
+  border: 1px solid lightblue;
 }
 #filters-close {
   border-radius: 5px;
   background-color: lightblue;
-  padding: 15px;
+  padding: 10px;
+  margin-top: 25px;
 }
 .hidden {
+  position: static;
+  z-index: 0;
   display: none;
 }
 .visible {
   display: block;
+  position: absolute;
+  z-index: 1000;
 }
 @media (min-width: 768px) {
   #searchBar {
@@ -260,9 +269,9 @@
             <button id="yellow-filter">🟨</button>
             <button id="black-filter">⬛</button>
           </div>
-          <button id="filters-close">Close</button>
         </div>
       </div>
+      <button id="filters-close" class="hidden">Close</button>
     </div>
     <div id="main-container">
       <div id="promotedItemsContainer">
@@ -275,11 +284,17 @@
     <script>// Create static items to showcase items without db on github pages
     document.getElementById("filters").addEventListener("click", function () {
       let filters = document.getElementById("filter-options");
+      let filtersButton = document.getElementById("filters-close");
+      filtersButton.classList.toggle("hidden");
+      filtersButton.classList.toggle("visible");
       filters.classList.toggle("hidden");
       filters.classList.toggle("visible");
     });
     document.getElementById("filters-close").addEventListener("click", function () {
       let filters = document.getElementById("filter-options");
+      let filtersButton = document.getElementById("filters-close");
+      filtersButton.classList.toggle("hidden");
+      filtersButton.classList.toggle("visible");
       filters.classList.toggle("hidden");
       filters.classList.toggle("visible");
     });
@@ -386,88 +401,104 @@
     document.getElementById("electronics-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
-        }
-        if (div.textContent.includes("jewelry") || div.textContent.includes("jacket")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
+          if (div.textContent.includes("jewelry") || div.textContent.includes("jacket")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
         }
       });
     });
     document.getElementById("clothing-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (div.textContent.includes("Ring") || div.textContent.includes("Laptop")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
-        }
-        if (div.textContent.includes("jewelry") || div.textContent.includes("laptop")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (div.textContent.includes("Ring") || div.textContent.includes("Laptop")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
+          if (div.textContent.includes("jewelry") || div.textContent.includes("laptop")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
         }
       });
     });
     document.getElementById("jewelry-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (div.textContent.includes("Laptop") || div.textContent.includes("Jacket")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
-        }
-        if (div.textContent.includes("laptop") || div.textContent.includes("jacket")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (div.textContent.includes("Laptop") || div.textContent.includes("Jacket")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
+          if (div.textContent.includes("laptop") || div.textContent.includes("jacket")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
         }
       });
     });
     document.getElementById("red-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (div.textContent.includes("Ring") || div.textContent.includes("Laptop")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
-        }
-        if (div.textContent.includes("jewelry") || div.textContent.includes("laptop")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (div.textContent.includes("Ring") || div.textContent.includes("Laptop")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
+          if (div.textContent.includes("jewelry") || div.textContent.includes("laptop")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
         }
       });
     });
     document.getElementById("blue-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
-        }
-        if (div.textContent.includes("jewelry") || div.textContent.includes("jacket") || div.textContent.includes("laptop")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
+          if (div.textContent.includes("jewelry") || div.textContent.includes("jacket") || div.textContent.includes("laptop")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
         }
       });
     });
     document.getElementById("green-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
-        }
-        if (div.textContent.includes("jewelry") || div.textContent.includes("jacket") || div.textContent.includes("laptop")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
+          if (div.textContent.includes("jewelry") || div.textContent.includes("jacket") || div.textContent.includes("laptop")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
         }
       });
     });
     document.getElementById("yellow-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
-        }
-        if (div.textContent.includes("jacket") || div.textContent.includes("laptop")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
+          if (div.textContent.includes("jacket") || div.textContent.includes("laptop")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
         }
       });
     });
     document.getElementById("black-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
-        }
-        if (div.textContent.includes("jewelry") || div.textContent.includes("jacket")) {
-          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
+          if (div.textContent.includes("jewelry") || div.textContent.includes("jacket")) {
+            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+          }
         }
       });
     });
