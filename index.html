@@ -449,7 +449,7 @@ document.getElementById("electronics-filter").addEventListener("click", function
   // Toggle visibility based on the filter
   Array.from(divs).forEach(div => {
     // Check if the div is not inside the "cart-sidebar" or "column-container"
-    if (!document.getElementById("cart-sidebar").contains(div) && !document.getElementById("column-container").contains(div)) {
+    if (document.getElementById("promotedItemsContainer").contains(div)) {
       
       // If last button clicked was the same, toggle the 'on' state
       if (lastButton === document.getElementById("electronics-filter")) {
