@@ -415,7 +415,11 @@
     buttons.forEach(button => {
       button.addEventListener('click', () => {
         buttons.forEach(btn => btn.classList.add('highlight'));
-        button.classList.remove('highlight');
+        if (button.classList.contains('highlight') {
+          button.classList.remove('highlight');
+        } else {
+          button.classList.add('highlight');
+        }
       });
     });
     document.getElementById("electronics-filter").addEventListener("click", function () {
