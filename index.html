@@ -644,7 +644,7 @@
         return;
       }
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("blue-filter") lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("black-filter")) {
+      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("blue-filter") || lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("black-filter")) {
         on = false;
         selectedFilters = selectedFilters.filter(filter => filter !== "green");
         selectedFilters = selectedFilters.filter(filter => filter !== "blue");
