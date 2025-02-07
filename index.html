@@ -194,7 +194,7 @@
   border-radius: 5px;
   background-color: lightblue;
   padding: 10px;
-  margin-top: 5px;
+  margin-top: 10px;
   top: 350px;
 }
 .types button.highlight {
@@ -217,6 +217,7 @@
   #promotedItemsContainer {
     flex-direction: row;
     justify-content: flex-start;
+    align-items: flex-start;
     width: 80%;
     margin-left: 25px;
   }
@@ -443,6 +444,9 @@
     let on = false;
     let lastButton = null;
     document.getElementById("electronics-filter").addEventListener("click", function () {
+      if (!document.getElementById("black-filter").classList.contains("highlight")) {
+        return;
+      }
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (document.getElementById("promotedItemsContainer").contains(div)) {
@@ -470,6 +474,9 @@
       lastButton = document.getElementById("electronics-filter");
     });
     document.getElementById("clothing-filter").addEventListener("click", function () {
+      if (!document.getElementById("red-filter").classList.contains("highlight")) {
+        return;
+      }
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (document.getElementById("promotedItemsContainer").contains(div)) {
@@ -497,6 +504,9 @@
       lastButton = document.getElementById("clothing-filter");
     });
     document.getElementById("jewelry-filter").addEventListener("click", function () {
+      if (!document.getElementById("yellow-filter").classList.contains("highlight")) {
+        return;
+      }
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (document.getElementById("promotedItemsContainer").contains(div)) {
@@ -524,6 +534,9 @@
       lastButton = document.getElementById("jewelry-filter");
     });
     document.getElementById("red-filter").addEventListener("click", function () {
+      if (!document.getElementById("clothing-filter").classList.contains("highlight")) {
+        return;
+      }
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (document.getElementById("promotedItemsContainer").contains(div)) {
@@ -605,6 +618,9 @@
       lastButton = document.getElementById("green-filter");
     });
     document.getElementById("yellow-filter").addEventListener("click", function () {
+      if (!document.getElementById("jewelry-filter").classList.contains("highlight")) {
+        return;
+      }
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (document.getElementById("promotedItemsContainer").contains(div)) {
@@ -632,6 +648,9 @@
       lastButton = document.getElementById("yellow-filter");
     });
     document.getElementById("black-filter").addEventListener("click", function () {
+      if (!document.getElementById("electronics-filter").classList.contains("highlight")) {
+        return;
+      }
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (document.getElementById("promotedItemsContainer").contains(div)) {
