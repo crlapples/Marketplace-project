@@ -391,85 +391,92 @@
     div5.classList.add("item");
     createdDiv1.classList.add("item");
     document.getElementById("electronics-filter").addEventListener("click", function () {
-      let textContent = div5.textContent;
-      let textContent2 = createdDiv1.textContent;
-      if (textContent.includes("Ring") || textContent.includes("Jacket")) {
-        div5.style.display === 'none' ? 'flex' : 'none';
-      }
-      if (textContent2.includes("jewelry") || textContent2.includes("jacket")) {
-        createdDiv1.style.display === 'none' ? 'flex' : 'none';
-      }
-    }
+      let divs = document.getElementByTagName("div");
+      Array.from(divs).forEach(div => {
+        if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+        if (div.textContent.includes("jewelry") || div.textContent.includes("jacket")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+      });
+    });
     document.getElementById("clothing-filter").addEventListener("click", function () {
-      let textContent = div5.textContent;
-      let textContent2 = createdDiv1.textContent;
-      if (textContent.includes("Ring") || textContent.includes("Laptop")) {
-        div5.style.display === 'none' ? 'flex' : 'none';
-      }
-      if (textContent2.includes("jewelry") || textContent2.includes("laptop")) {
-        createdDiv1.style.display === 'none' ? 'flex' : 'none';
-      }
-    }
+      let divs = document.getElementByTagName("div");
+      Array.from(divs).forEach(div => {
+        if (div.textContent.includes("Ring") || div.textContent.includes("Laptop")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+        if (div.textContent.includes("jewelry") || div.textContent.includes("laptop")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+      });
+    });
     document.getElementById("jewelry-filter").addEventListener("click", function () {
-      let textContent = div5.textContent;
-      let textContent2 = createdDiv1.textContent;
-      if (textContent.includes("Laptop") || textContent.includes("Jacket")) {
-        div5.style.display === 'none' ? 'flex' : 'none';
-      }
-      if (textContent2.includes("laptop") || textContent2.includes("jacket")) {
-        createdDiv1.style.display === 'none' ? 'flex' : 'none';
-      }
-    }
+      let divs = document.getElementByTagName("div");
+      Array.from(divs).forEach(div => {
+        if (div.textContent.includes("Laptop") || div.textContent.includes("Jacket")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+        if (div.textContent.includes("laptop") || div.textContent.includes("jacket")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+      });
+    });
     document.getElementById("red-filter").addEventListener("click", function () {
-      let textContent = div5.textContent;
-      let textContent2 = createdDiv1.textContent;
-      if (textContent.includes("Ring") || textContent.includes("Laptop")) {
-        div5.style.display === 'none' ? 'flex' : 'none';
-      }
-      if (textContent2.includes("jewelry") || textContent2.includes("laptop")) {
-        createdDiv1.style.display === 'none' ? 'flex' : 'none';
-      }
-    }
+      let divs = document.getElementByTagName("div");
+      Array.from(divs).forEach(div => {
+        if (div.textContent.includes("Ring") || div.textContent.includes("Laptop")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+        if (div.textContent.includes("jewelry") || div.textContent.includes("laptop")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+      });
+    });
     document.getElementById("blue-filter").addEventListener("click", function () {
-      let textContent = div5.textContent;
-      let textContent2 = createdDiv1.textContent;
-      if (textContent.includes("Ring") || textContent.includes("Jacket") || textContent.includes("Laptop")) {
-        div5.style.display === 'none' ? 'flex' : 'none';
-      }
-      if (textContent2.includes("jewelry") || textContent2.includes("jacket") || textContent2.includes("laptop")) {
-        createdDiv1.style.display === 'none' ? 'flex' : 'none';
-      }
-    }
+      let divs = document.getElementByTagName("div");
+      Array.from(divs).forEach(div => {
+        if (div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+        if (div.textContent.includes("jewelry") || div.textContent.includes("jacket") || div.textContent.includes("laptop")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+      });
+    });
     document.getElementById("green-filter").addEventListener("click", function () {
-      let textContent = div5.textContent;
-      let textContent2 = createdDiv1.textContent;
-      if (textContent.includes("Ring") || textContent.includes("Jacket") || textContent.includes("Laptop")) {
-        div5.style.display === 'none' ? 'flex' : 'none';
-      }
-      if (textContent2.includes("jewelry") || textContent2.includes("jacket") || textContent2.includes("laptop")) {
-        createdDiv1.style.display === 'none' ? 'flex' : 'none';
-      }
-    }
+      let divs = document.getElementByTagName("div");
+      Array.from(divs).forEach(div => {
+        if (div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+        if (div.textContent.includes("jewelry") || div.textContent.includes("jacket") || div.textContent.includes("laptop")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+      });
+    });
     document.getElementById("yellow-filter").addEventListener("click", function () {
-      let textContent = div5.textContent;
-      let textContent2 = createdDiv1.textContent;
-      if (textContent.includes("Jacket") || textContent.includes("Laptop")) {
-        div5.style.display === 'none' ? 'flex' : 'none';
-      }
-      if (textContent2.includes("jacket") || textContent2.includes("laptop")) {
-        createdDiv1.style.display === 'none' ? 'flex' : 'none';
-      }
-    }
+      let divs = document.getElementByTagName("div");
+      Array.from(divs).forEach(div => {
+        if (div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+        if (div.textContent.includes("jacket") || div.textContent.includes("laptop")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+      });
+    });
     document.getElementById("black-filter").addEventListener("click", function () {
-      let textContent = div5.textContent;
-      let textContent2 = createdDiv1.textContent;
-      if (textContent.includes("Ring") || textContent.includes("Jacket")) {
-        div5.style.display === 'none' ? 'flex' : 'none';
-      }
-      if (textContent2.includes("jewelry") || textContent2.includes("jacket")) {
-        createdDiv1.style.display === 'none' ? 'flex' : 'none';
-      }
-    }
+      let divs = document.getElementByTagName("div");
+      Array.from(divs).forEach(div => {
+        if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+        if (div.textContent.includes("jewelry") || div.textContent.includes("jacket")) {
+          div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+        }
+    });
     div5.appendChild(title);
     div5.appendChild(rating);
     div5.appendChild(totalRatings);
