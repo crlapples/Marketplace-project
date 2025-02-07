@@ -460,10 +460,8 @@ document.getElementById("electronics-filter").addEventListener("click", function
       // Check the content of each div for specific items to toggle visibility
       if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
         div.style.display = (div.style.display === 'none' || div.style.display === '') ? 'flex' : 'none';
-      } else if (div.textContent.includes("jewelry") || div.textContent.includes("laptop")) {
-        div.style.display = (div.style.display === 'none' || div.style.display === '') ? 'flex' : 'none';
       } else {
-        div.style.display = 'none';  // Hide items that don't match the criteria
+        div.style.display = (div.style.display === 'none' || div.style.display === '') ? 'flex' : 'none';
       }
 
       // Ensure that items are shown or hidden based on the `on` state
