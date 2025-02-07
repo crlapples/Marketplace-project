@@ -472,11 +472,11 @@
     document.getElementById("clothing-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
-          if (lastButton === document.getElementById("clothing-filter")) {
+        if (document.getElementById("promotedItemsContainer").contains(div)) {
+          if (lastButton === !document.getElementById("clothing-filter")) {
             on = false;
+            div.style.display = 'flex';
           }
-          div.style.display = 'flex';
           if (div.textContent.includes("Ring") || div.textContent.includes("Laptop")) {
             if (div.style.display === 'none') {
               div.style.display = 'flex';
@@ -491,22 +491,19 @@
               div.style.display = 'none';
             }
           }
-          if (on) {
-            div.style.display = 'flex';
-          }
-          on = !on;
-          lastButton = document.getElementById("clothing-filter");
         }
       });
+      on = !on;
+      lastButton = document.getElementById("clothing-filter");
     });
     document.getElementById("jewelry-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
-          if (lastButton === document.getElementById("jewelry-filter")) {
+        if (document.getElementById("promotedItemsContainer").contains(div)) {
+          if (lastButton === !document.getElementById("jewelry-filter")) {
             on = false;
+            div.style.display = 'flex';
           }
-          div.style.display = 'flex';
           if (div.textContent.includes("Laptop") || div.textContent.includes("Jacket")) {
             if (div.style.display === 'none') {
               div.style.display = 'flex';
@@ -521,22 +518,19 @@
               div.style.display = 'none';
             }
           }
-          if (on) {
-            div.style.display = 'flex';
-          }
-          on = !on;
-          lastButton = document.getElementById("jewelry-filter");
         }
       });
+      on = !on;
+      lastButton = document.getElementById("jewelry-filter");
     });
     document.getElementById("red-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
-          if (lastButton === document.getElementById("red-filter")) {
+        if (document.getElementById("promotedItemsContainer").contains(div)) {
+          if (lastButton === !document.getElementById("red-filter")) {
             on = false;
+            div.style.display = 'flex';
           }
-          div.style.display = 'flex';
           if (div.textContent.includes("Ring") || div.textContent.includes("Laptop")) {
             if (div.style.display === 'none') {
               div.style.display = 'flex';
@@ -551,22 +545,19 @@
               div.style.display = 'none';
             }
           }
-          if (on) {
-            div.style.display = 'flex';
-          }
-          on = !on;
-          lastButton = document.getElementById("red-filter");
         }
       });
+      on = !on;
+      lastButton = document.getElementById("red-filter");
     });
     document.getElementById("blue-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
-          if (lastButton === document.getElementById("blue-filter")) {
+        if (document.getElementById("promotedItemsContainer").contains(div)) {
+          if (lastButton === !document.getElementById("blue-filter")) {
             on = false;
+            div.style.display = 'flex';
           }
-          div.style.display = 'flex';
           if (div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
             if (div.style.display === 'none') {
               div.style.display = 'flex';
@@ -581,22 +572,19 @@
               div.style.display = 'none';
             }
           }
-          if (on) {
-            div.style.display = 'flex';
-          }
-          on = !on;
-          lastButton = document.getElementById("blue-filter");
         }
       });
+      on = !on;
+      lastButton = document.getElementById("blue-filter");
     });
     document.getElementById("green-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
-          if (lastButton === document.getElementById("green-filter")) {
+        if (document.getElementById("promotedItemsContainer").contains(div)) {
+          if (lastButton === !document.getElementById("green-filter")) {
             on = false;
+            div.style.display = 'flex';
           }
-          div.style.display = 'flex';
           if (div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
             if (div.style.display === 'none') {
               div.style.display = 'flex';
@@ -611,22 +599,19 @@
               div.style.display = 'none';
             }
           }
-          if (on) {
-            div.style.display = 'flex';
-          }
-          on = !on;
-          lastButton = document.getElementById("green-filter");
         }
       });
+      on = !on;
+      lastButton = document.getElementById("green-filter");
     });
     document.getElementById("yellow-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
-          if (lastButton === document.getElementById("yellow-filter")) {
+        if (document.getElementById("promotedItemsContainer").contains(div)) {
+          if (lastButton === !document.getElementById("yellow-filter")) {
             on = false;
+            div.style.display = 'flex';
           }
-          div.style.display = 'flex';
           if (div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
             if (div.style.display === 'none') {
               div.style.display = 'flex';
@@ -641,22 +626,19 @@
               div.style.display = 'none';
             }
           }
-          if (on) {
-            div.style.display = 'flex';
-          }
-          on = !on;
-          lastButton = document.getElementById("yellow-filter");
         }
       });
+      on = !on;
+      lastButton = document.getElementById("yellow-filter");
     });
     document.getElementById("black-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
-        if (!document.getElementById("cart-sidebar").contains(div) || !document.getElementById("column-container").contains(div)) {
-          if (lastButton === document.getElementById("black-filter")) {
+        if (document.getElementById("promotedItemsContainer").contains(div)) {
+          if (lastButton === !document.getElementById("black-filter")) {
             on = false;
+            div.style.display = 'flex';
           }
-          div.style.display = 'flex';
           if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
             if (div.style.display === 'none') {
               div.style.display = 'flex';
@@ -671,13 +653,10 @@
               div.style.display = 'none';
             }
           }
-          if (on) {
-            div.style.display = 'flex';
-          }
-          on = !on;
-          lastButton = document.getElementById("black-filter");
         }
       });
+      on = !on;
+      lastButton = document.getElementById("black-filter");
     });
     div5.appendChild(title);
     div5.appendChild(rating);
