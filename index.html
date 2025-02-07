@@ -195,7 +195,6 @@
   border-radius: 5px;
   background-color: lightblue;
   padding: 10px;
-  margin-top: 25px;
   top: 350px;
 }
 .hidden {
@@ -407,17 +406,35 @@
     }
     div5.classList.add("item");
     createdDiv1.classList.add("item");
+    let on = false;
+    let lastButton = null;
     document.getElementById("electronics-filter").addEventListener("click", function () {
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (lastButton === document.getElementById("electronics-filter")) {
+            on = false;
+          }
           div.style.display = 'flex';
           if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
-            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+            if (div.style.display === 'none') {
+              div.style.display = 'flex';
+            } else {
+              div.style.display = 'none';
+            }
           }
           if (div.textContent.includes("jewelry") || div.textContent.includes("jacket")) {
-            div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+            if (div.style.display === 'none') {
+              div.style.display = 'flex';
+            } else {
+              div.style.display = 'none';
+            }
           }
+          if (on) {
+            div.style.display = 'flex';
+          }
+          on = !on;
+          lastButton = document.getElementById("electronics-filter");
         }
       });
     });
@@ -425,6 +442,9 @@
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (lastButton === document.getElementById("clothing-filter")) {
+            on = false;
+          }
           div.style.display = 'flex';
           if (div.textContent.includes("Ring") || div.textContent.includes("Laptop")) {
             if (div.style.display === 'none') {
@@ -440,6 +460,11 @@
               div.style.display = 'none';
             }
           }
+          if (on) {
+            div.style.display = 'flex';
+          }
+          on = !on;
+          lastButton = document.getElementById("clothing-filter");
         }
       });
     });
@@ -447,6 +472,9 @@
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (lastButton === document.getElementById("jewelry-filter")) {
+            on = false;
+          }
           div.style.display = 'flex';
           if (div.textContent.includes("Laptop") || div.textContent.includes("Jacket")) {
             if (div.style.display === 'none') {
@@ -462,6 +490,11 @@
               div.style.display = 'none';
             }
           }
+          if (on) {
+            div.style.display = 'flex';
+          }
+          on = !on;
+          lastButton = document.getElementById("jewelry-filter");
         }
       });
     });
@@ -469,6 +502,9 @@
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (lastButton === document.getElementById("red-filter")) {
+            on = false;
+          }
           div.style.display = 'flex';
           if (div.textContent.includes("Ring") || div.textContent.includes("Laptop")) {
             if (div.style.display === 'none') {
@@ -484,6 +520,11 @@
               div.style.display = 'none';
             }
           }
+          if (on) {
+            div.style.display = 'flex';
+          }
+          on = !on;
+          lastButton = document.getElementById("red-filter");
         }
       });
     });
@@ -491,6 +532,9 @@
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (lastButton === document.getElementById("blue-filter")) {
+            on = false;
+          }
           div.style.display = 'flex';
           if (div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
             if (div.style.display === 'none') {
@@ -506,6 +550,11 @@
               div.style.display = 'none';
             }
           }
+          if (on) {
+            div.style.display = 'flex';
+          }
+          on = !on;
+          lastButton = document.getElementById("blue-filter");
         }
       });
     });
@@ -513,6 +562,9 @@
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (lastButton === document.getElementById("green-filter")) {
+            on = false;
+          }
           div.style.display = 'flex';
           if (div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
             if (div.style.display === 'none') {
@@ -528,6 +580,11 @@
               div.style.display = 'none';
             }
           }
+          if (on) {
+            div.style.display = 'flex';
+          }
+          on = !on;
+          lastButton = document.getElementById("green-filter");
         }
       });
     });
@@ -535,6 +592,9 @@
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (lastButton === document.getElementById("yellow-filter")) {
+            on = false;
+          }
           div.style.display = 'flex';
           if (div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
             if (div.style.display === 'none') {
@@ -550,6 +610,11 @@
               div.style.display = 'none';
             }
           }
+          if (on) {
+            div.style.display = 'flex';
+          }
+          on = !on;
+          lastButton = document.getElementById("yellow-filter");
         }
       });
     });
@@ -557,6 +622,9 @@
       let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (!document.getElementById("cart-sidebar").contains(div)) {
+          if (lastButton === document.getElementById("black-filter")) {
+            on = false;
+          }
           div.style.display = 'flex';
           if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
             if (div.style.display === 'none') {
@@ -572,6 +640,11 @@
               div.style.display = 'none';
             }
           }
+          if (on) {
+            div.style.display = 'flex';
+          }
+          on = !on;
+          lastButton = document.getElementById("black-filter");
         }
       });
     });
