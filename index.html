@@ -250,9 +250,7 @@
     </nav>
     <div id="main-container">
       <div id="column-container">
-        <button id="filters">
-          Filters
-        </button>
+        <button id="filters">Filters</button>
         <div id="filter-options" class="hidden">
           <div id="filter-with-types">
             <label class="filter-category-name">Categories:</label>
@@ -391,7 +389,7 @@
     div5.classList.add("item");
     createdDiv1.classList.add("item");
     document.getElementById("electronics-filter").addEventListener("click", function () {
-      let divs = document.getElementByTagName("div");
+      let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
           div.style.display = div.style.display === 'none' ? 'flex' : 'none';
@@ -402,7 +400,7 @@
       });
     });
     document.getElementById("clothing-filter").addEventListener("click", function () {
-      let divs = document.getElementByTagName("div");
+      let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (div.textContent.includes("Ring") || div.textContent.includes("Laptop")) {
           div.style.display = div.style.display === 'none' ? 'flex' : 'none';
@@ -413,7 +411,7 @@
       });
     });
     document.getElementById("jewelry-filter").addEventListener("click", function () {
-      let divs = document.getElementByTagName("div");
+      let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (div.textContent.includes("Laptop") || div.textContent.includes("Jacket")) {
           div.style.display = div.style.display === 'none' ? 'flex' : 'none';
@@ -424,7 +422,7 @@
       });
     });
     document.getElementById("red-filter").addEventListener("click", function () {
-      let divs = document.getElementByTagName("div");
+      let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (div.textContent.includes("Ring") || div.textContent.includes("Laptop")) {
           div.style.display = div.style.display === 'none' ? 'flex' : 'none';
@@ -435,7 +433,7 @@
       });
     });
     document.getElementById("blue-filter").addEventListener("click", function () {
-      let divs = document.getElementByTagName("div");
+      let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
           div.style.display = div.style.display === 'none' ? 'flex' : 'none';
@@ -446,7 +444,7 @@
       });
     });
     document.getElementById("green-filter").addEventListener("click", function () {
-      let divs = document.getElementByTagName("div");
+      let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
           div.style.display = div.style.display === 'none' ? 'flex' : 'none';
@@ -457,7 +455,7 @@
       });
     });
     document.getElementById("yellow-filter").addEventListener("click", function () {
-      let divs = document.getElementByTagName("div");
+      let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
           div.style.display = div.style.display === 'none' ? 'flex' : 'none';
@@ -468,7 +466,7 @@
       });
     });
     document.getElementById("black-filter").addEventListener("click", function () {
-      let divs = document.getElementByTagName("div");
+      let divs = document.getElementsByTagName("div");
       Array.from(divs).forEach(div => {
         if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
           div.style.display = div.style.display === 'none' ? 'flex' : 'none';
