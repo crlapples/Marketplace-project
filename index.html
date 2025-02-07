@@ -145,6 +145,57 @@
   width: 100%;
   height: 100%;
 }
+#column-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#filters {
+  border-radius: 5px;
+  background-color: lightblue;
+  padding: 15px;
+}
+#filter-with-types {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+.filter-category-name {
+  border-radius: 5px;
+  border: 1px solid lightblue;
+  padding: 10px;
+}
+.types {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+}
+.types button {
+  border-radius: 5px;
+  padding: 5px;
+}
+#filters-close {
+  border-radius: 5px;
+  background-color: lightblue;
+  padding: 15px;
+}
+#filter-options {
+  opacity: 0;
+  transform: scaleY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.hidden {
+  opacity: 0;
+  transform: scaleY(0);
+}
+.visible {
+  opacity: 1;
+  transform: scaleY(1);
+}
 @media (min-width: 768px) {
   #searchBar {
     width: 50%;
@@ -198,7 +249,32 @@
       </ul>
     </nav>
     <div id="main-container">
-      <div id="promotedItemsContainer">
+      <div id="column-container">
+        <button id="filters">
+          Filters
+        </button>
+        <div id="filter-options" class="hidden">
+          <div id="filter-with-types">
+            <label class="filter-category-name">Categories:</label>
+            <div class="types">
+              <button id="electronics-filter">Electronics</button>
+              <button id="clothing-filter">Clothing</button>
+              <button id="jewelry-filter">Jewelry</button>
+            </div>
+            <label class="filter-category-name">Colors:</label>
+            <div class="types">
+              <button id="red-filter">🟥</button>
+              <button id="blue-filter">🟦</button>
+              <button id="green-filter">🟩</button>
+              <button id="yellow-filter">🟨</button>
+              <button id="black-filter">⬛</button>
+            </div>
+            <button id="filters-close">Close</button>
+          </div>
+          <
+        </div>
+        <div id="promotedItemsContainer">
+        </div>
       </div>
       <div id="cart-sidebar">
       </div>
@@ -206,6 +282,14 @@
     <footer>Copyright 2024</footer>
     </main>
     <script>// Create static items to showcase items without db on github pages
+    document.getElementById("filters").addEventListener("click", function () {
+      let filters = document.getElementById("filter-options");
+      filters.classList.toggle("visible");
+    });
+    document.getElementById("filters-close").addEventListener("click", function () {
+      let filters = document.getElementById("filter-options");
+      filters.classList.toggle("visible");
+    });
     window.onload = () => {
       document.getElementById("main-style").disabled = false;
     };
@@ -269,7 +353,7 @@
     const totalRatings = document.createElement('p');
     div5.style.display = 'flex';
     div5.style.alignItems = 'center';
-    div5.style.marginBottom = '-20px';
+    div5.style.marginBottom = '-35px';
     div5.style.justifyContent = 'center';
     title.textContent = item.title;
     totalRatings.textContent = `(${item.reviewTotal})`;
@@ -303,6 +387,88 @@
       document.getElementById('promotedItemsContainer').appendChild(div5);
       document.getElementById('promotedItemsContainer').appendChild(createdDiv1);
       title.style.marginRight = '20px';
+    }
+    div5.classList.add("item");
+    createdDiv1.classList.add("item");
+    document.getElementById("electronics-filter").addEventListener("click", function () {
+      let textContent = div5.textContent;
+      let textContent2 = createdDiv1.textContent;
+      if (textContent.includes("Ring") || textContent.includes("Jacket")) {
+        div5.style.display === 'none' ? 'flex' : 'none';
+      }
+      if (textContent2.includes("jewelry") || textContent2.includes("jacket")) {
+        createdDiv1.style.display === 'none' ? 'flex' : 'none';
+      }
+    }
+    document.getElementById("clothing-filter").addEventListener("click", function () {
+      let textContent = div5.textContent;
+      let textContent2 = createdDiv1.textContent;
+      if (textContent.includes("Ring") || textContent.includes("Laptop")) {
+        div5.style.display === 'none' ? 'flex' : 'none';
+      }
+      if (textContent2.includes("jewelry") || textContent2.includes("laptop")) {
+        createdDiv1.style.display === 'none' ? 'flex' : 'none';
+      }
+    }
+    document.getElementById("jewelry-filter").addEventListener("click", function () {
+      let textContent = div5.textContent;
+      let textContent2 = createdDiv1.textContent;
+      if (textContent.includes("Laptop") || textContent.includes("Jacket")) {
+        div5.style.display === 'none' ? 'flex' : 'none';
+      }
+      if (textContent2.includes("laptop") || textContent2.includes("jacket")) {
+        createdDiv1.style.display === 'none' ? 'flex' : 'none';
+      }
+    }
+    document.getElementById("red-filter").addEventListener("click", function () {
+      let textContent = div5.textContent;
+      let textContent2 = createdDiv1.textContent;
+      if (textContent.includes("Ring") || textContent.includes("Laptop")) {
+        div5.style.display === 'none' ? 'flex' : 'none';
+      }
+      if (textContent2.includes("jewelry") || textContent2.includes("laptop")) {
+        createdDiv1.style.display === 'none' ? 'flex' : 'none';
+      }
+    }
+    document.getElementById("blue-filter").addEventListener("click", function () {
+      let textContent = div5.textContent;
+      let textContent2 = createdDiv1.textContent;
+      if (textContent.includes("Ring") || textContent.includes("Jacket") || textContent.includes("Laptop")) {
+        div5.style.display === 'none' ? 'flex' : 'none';
+      }
+      if (textContent2.includes("jewelry") || textContent2.includes("jacket") || textContent2.includes("laptop")) {
+        createdDiv1.style.display === 'none' ? 'flex' : 'none';
+      }
+    }
+    document.getElementById("green-filter").addEventListener("click", function () {
+      let textContent = div5.textContent;
+      let textContent2 = createdDiv1.textContent;
+      if (textContent.includes("Ring") || textContent.includes("Jacket") || textContent.includes("Laptop")) {
+        div5.style.display === 'none' ? 'flex' : 'none';
+      }
+      if (textContent2.includes("jewelry") || textContent2.includes("jacket") || textContent2.includes("laptop")) {
+        createdDiv1.style.display === 'none' ? 'flex' : 'none';
+      }
+    }
+    document.getElementById("yellow-filter").addEventListener("click", function () {
+      let textContent = div5.textContent;
+      let textContent2 = createdDiv1.textContent;
+      if (textContent.includes("Jacket") || textContent.includes("Laptop")) {
+        div5.style.display === 'none' ? 'flex' : 'none';
+      }
+      if (textContent2.includes("jacket") || textContent2.includes("laptop")) {
+        createdDiv1.style.display === 'none' ? 'flex' : 'none';
+      }
+    }
+    document.getElementById("black-filter").addEventListener("click", function () {
+      let textContent = div5.textContent;
+      let textContent2 = createdDiv1.textContent;
+      if (textContent.includes("Ring") || textContent.includes("Jacket")) {
+        div5.style.display === 'none' ? 'flex' : 'none';
+      }
+      if (textContent2.includes("jewelry") || textContent2.includes("jacket")) {
+        createdDiv1.style.display === 'none' ? 'flex' : 'none';
+      }
     }
     div5.appendChild(title);
     div5.appendChild(rating);
