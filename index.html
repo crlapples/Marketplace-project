@@ -442,75 +442,59 @@
       });
     });
     let on = false;
-    let lastButton = null;
-    document.getElementById("electronics-filter").addEventListener("click", function () {
-      if (!document.getElementById("black-filter").classList.contains("highlight")) {
-        return;
-      }
-      let divs = document.getElementsByTagName("div");
-      Array.from(divs).forEach(div => {
-        if (document.getElementById("promotedItemsContainer").contains(div)) {
-          if (lastButton !== document.getElementById("electronics-filter")) {
-            on = false;
-            Array.from(divs).forEach(div => {
-              if (document.getElementById("promotedItemsContainer").contains(div)) {
-                div.style.display = 'flex';
-              }
-            });
-          }
-          if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
-            if (div.style.display === 'none') {
-              div.style.display = 'flex';
-            } else {
-              div.style.display = 'none';
-            }
-          }
-          if (div.textContent.includes("jewelry") || div.textContent.includes("jacket")) {
-            if (div.style.display === 'none') {
-              div.style.display = 'flex';
-            } else {
-              div.style.display = 'none';
-            }
-          }
-        }
-      });
-      on = !on;
-      lastButton = document.getElementById("electronics-filter");
-    });
-    document.getElementById("clothing-filter").addEventListener("click", function () {
-      if (!document.getElementById("red-filter").classList.contains("highlight")) {
-        return;
-      }
-      let divs = document.getElementsByTagName("div");
-      Array.from(divs).forEach(div => {
-        if (document.getElementById("promotedItemsContainer").contains(div)) {
-          if (lastButton !== document.getElementById("clothing-filter")) {
-            on = false;
-            Array.from(divs).forEach(div => {
-              if (document.getElementById("promotedItemsContainer").contains(div)) {
-                div.style.display = 'flex';
-              }
-            });
-          }
-          if (div.textContent.includes("Ring") || div.textContent.includes("Laptop")) {
-            if (div.style.display === 'none') {
-              div.style.display = 'flex';
-            } else {
-              div.style.display = 'none';
-            }
-          }
-          if (div.textContent.includes("jewelry") || div.textContent.includes("laptop")) {
-            if (div.style.display === 'none') {
-              div.style.display = 'flex';
-            } else {
-              div.style.display = 'none';
-            }
-          }
-        }
-      });
-      on = !on;
-      lastButton = document.getElementById("clothing-filter");
-    });
+let lastButton = null;
+
+document.getElementById("electronics-filter").addEventListener("click", function () {
+  if (!document.getElementById("black-filter").classList.contains("highlight")) {
+    return;
+  }
+
+  let divs = document.querySelectorAll("#promotedItemsContainer div");
+
+  // If clicking a different button, reset the visibility
+  if (lastButton !== this) {
+    on = false;
+    divs.forEach(div => div.style.display = "flex"); // Make all divs visible
+  }
+
+  divs.forEach(div => {
+    let hasKeyword = div.textContent.includes("Ring") || div.textContent.includes("Jacket") ||
+                     div.textContent.includes("jewelry") || div.textContent.includes("jacket");
+
+    if (hasKeyword) {
+      div.style.display = on ? "flex" : "none"; // Hide matching items on first click, show on second
+    }
+  });
+
+  on = !on;
+  lastButton = this;
+});
+    
+document.getElementById("clothing-filter").addEventListener("click", function () {
+  if (!document.getElementById("red-filter").classList.contains("highlight")) {
+    return;
+  }
+
+  let divs = document.querySelectorAll("#promotedItemsContainer div");
+
+  // If clicking a different button, reset the visibility
+  if (lastButton !== this) {
+    on = false;
+    divs.forEach(div => div.style.display = "flex"); // Make all divs visible
+  }
+
+  divs.forEach(div => {
+    let hasKeyword = div.textContent.includes("Ring") || div.textContent.includes("Laptop") ||
+                     div.textContent.includes("jewelry") || div.textContent.includes("laptop");
+
+    if (hasKeyword) {
+      div.style.display = on ? "flex" : "none"; // Hide matching items on first click, show on second
+    }
+  });
+
+  on = !on;
+  lastButton = this;
+});
     document.getElementById("jewelry-filter").addEventListener("click", function () {
       if (!document.getElementById("yellow-filter").classList.contains("highlight")) {
         return;
