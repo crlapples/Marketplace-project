@@ -194,7 +194,7 @@
   border-radius: 5px;
   background-color: lightblue;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 7px;
   top: 350px;
 }
 .types button.highlight {
@@ -452,7 +452,11 @@
         if (document.getElementById("promotedItemsContainer").contains(div)) {
           if (lastButton === !document.getElementById("electronics-filter")) {
             on = false;
-            div.style.display = 'flex';
+            Array.from(divs).forEach(div => {
+              if (document.getElementById("promotedItemsContainer").contains(div)) {
+                div.style.display = 'flex';
+              }
+            });
           }
           if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
             if (div.style.display === 'none') {
@@ -482,7 +486,11 @@
         if (document.getElementById("promotedItemsContainer").contains(div)) {
           if (lastButton === !document.getElementById("clothing-filter")) {
             on = false;
-            div.style.display = 'flex';
+            Array.from(divs).forEach(div => {
+              if (document.getElementById("promotedItemsContainer").contains(div)) {
+                div.style.display = 'flex';
+              }
+            });
           }
           if (div.textContent.includes("Ring") || div.textContent.includes("Laptop")) {
             if (div.style.display === 'none') {
@@ -512,7 +520,11 @@
         if (document.getElementById("promotedItemsContainer").contains(div)) {
           if (lastButton === !document.getElementById("jewelry-filter")) {
             on = false;
-            div.style.display = 'flex';
+            Array.from(divs).forEach(div => {
+              if (document.getElementById("promotedItemsContainer").contains(div)) {
+                div.style.display = 'flex';
+              }
+            });
           }
           if (div.textContent.includes("Laptop") || div.textContent.includes("Jacket")) {
             if (div.style.display === 'none') {
@@ -542,7 +554,11 @@
         if (document.getElementById("promotedItemsContainer").contains(div)) {
           if (lastButton === !document.getElementById("red-filter")) {
             on = false;
-            div.style.display = 'flex';
+            Array.from(divs).forEach(div => {
+              if (document.getElementById("promotedItemsContainer").contains(div)) {
+                div.style.display = 'flex';
+              }
+            });
           }
           if (div.textContent.includes("Ring") || div.textContent.includes("Laptop")) {
             if (div.style.display === 'none') {
@@ -569,7 +585,11 @@
         if (document.getElementById("promotedItemsContainer").contains(div)) {
           if (lastButton === !document.getElementById("blue-filter")) {
             on = false;
-            div.style.display = 'flex';
+            Array.from(divs).forEach(div => {
+              if (document.getElementById("promotedItemsContainer").contains(div)) {
+                div.style.display = 'flex';
+              }
+            });
           }
           if (div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
             if (div.style.display === 'none') {
@@ -596,7 +616,11 @@
         if (document.getElementById("promotedItemsContainer").contains(div)) {
           if (lastButton === !document.getElementById("green-filter")) {
             on = false;
-            div.style.display = 'flex';
+            Array.from(divs).forEach(div => {
+              if (document.getElementById("promotedItemsContainer").contains(div)) {
+                div.style.display = 'flex';
+              }
+            });
           }
           if (div.textContent.includes("Ring") || div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
             if (div.style.display === 'none') {
@@ -626,7 +650,11 @@
         if (document.getElementById("promotedItemsContainer").contains(div)) {
           if (lastButton === !document.getElementById("yellow-filter")) {
             on = false;
-            div.style.display = 'flex';
+            Array.from(divs).forEach(div => {
+              if (document.getElementById("promotedItemsContainer").contains(div)) {
+                div.style.display = 'flex';
+              }
+            });
           }
           if (div.textContent.includes("Jacket") || div.textContent.includes("Laptop")) {
             if (div.style.display === 'none') {
@@ -656,7 +684,11 @@
         if (document.getElementById("promotedItemsContainer").contains(div)) {
           if (lastButton === !document.getElementById("black-filter")) {
             on = false;
-            div.style.display = 'flex';
+            Array.from(divs).forEach(div => {
+              if (document.getElementById("promotedItemsContainer").contains(div)) {
+                div.style.display = 'flex';
+              }
+            });
           }
           if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
             if (div.style.display === 'none') {
