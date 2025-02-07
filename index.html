@@ -425,6 +425,14 @@
         } else {
           button.classList.add('highlight');
         }
+        if (button.contains('highlight') {
+          let divs = document.getElementsByTagName("div");
+          Array.from(divs).forEach(div => {
+            if (document.getElementById("promotedItemsContainer").contains(div)) {
+              div.style.display = 'flex';
+            }
+          });
+        }
       });
     });
     colors.forEach(button => {
@@ -438,6 +446,14 @@
           button.classList.remove('highlight');
         } else {
           button.classList.add('highlight');
+        }
+        if (button.contains('highlight') {
+          let divs = document.getElementsByTagName("div");
+          Array.from(divs).forEach(div => {
+            if (document.getElementById("promotedItemsContainer").contains(div)) {
+              div.style.display = 'flex';
+            }
+          });
         }
       });
     });
