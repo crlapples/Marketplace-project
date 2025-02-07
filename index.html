@@ -448,8 +448,8 @@
         if (document.getElementById("promotedItemsContainer").contains(div)) {
           if (lastButton === !document.getElementById("electronics-filter")) {
             on = false;
+            div.style.display = 'flex';
           }
-          div.style.display = 'flex';
           if (div.textContent.includes("Ring") || div.textContent.includes("Jacket")) {
             if (div.style.display === 'none') {
               div.style.display = 'flex';
