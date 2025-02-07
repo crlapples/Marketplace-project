@@ -447,6 +447,11 @@
       if (!document.getElementById("black-filter").classList.contains("highlight")) {
         return;
       }
+      colors.forEach(color => {
+        if (!color.classList.contains('highlight')) {
+          return;
+        }
+      });
       let divs = document.querySelectorAll("#promotedItemsContainer div");
       if (lastButton !== this) {
         on = false;
@@ -465,6 +470,11 @@
       if (!document.getElementById("red-filter").classList.contains("highlight")) {
         return;
       }
+      colors.forEach(color => {
+        if (!color.classList.contains('highlight')) {
+          return;
+        }
+      });
       let divs = document.querySelectorAll("#promotedItemsContainer div");
       if (lastButton !== this) {
         on = false;
@@ -483,6 +493,11 @@
       if (!document.getElementById("yellow-filter").classList.contains("highlight")) {
         return;
       }
+      colors.forEach(color => {
+        if (!color.classList.contains('highlight')) {
+          return;
+        }
+      });
       let divs = document.querySelectorAll("#promotedItemsContainer div");
       if (lastButton !== this) {
         on = false;
@@ -500,8 +515,14 @@
     document.getElementById("red-filter").addEventListener("click", function () {
       if (!document.getElementById("clothing-filter").classList.contains("highlight")) {
         return;
-      }
+      } 
       let divs = document.querySelectorAll("#promotedItemsContainer div");
+      categories.forEach(category => {
+        if (!category.classList.contains('highlight')) {
+          divs.forEach(div => div.style.display = "none");
+          return;
+        }
+      });
       if (lastButton !== this) {
         on = false;
         divs.forEach(div => div.style.display = "flex");
@@ -550,6 +571,12 @@
         return;
       }
       let divs = document.querySelectorAll("#promotedItemsContainer div");
+      categories.forEach(category => {
+        if (!category.classList.contains('highlight')) {
+          divs.forEach(div => div.style.display = "none");
+          return;
+        }
+      });
       if (lastButton !== this) {
         on = false;
         divs.forEach(div => div.style.display = "flex");
@@ -568,6 +595,12 @@
         return;
       }
       let divs = document.querySelectorAll("#promotedItemsContainer div");
+      categories.forEach(category => {
+        if (!category.classList.contains('highlight')) {
+          divs.forEach(div => div.style.display = "none");
+          return;
+        }
+      });
       if (lastButton !== this) {
         on = false;
         divs.forEach(div => div.style.display = "flex");
