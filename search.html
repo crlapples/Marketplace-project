@@ -362,11 +362,15 @@
         const noMatchNote = document.createElement('p');
         noMatchNote.textContent = 'No items matched your search';
         document.getElementById('promotedItemsContainer').appendChild(noMatchNote);
-        document.getElementById('promotedItemsContainer').style.justifyContent = "center";
+        if (window.innerWidth >= 768) {
+          document.getElementById('promotedItemsContainer').style.justifyContent = "center";
+        }
         document.getElementById("filters").classList.add('hide');
       } else {
         document.getElementById("filters").classList.remove('hide');
-        document.getElementById('promotedItemsContainer').style.justifyContent = "flex-start";
+        if (window.innerWidth >= 768) {
+          document.getElementById('promotedItemsContainer').style.justifyContent = "flex-start";
+        }
       }
     });
     function sliceText(text){
