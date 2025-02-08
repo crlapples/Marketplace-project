@@ -144,6 +144,72 @@
   width: 100%;
   height: 100%;
 }
+#column-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#filters {
+  border-radius: 5px;
+  background-color: lightblue;
+  padding: 10px;
+  margin-top: 50px;
+}
+#filter-with-types {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.filter-category-name {
+  border-radius: 5px;
+  border: 1px solid lightblue;
+  padding: 10px;
+}
+.types {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+}
+.types button {
+  border-radius: 5px;
+  background-color: lightblue;
+  padding: 5px;
+  border: 1px solid lightblue;
+}
+#filter-options {
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid lightblue;
+  top: 90px;
+  padding: 25px;
+}
+#filters-close {
+  border-radius: 5px;
+  background-color: lightblue;
+  padding: 10px;
+  margin-top: 9px;
+  top: 350px;
+}
+.types button.highlight {
+  background-color: white;
+}
+.hidden {
+  display: none;
+  position: static;
+  z-index: 0;
+}
+.visible {
+  display: block;
+  position: absolute;
+  z-index: 1000;
+}
 @media (min-width: 768px) {
   #searchBar {
     width: 50%;
@@ -151,11 +217,16 @@
   #promotedItemsContainer {
     flex-direction: row;
     justify-content: flex-start;
+    align-items: flex-start;
     width: 80%;
     margin-left: 25px;
   }
   .cart-container{
-  position: static;
+  position: sticky;
+  bottom: unset !important;
+  top: 675;
+  right: 0px;
+  margin-right: -1px;
   transform: translateX(0%);
   z-index: 1000;
   display: flex;
@@ -193,6 +264,28 @@
         <li><a href="https://crlapples.github.io/Marketplace-project/jewelry.html"><button>Jewelry</button></a></li>
       </ul>
     </nav>
+    <div id="column-container">
+      <button id="filters">Filters</button>
+      <div id="filter-options" class="hidden">
+        <div id="filter-with-types">
+          <label class="filter-category-name">Categories:</label>
+          <div class="types">
+            <button id="electronics-filter" class="highlight category">Electronics</button>
+            <button id="clothing-filter" class="highlight category">Clothing</button>
+            <button id="jewelry-filter" class="highlight category">Jewelry</button>
+          </div>
+          <label class="filter-category-name">Colors:</label>
+          <div class="types">
+            <button id="red-filter" class="highlight color">🟥</button>
+            <button id="blue-filter" class="highlight color">🟦</button>
+            <button id="green-filter" class="highlight color">🟩</button>
+            <button id="yellow-filter" class="highlight color">🟨</button>
+            <button id="black-filter" class="highlight color">⬛</button>
+          </div>
+        </div>
+      </div>
+      <button id="filters-close" class="hidden">Close</button>
+    </div>
     <div id="main-container">
       <div id="promotedItemsContainer">
       </div>
@@ -202,6 +295,23 @@
     <footer>Copyright 2024</footer>
     </main>
     <script>// Create static items to showcase items without db on github pages
+    const buttons = document.querySelectorAll(".highlight");
+    document.getElementById("filters").addEventListener("click", function () {
+      let filters = document.getElementById("filter-options");
+      let filtersButton = document.getElementById("filters-close");
+      filtersButton.classList.toggle("hidden");
+      filtersButton.classList.toggle("visible");
+      filters.classList.toggle("hidden");
+      filters.classList.toggle("visible");
+    });
+    document.getElementById("filters-close").addEventListener("click", function () {
+      let filters = document.getElementById("filter-options");
+      let filtersButton = document.getElementById("filters-close");
+      filtersButton.classList.toggle("hidden");
+      filtersButton.classList.toggle("visible");
+      filters.classList.toggle("hidden");
+      filters.classList.toggle("visible");
+    });
     const exampleItems = [{
     title: 'Staywarm Jacket',
     src: 'https://crlapples.github.io/Marketplace-project/jacket.jpeg',
@@ -275,6 +385,407 @@
       document.getElementById('promotedItemsContainer').appendChild(createdDiv1);
       title.style.marginRight = '20px';
     }
+    div5.classList.add("item");
+    createdDiv1.classList.add("item");
+    const categories = document.querySelectorAll(".category");
+    const colors = document.querySelectorAll(".color");
+    categories.forEach(button => {
+      button.addEventListener('click', () => {
+        categories.forEach(btn => {
+          if (btn !== button) {
+            btn.classList.add('highlight');
+          }
+        });
+        if (button.classList.contains('highlight')) {
+          button.classList.remove('highlight');
+        } else {
+          button.classList.add('highlight');
+        }
+      });
+    });
+    colors.forEach(button => {
+      button.addEventListener('click', () => {
+        colors.forEach(btn => {
+          if (btn !== button) {
+            btn.classList.add('highlight');
+          }
+        });
+        if (button.classList.contains('highlight')) {
+          button.classList.remove('highlight');
+        } else {
+          button.classList.add('highlight');
+        }
+      });
+    });
+    let on = false;
+    let lastButton = null;
+    let selectedFilters = [];
+    let active1 = false;
+    let active2 = false;
+    let active3 = false;
+    let active4 = false;
+    let active5 = false;
+    let active6 = false;
+    let active7 = false;
+    let active8 = false;
+    document.getElementById("electronics-filter").addEventListener("click", function () {
+      active1 = !document.getElementById("electronics-filter").classList.contains("highlight");
+      if (!document.getElementById("black-filter").classList.contains("highlight")) {
+        return;
+      }
+      let divs = document.querySelectorAll("#promotedItemsContainer div");
+      if (lastButton === document.getElementById("clothing-filter") || lastButton === document.getElementById("jewelry-filter")) {
+        on = false;
+        selectedFilters = selectedFilters.filter(filter => filter !== "Jacket");
+        selectedFilters = selectedFilters.filter(filter => filter !== "jacket");
+        selectedFilters = selectedFilters.filter(filter => filter !== "Ring");
+        selectedFilters = selectedFilters.filter(filter => filter !== "jewelry");
+      }
+      on = !on;
+      if (active1) {
+        selectedFilters.push("Laptop");
+        selectedFilters.push("laptop");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
+        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
+      }
+      divs.forEach(div => {
+        let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
+        }
+        if (active8) {
+          if (hasKeyword) {
+            div.style.display = "flex";
+          }
+        } else if (active4 || active5 || active6 || active7) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          }
+        }
+        if (active4 || active7) {
+          if (hasKeyword && !active1) {
+            div.style.display = "flex";
+          }
+        }
+      });
+      lastButton = this;
+    });
+    document.getElementById("clothing-filter").addEventListener("click", function () {
+      if (!document.getElementById("red-filter").classList.contains("highlight")) {
+        return;
+      }
+      active2 = !document.getElementById("clothing-filter").classList.contains("highlight");
+      let divs = document.querySelectorAll("#promotedItemsContainer div");
+      if (lastButton === document.getElementById("electronics-filter") || lastButton === document.getElementById("jewelry-filter")) {
+        on = false;
+        selectedFilters = selectedFilters.filter(filter => filter !== "Ring");
+        selectedFilters = selectedFilters.filter(filter => filter !== "jewelry");
+        selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
+        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
+      }
+      on = !on;
+      if (active2) {
+        selectedFilters.push("Jacket");
+        selectedFilters.push("jacket");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "Jacket");
+        selectedFilters = selectedFilters.filter(filter => filter !== "jacket");
+      }
+      divs.forEach(div => {
+        let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
+        }
+        if (active4) {
+          if (hasKeyword) {
+            div.style.display = "flex";
+          }
+        } else if (active8 || active5 || active6 || active7) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          }
+        } 
+        if (active8 || active7) {
+          if (hasKeyword && !active2) {
+            div.style.display = "flex";
+          }
+        }
+      });
+      lastButton = this;
+    });
+    document.getElementById("jewelry-filter").addEventListener("click", function () {
+      if (!document.getElementById("yellow-filter").classList.contains("highlight")) {
+        return;
+      }
+      active3 = !document.getElementById("jewelry-filter").classList.contains("highlight");
+      let divs = document.querySelectorAll("#promotedItemsContainer div");
+      if (lastButton === document.getElementById("clothing-filter") || lastButton === document.getElementById("electronics-filter")) {
+        on = false;
+        selectedFilters = selectedFilters.filter(filter => filter !== "Jacket");
+        selectedFilters = selectedFilters.filter(filter => filter !== "jacket");
+        selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
+        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
+      }
+      on = !on;
+      if (active3) {
+        selectedFilters.push("Ring");
+        selectedFilters.push("jewelry");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "Ring");
+        selectedFilters = selectedFilters.filter(filter => filter !== "jewelry");
+      }
+      divs.forEach(div => {
+        let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
+        }
+        if (active7) {
+          if (hasKeyword) {
+            div.style.display = "flex";
+          }
+        } else if (active4 || active5 || active6 || active8) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          }
+        } 
+        if (active8 || active4) {
+          if (hasKeyword && !active3) {
+            div.style.display = "flex";
+          }
+        }
+      });
+      lastButton = this;
+    });
+    document.getElementById("red-filter").addEventListener("click", function () {
+      if (!document.getElementById("clothing-filter").classList.contains("highlight")) {
+        return;
+      }
+      active4 = !document.getElementById("red-filter").classList.contains("highlight");
+      let divs = document.querySelectorAll("#promotedItemsContainer div");
+      if (lastButton === document.getElementById("blue-filter") || lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("yellow-filter") || lastButton === document.getElementById("black-filter")) {
+        on = false;
+        selectedFilters = selectedFilters.filter(filter => filter !== "green");
+        selectedFilters = selectedFilters.filter(filter => filter !== "blue");
+        selectedFilters = selectedFilters.filter(filter => filter !== "yellow");
+        selectedFilters = selectedFilters.filter(filter => filter !== "black");
+      }
+      on = !on;
+      if (active4) {
+        selectedFilters.push("jacket");
+        selectedFilters.push("Jacket");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "Jacket");
+        selectedFilters = selectedFilters.filter(filter => filter !== "jacket");
+      }
+      divs.forEach(div => {
+        let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
+        }
+        if (active2) {
+          if (hasKeyword) {
+            div.style.display = "flex";
+          }
+        } else if (active1 || active3) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          }
+        } 
+        if (active1 || active3) {
+          if (hasKeyword && !active4) {
+            div.style.display = "flex";
+          }
+        }
+      });
+      lastButton = this;
+    });
+    document.getElementById("blue-filter").addEventListener("click", function () {
+      active5 = !document.getElementById("blue-filter").classList.contains("highlight");
+      let divs = document.querySelectorAll("#promotedItemsContainer div");
+      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("yellow-filter") || lastButton === document.getElementById("black-filter")) {
+        on = false;
+        selectedFilters = selectedFilters.filter(filter => filter !== "green");
+        selectedFilters = selectedFilters.filter(filter => filter !== "red");
+        selectedFilters = selectedFilters.filter(filter => filter !== "yellow");
+        selectedFilters = selectedFilters.filter(filter => filter !== "black");
+      }
+      on = !on;
+      if (active5) {
+        selectedFilters.push("blue");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "blue");
+      }
+      divs.forEach(div => {
+        let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
+        }
+        if (active8 || active1 || active2 || active3 || active4 || active7) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          } 
+        } 
+        if (active1 || active2 || active3) {
+          if (hasKeyword && !active5) {
+            div.style.display = "flex";
+          }
+        }
+      });
+      lastButton = this;
+    });
+    document.getElementById("green-filter").addEventListener("click", function () {
+      active6 = !document.getElementById("green-filter").classList.contains("highlight");
+      let divs = document.querySelectorAll("#promotedItemsContainer div");
+      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("blue-filter") || lastButton === document.getElementById("yellow-filter") || lastButton === document.getElementById("black-filter")) {
+        on = false;
+        selectedFilters = selectedFilters.filter(filter => filter !== "red");
+        selectedFilters = selectedFilters.filter(filter => filter !== "blue");
+        selectedFilters = selectedFilters.filter(filter => filter !== "yellow");
+        selectedFilters = selectedFilters.filter(filter => filter !== "black");
+      }
+      on = !on;
+      if (active6) {
+        selectedFilters.push("green");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "green");
+      }
+      divs.forEach(div => {
+        let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
+        }
+        if (active8 || active1 || active2 || active3 || active4 || active7) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          } 
+        }
+        if (active1 || active2 || active3) {
+          if (hasKeyword && !active6) {
+            div.style.display = "flex";
+          }
+        }
+      });
+      lastButton = this;
+    });
+    document.getElementById("yellow-filter").addEventListener("click", function () {
+      active7 = !document.getElementById("yellow-filter").classList.contains("highlight");
+      if (!document.getElementById("jewelry-filter").classList.contains("highlight")) {
+        return;
+      }
+      let divs = document.querySelectorAll("#promotedItemsContainer div");
+      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("blue-filter") || lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("black-filter")) {
+        on = false;
+        selectedFilters = selectedFilters.filter(filter => filter !== "green");
+        selectedFilters = selectedFilters.filter(filter => filter !== "blue");
+        selectedFilters = selectedFilters.filter(filter => filter !== "green");
+        selectedFilters = selectedFilters.filter(filter => filter !== "black");
+      }
+      on = !on;
+      if (active7) {
+        selectedFilters.push("Ring");
+        selectedFilters.push("jewelry");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "Ring");
+        selectedFilters = selectedFilters.filter(filter => filter !== "jewelry");
+      }
+      divs.forEach(div => {
+        let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
+        }
+        if (active3) {
+          if (hasKeyword) {
+            div.style.display = "flex";
+          }
+        } else if (active1 || active2) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          }
+        } 
+        if (active1 || active2) {
+          if (hasKeyword && !active7) {
+            div.style.display = "flex";
+          }
+        }
+      });
+      lastButton = this;
+    });
+    document.getElementById("black-filter").addEventListener("click", function () {
+      if (!document.getElementById("electronics-filter").classList.contains("highlight")) {
+        return;
+      }
+      active8 = !document.getElementById("black-filter").classList.contains("highlight");
+      let divs = document.querySelectorAll("#promotedItemsContainer div");
+      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("blue-filter") || lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("yellow-filter")) {
+        on = false;
+        selectedFilters = selectedFilters.filter(filter => filter !== "green");
+        selectedFilters = selectedFilters.filter(filter => filter !== "blue");
+        selectedFilters = selectedFilters.filter(filter => filter !== "yellow");
+        selectedFilters = selectedFilters.filter(filter => filter !== "red");
+      }
+      on = !on;
+      if (active8) {
+        selectedFilters.push("laptop");
+        selectedFilters.push("Laptop");
+      } else {
+        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
+        selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
+      }
+      divs.forEach(div => {
+        let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
+        if (selectedFilters.length === 0) {
+          div.style.display = 'flex';
+        } else if (hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
+        }
+        if (active1) {
+          if (hasKeyword) {
+            div.style.display = "flex";
+          }
+        } else if (active2 || active3) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          }
+        } 
+        if (active2 || active3) {
+          if (hasKeyword && !active8) {
+            div.style.display = "flex";
+          }
+        }
+      });
+      lastButton = this;
+    });
     div5.appendChild(title);
     div5.appendChild(rating);
     div5.appendChild(totalRatings);
