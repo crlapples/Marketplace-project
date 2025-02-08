@@ -364,6 +364,8 @@
         document.getElementById('promotedItemsContainer').appendChild(noMatchNote);
         if (window.innerWidth >= 768) {
           document.getElementById('promotedItemsContainer').style.justifyContent = "center";
+        } else {
+          noMatchNote.style.width = "100%";
         }
         document.getElementById("filters").classList.add('hide');
       } else {
