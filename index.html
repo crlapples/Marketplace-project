@@ -451,80 +451,60 @@
     let active7 = false;
     let active8 = false;
     div4.classList.add("include");
-
-let selectedFilters = [];
-let active1 = false;
-
-document.getElementById("electronics-filter").addEventListener("click", function () {
-  const div4s = document.querySelectorAll(".include");
-  
-  // Flip the active1 state when clicked
-  active1 = !document.getElementById("electronics-filter").classList.contains("highlight");
-  
-  // Assuming you want to filter divs based on selected filters
-  let divs = document.querySelectorAll("#promotedItemsContainer div");
-
-  // Check selected filters
-  if (active1) {
-    selectedFilters.push("Laptop");
-    selectedFilters.push("laptop");
-  } else {
-    selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
-    selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
-  }
-
-  // Go through each div and check if it should be visible based on filters
-  divs.forEach(div => {
-    let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
-    
-    // Show divs based on the filter
-    if (selectedFilters.length === 0 || hasKeyword) {
-      div.style.display = 'flex';
-    } else {
-      div.style.display = 'none';
-    }
-    if (active4) {
-      if (hasKeyword) {
-        div.style.display = "flex";
+    let selectedFilters = [];
+    let active1 = false;
+    document.getElementById("electronics-filter").addEventListener("click", function () {
+      if (!document.getElementById("black-filter").classList.contains("highlight")) {
+        return;
       }
-    } else if (active8 || active5 || active6 || active7) {
-      if (hasKeyword) {
-        div.style.display = "none";
-      }
-    } 
-    if (active8 || active7) {
-      if (hasKeyword && !active2) {
-        div.style.display = "flex";
-      }
-    }
-    // Now handle div4s based on the parent display style
-    div4s.forEach(d => {
-      // Get the computed style of the parent element
-      let parentStyle = window.getComputedStyle(d.parentElement);
-
-      // Only show div4 if its parent has display: flex
-      if (parentStyle.display === "flex") {
-        d.style.display = "flex";
+      const div4s = document.querySelectorAll(".include");
+      active1 = !document.getElementById("electronics-filter").classList.contains("highlight");
+      let divs = document.querySelectorAll("#promotedItemsContainer div");
+      if (active1) {
+        selectedFilters.push("Laptop");
+        selectedFilters.push("laptop");
       } else {
-        d.style.display = "none";  // Hide it if parent isn't flex
+        selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
+        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
       }
+      divs.forEach(div => {
+        let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
+        if (selectedFilters.length === 0 || hasKeyword) {
+          div.style.display = 'flex';
+        } else {
+          div.style.display = 'none';
+        }
+        if (active8) {
+          if (hasKeyword) {
+            div.style.display = "flex";
+          }
+        } else if (active4 || active5 || active6 || active7) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          }
+        } 
+        if (active4 || active7) {
+          if (hasKeyword && !active1) {
+            div.style.display = "flex";
+          }
+        }
+        div4s.forEach(d => {
+          let parentStyle = window.getComputedStyle(d.parentElement);
+          if (parentStyle.display === "flex") {
+            d.style.display = "flex";
+          } else {
+            d.style.display = "none";
+          }
+        });
+      });
     });
-  });
-});
     document.getElementById("clothing-filter").addEventListener("click", function () {
       if (!document.getElementById("red-filter").classList.contains("highlight")) {
         return;
       }
+      const div4s = document.querySelectorAll(".include");
       active2 = !document.getElementById("clothing-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton === document.getElementById("electronics-filter") || lastButton === document.getElementById("jewelry-filter")) {
-        on = false;
-        selectedFilters = selectedFilters.filter(filter => filter !== "Ring");
-        selectedFilters = selectedFilters.filter(filter => filter !== "jewelry");
-        selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
-        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
-      }
-      on = !on;
       if (active2) {
         selectedFilters.push("Jacket");
         selectedFilters.push("jacket");
@@ -534,34 +514,14 @@ document.getElementById("electronics-filter").addEventListener("click", function
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
-        if (selectedFilters.length === 0) {
+        if (selectedFilters.length === 0 || hasKeyword) {
           div.style.display = 'flex';
-          div4s.forEach(d => {
-            let parentStyle = window.getComputedStyle(d.parentElement);
-            if (parentStyle.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
-        } else if (hasKeyword) {
-          div.style.display = 'flex';
-          div4s.forEach(d => {
-            let parentStyle = window.getComputedStyle(d.parentElement);
-            if (parentStyle.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
         } else {
           div.style.display = 'none';
         }
         if (active4) {
           if (hasKeyword) {
             div.style.display = "flex";
-            div4s.forEach(d => {
-              let parentStyle = window.getComputedStyle(d.parentElement);
-              if (parentStyle.display === "flex") {
-                d.style.display = "flex";
-              }
-            });
           }
         } else if (active8 || active5 || active6 || active7) {
           if (hasKeyword) {
@@ -571,31 +531,25 @@ document.getElementById("electronics-filter").addEventListener("click", function
         if (active8 || active7) {
           if (hasKeyword && !active2) {
             div.style.display = "flex";
-            div4s.forEach(d => {
-              let parentStyle = window.getComputedStyle(d.parentElement);
-              if (parentStyle.display === "flex") {
-                d.style.display = "flex";
-              }
-            });
           }
         }
+        div4s.forEach(d => {
+          let parentStyle = window.getComputedStyle(d.parentElement);
+          if (parentStyle.display === "flex") {
+            d.style.display = "flex";
+          } else {
+            d.style.display = "none";
+          }
+        });
       });
-      lastButton = this;
     });
     document.getElementById("jewelry-filter").addEventListener("click", function () {
       if (!document.getElementById("yellow-filter").classList.contains("highlight")) {
         return;
       }
+      const div4s = document.querySelectorAll(".include");
       active3 = !document.getElementById("jewelry-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton === document.getElementById("clothing-filter") || lastButton === document.getElementById("electronics-filter")) {
-        on = false;
-        selectedFilters = selectedFilters.filter(filter => filter !== "Jacket");
-        selectedFilters = selectedFilters.filter(filter => filter !== "jacket");
-        selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
-        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
-      }
-      on = !on;
       if (active3) {
         selectedFilters.push("Ring");
         selectedFilters.push("jewelry");
@@ -605,98 +559,59 @@ document.getElementById("electronics-filter").addEventListener("click", function
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
-        if (selectedFilters.length === 0) {
+        if (selectedFilters.length === 0 || hasKeyword) {
           div.style.display = 'flex';
-          div4s.forEach(d => {
-            if (d.parentElement.style.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
-        } else if (hasKeyword) {
-          div.style.display = 'flex';
-          div4s.forEach(d => {
-            if (d.parentElement.style.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
         } else {
           div.style.display = 'none';
         }
         if (active7) {
           if (hasKeyword) {
             div.style.display = "flex";
-            div4s.forEach(d => {
-              if (d.parentElement.style.display === "flex") {
-                d.style.display = "flex";
-              }
-            });
           }
         } else if (active4 || active5 || active6 || active8) {
           if (hasKeyword) {
             div.style.display = "none";
           }
         } 
-        if (active8 || active4) {
+        if (active4 || active8) {
           if (hasKeyword && !active3) {
             div.style.display = "flex";
-            div4s.forEach(d => {
-              if (d.parentElement.style.display === "flex") {
-                d.style.display = "flex";
-              }
-            });
           }
         }
+        div4s.forEach(d => {
+          let parentStyle = window.getComputedStyle(d.parentElement);
+          if (parentStyle.display === "flex") {
+            d.style.display = "flex";
+          } else {
+            d.style.display = "none";
+          }
+        });
       });
-      lastButton = this;
     });
     document.getElementById("red-filter").addEventListener("click", function () {
       if (!document.getElementById("clothing-filter").classList.contains("highlight")) {
         return;
       }
+      const div4s = document.querySelectorAll(".include");
       active4 = !document.getElementById("red-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton === document.getElementById("blue-filter") || lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("yellow-filter") || lastButton === document.getElementById("black-filter")) {
-        on = false;
-        selectedFilters = selectedFilters.filter(filter => filter !== "green");
-        selectedFilters = selectedFilters.filter(filter => filter !== "blue");
-        selectedFilters = selectedFilters.filter(filter => filter !== "yellow");
-        selectedFilters = selectedFilters.filter(filter => filter !== "black");
-      }
-      on = !on;
       if (active4) {
-        selectedFilters.push("jacket");
         selectedFilters.push("Jacket");
+        selectedFilters.push("jacket");
       } else {
         selectedFilters = selectedFilters.filter(filter => filter !== "Jacket");
         selectedFilters = selectedFilters.filter(filter => filter !== "jacket");
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
-        if (selectedFilters.length === 0) {
+        if (selectedFilters.length === 0 || hasKeyword) {
           div.style.display = 'flex';
-          div4s.forEach(d => {
-            if (d.parentElement.style.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
-        } else if (hasKeyword) {
-          div.style.display = 'flex';
-          div4s.forEach(d => {
-            if (d.parentElement.style.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
         } else {
           div.style.display = 'none';
         }
         if (active2) {
           if (hasKeyword) {
             div.style.display = "flex";
-            div4s.forEach(d => {
-              if (d.parentElement.style.display === "flex") {
-                d.style.display = "flex";
-              }
-            });
           }
         } else if (active1 || active3) {
           if (hasKeyword) {
@@ -706,27 +621,22 @@ document.getElementById("electronics-filter").addEventListener("click", function
         if (active1 || active3) {
           if (hasKeyword && !active4) {
             div.style.display = "flex";
-            div4s.forEach(d => {
-              if (d.parentElement.style.display === "flex") {
-                d.style.display = "flex";
-              }
-            });
           }
         }
+        div4s.forEach(d => {
+          let parentStyle = window.getComputedStyle(d.parentElement);
+          if (parentStyle.display === "flex") {
+            d.style.display = "flex";
+          } else {
+            d.style.display = "none";
+          }
+        });
       });
-      lastButton = this;
     });
     document.getElementById("blue-filter").addEventListener("click", function () {
+      const div4s = document.querySelectorAll(".include");
       active5 = !document.getElementById("blue-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("yellow-filter") || lastButton === document.getElementById("black-filter")) {
-        on = false;
-        selectedFilters = selectedFilters.filter(filter => filter !== "green");
-        selectedFilters = selectedFilters.filter(filter => filter !== "red");
-        selectedFilters = selectedFilters.filter(filter => filter !== "yellow");
-        selectedFilters = selectedFilters.filter(filter => filter !== "black");
-      }
-      on = !on;
       if (active5) {
         selectedFilters.push("blue");
       } else {
@@ -734,20 +644,8 @@ document.getElementById("electronics-filter").addEventListener("click", function
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
-        if (selectedFilters.length === 0) {
+        if (selectedFilters.length === 0 || hasKeyword) {
           div.style.display = 'flex';
-          div4s.forEach(d => {
-            if (d.parentElement.style.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
-        } else if (hasKeyword) {
-          div.style.display = 'flex';
-          div4s.forEach(d => {
-            if (d.parentElement.style.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
         } else {
           div.style.display = 'none';
         }
@@ -759,27 +657,22 @@ document.getElementById("electronics-filter").addEventListener("click", function
         if (active1 || active2 || active3) {
           if (hasKeyword && !active5) {
             div.style.display = "flex";
-            div4s.forEach(d => {
-              if (d.parentElement.style.display === "flex") {
-                d.style.display = "flex";
-              }
-            });
           }
         }
+        div4s.forEach(d => {
+          let parentStyle = window.getComputedStyle(d.parentElement);
+          if (parentStyle.display === "flex") {
+            d.style.display = "flex";
+          } else {
+            d.style.display = "none";
+          }
+        });
       });
-      lastButton = this;
     });
     document.getElementById("green-filter").addEventListener("click", function () {
+      const div4s = document.querySelectorAll(".include");
       active6 = !document.getElementById("green-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("blue-filter") || lastButton === document.getElementById("yellow-filter") || lastButton === document.getElementById("black-filter")) {
-        on = false;
-        selectedFilters = selectedFilters.filter(filter => filter !== "red");
-        selectedFilters = selectedFilters.filter(filter => filter !== "blue");
-        selectedFilters = selectedFilters.filter(filter => filter !== "yellow");
-        selectedFilters = selectedFilters.filter(filter => filter !== "black");
-      }
-      on = !on;
       if (active6) {
         selectedFilters.push("green");
       } else {
@@ -787,20 +680,8 @@ document.getElementById("electronics-filter").addEventListener("click", function
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
-        if (selectedFilters.length === 0) {
+        if (selectedFilters.length === 0 || hasKeyword) {
           div.style.display = 'flex';
-          div4s.forEach(d => {
-            if (d.parentElement.style.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
-        } else if (hasKeyword) {
-          div.style.display = 'flex';
-          div4s.forEach(d => {
-            if (d.parentElement.style.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
         } else {
           div.style.display = 'none';
         }
@@ -808,34 +689,29 @@ document.getElementById("electronics-filter").addEventListener("click", function
           if (hasKeyword) {
             div.style.display = "none";
           } 
-        }
+        } 
         if (active1 || active2 || active3) {
           if (hasKeyword && !active6) {
             div.style.display = "flex";
-            div4s.forEach(d => {
-              if (d.parentElement.style.display === "flex") {
-                d.style.display = "flex";
-              }
-            });
           }
         }
+        div4s.forEach(d => {
+          let parentStyle = window.getComputedStyle(d.parentElement);
+          if (parentStyle.display === "flex") {
+            d.style.display = "flex";
+          } else {
+            d.style.display = "none";
+          }
+        });
       });
-      lastButton = this;
     });
     document.getElementById("yellow-filter").addEventListener("click", function () {
-      active7 = !document.getElementById("yellow-filter").classList.contains("highlight");
       if (!document.getElementById("jewelry-filter").classList.contains("highlight")) {
         return;
       }
+      const div4s = document.querySelectorAll(".include");
+      active7 = !document.getElementById("yellow-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("blue-filter") || lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("black-filter")) {
-        on = false;
-        selectedFilters = selectedFilters.filter(filter => filter !== "green");
-        selectedFilters = selectedFilters.filter(filter => filter !== "blue");
-        selectedFilters = selectedFilters.filter(filter => filter !== "green");
-        selectedFilters = selectedFilters.filter(filter => filter !== "black");
-      }
-      on = !on;
       if (active7) {
         selectedFilters.push("Ring");
         selectedFilters.push("jewelry");
@@ -845,31 +721,14 @@ document.getElementById("electronics-filter").addEventListener("click", function
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
-        if (selectedFilters.length === 0) {
+        if (selectedFilters.length === 0 || hasKeyword) {
           div.style.display = 'flex';
-          div4s.forEach(d => {
-            if (d.parentElement.style.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
-        } else if (hasKeyword) {
-          div.style.display = 'flex';
-          div4s.forEach(d => {
-            if (d.parentElement.style.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
         } else {
           div.style.display = 'none';
         }
         if (active3) {
           if (hasKeyword) {
             div.style.display = "flex";
-            div4s.forEach(d => {
-              if (d.parentElement.style.display === "flex") {
-                d.style.display = "flex";
-              }
-            });
           }
         } else if (active1 || active2) {
           if (hasKeyword) {
@@ -879,64 +738,42 @@ document.getElementById("electronics-filter").addEventListener("click", function
         if (active1 || active2) {
           if (hasKeyword && !active7) {
             div.style.display = "flex";
-            div4s.forEach(d => {
-              if (d.parentElement.style.display === "flex") {
-                d.style.display = "flex";
-              }
-            });
           }
         }
+        div4s.forEach(d => {
+          let parentStyle = window.getComputedStyle(d.parentElement);
+          if (parentStyle.display === "flex") {
+            d.style.display = "flex";
+          } else {
+            d.style.display = "none";
+          }
+        });
       });
-      lastButton = this;
     });
     document.getElementById("black-filter").addEventListener("click", function () {
       if (!document.getElementById("electronics-filter").classList.contains("highlight")) {
         return;
       }
+      const div4s = document.querySelectorAll(".include");
       active8 = !document.getElementById("black-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("blue-filter") || lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("yellow-filter")) {
-        on = false;
-        selectedFilters = selectedFilters.filter(filter => filter !== "green");
-        selectedFilters = selectedFilters.filter(filter => filter !== "blue");
-        selectedFilters = selectedFilters.filter(filter => filter !== "yellow");
-        selectedFilters = selectedFilters.filter(filter => filter !== "red");
-      }
-      on = !on;
       if (active8) {
-        selectedFilters.push("laptop");
         selectedFilters.push("Laptop");
+        selectedFilters.push("laptop");
       } else {
-        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
         selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
+        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
-        if (selectedFilters.length === 0) {
+        if (selectedFilters.length === 0 || hasKeyword) {
           div.style.display = 'flex';
-          div4s.forEach(d => {
-            if (d.parentElement.style.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
-        } else if (hasKeyword) {
-          div.style.display = 'flex';
-          div4s.forEach(d => {
-            if (d.parentElement.style.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
         } else {
           div.style.display = 'none';
         }
         if (active1) {
           if (hasKeyword) {
             div.style.display = "flex";
-            div4s.forEach(d => {
-              if (d.parentElement.style.display === "flex") {
-                d.style.display = "flex";
-              }
-            });
           }
         } else if (active2 || active3) {
           if (hasKeyword) {
@@ -944,17 +781,19 @@ document.getElementById("electronics-filter").addEventListener("click", function
           }
         } 
         if (active2 || active3) {
-          if (hasKeyword && !active8) {
+          if (hasKeyword && !active4) {
             div.style.display = "flex";
-            div4s.forEach(d => {
-              if (d.parentElement.style.display === "flex") {
-                d.style.display = "flex";
-              }
-            });
           }
         }
+        div4s.forEach(d => {
+          let parentStyle = window.getComputedStyle(d.parentElement);
+          if (parentStyle.display === "flex") {
+            d.style.display = "flex";
+          } else {
+            d.style.display = "none";
+          }
+        });
       });
-      lastButton = this;
     });
     div5.appendChild(title);
     div5.appendChild(rating);
