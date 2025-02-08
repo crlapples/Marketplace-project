@@ -454,6 +454,7 @@
     let selectedFilters = [];
     let active1 = false;
     function updateFilters() {
+      selectedFilters = [];
       active1 = !document.getElementById("electronics-filter").classList.contains("highlight");
       active2 = !document.getElementById("clothing-filter").classList.contains("highlight");
       active3 = !document.getElementById("jewelry-filter").classList.contains("highlight");
@@ -462,6 +463,9 @@
       active6 = !document.getElementById("green-filter").classList.contains("highlight");
       active7 = !document.getElementById("yellow-filter").classList.contains("highlight");
       active8 = !document.getElementById("black-filter").classList.contains("highlight");
+      if (active1 || active8) selectedFilters.push("Laptop", "laptop");
+      if (active2 || active4) selectedFilters.push("Jacket", "jacket");
+      if (active3 || active7) selectedFilters.push("Ring", "jewelry");
       if (!active1) {
         selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
         selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
