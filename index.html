@@ -496,16 +496,9 @@
       const div4s = document.querySelectorAll(".include");
       active1 = !document.getElementById("electronics-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (active1) {
+      if (active8) {
         selectedFilters.push("Laptop");
         selectedFilters.push("laptop");
-      } else {
-        selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
-        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
-        if (active8) {
-          selectedFilters.push("Laptop");
-          selectedFilters.push("laptop");
-        }
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
@@ -543,16 +536,9 @@
       const div4s = document.querySelectorAll(".include");
       active2 = !document.getElementById("clothing-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (active2) {
+      if (active4) {
         selectedFilters.push("Jacket");
         selectedFilters.push("jacket");
-      } else {
-        selectedFilters = selectedFilters.filter(filter => filter !== "Jacket");
-        selectedFilters = selectedFilters.filter(filter => filter !== "jacket");
-        if (active4) {
-          selectedFilters.push("Jacket");
-          selectedFilters.push("jacket");
-        }
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
@@ -590,16 +576,9 @@
       const div4s = document.querySelectorAll(".include");
       active3 = !document.getElementById("jewelry-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (active3) {
+      if (active7) {
         selectedFilters.push("Ring");
         selectedFilters.push("jewelry");
-      } else {
-        selectedFilters = selectedFilters.filter(filter => filter !== "Ring");
-        selectedFilters = selectedFilters.filter(filter => filter !== "jewelry");
-        if (active7) {
-          selectedFilters.push("Ring");
-          selectedFilters.push("jewelry");
-        }
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
@@ -637,16 +616,9 @@
       const div4s = document.querySelectorAll(".include");
       active4 = !document.getElementById("red-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (active4) {
+      if (active2) {
         selectedFilters.push("Jacket");
         selectedFilters.push("jacket");
-      } else {
-        selectedFilters = selectedFilters.filter(filter => filter !== "Jacket");
-        selectedFilters = selectedFilters.filter(filter => filter !== "jacket");
-        if (active2) {
-          selectedFilters.push("Jacket");
-          selectedFilters.push("jacket");
-        }
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
@@ -758,16 +730,9 @@
       const div4s = document.querySelectorAll(".include");
       active7 = !document.getElementById("yellow-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (active7) {
+      if (active3) {
         selectedFilters.push("Ring");
         selectedFilters.push("jewelry");
-      } else {
-        selectedFilters = selectedFilters.filter(filter => filter !== "Ring");
-        selectedFilters = selectedFilters.filter(filter => filter !== "jewelry");
-        if (active3) {
-          selectedFilters.push("Ring");
-          selectedFilters.push("jewelry");
-        }
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
@@ -805,16 +770,9 @@
       const div4s = document.querySelectorAll(".include");
       active8 = !document.getElementById("black-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (active8) {
+      if (active1) {
         selectedFilters.push("Laptop");
         selectedFilters.push("laptop");
-      } else {
-        selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
-        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
-        if (active1) {
-          selectedFilters.push("Laptop");
-          selectedFilters.push("laptop");
-        }
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
