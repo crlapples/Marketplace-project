@@ -365,13 +365,15 @@
         if (window.innerWidth >= 768) {
           document.getElementById('promotedItemsContainer').style.justifyContent = "center";
         } else {
-          noMatchNote.style.marginLeft = "50%";
+          document.getElementById('promotedItemsContainer').style.width = "480px";
         }
         document.getElementById("filters").classList.add('hide');
       } else {
         document.getElementById("filters").classList.remove('hide');
         if (window.innerWidth >= 768) {
           document.getElementById('promotedItemsContainer').style.justifyContent = "flex-start";
+        } else {
+          document.getElementById('promotedItemsContainer').style.width = "unset";
         }
       }
     });
