@@ -482,6 +482,15 @@
         } else {
           div.style.display = 'none';
         }
+        if (active8) {
+          if (hasKeyword) {
+            div.style.display = "flex";
+          }
+        } else if (active4 || active5 || active6 || active7) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          }
+        }
       });
       lastButton = this;
     });
@@ -514,6 +523,15 @@
           div.style.display = 'flex';
         } else {
           div.style.display = 'none';
+        }
+        if (active4) {
+          if (hasKeyword) {
+            div.style.display = "flex";
+          }
+        } else if (active8 || active5 || active6 || active7) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          }
         }
       });
       lastButton = this;
@@ -548,6 +566,15 @@
         } else {
           div.style.display = 'none';
         }
+        if (active7) {
+          if (hasKeyword) {
+            div.style.display = "flex";
+          }
+        } else if (active4 || active5 || active6 || active8) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          }
+        }
       });
       lastButton = this;
     });
@@ -581,6 +608,15 @@
         } else {
           div.style.display = 'none';
         }
+        if (active2) {
+          if (hasKeyword) {
+            div.style.display = "flex";
+          }
+        } else if (active1 || active3) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          }
+        }
       });
       lastButton = this;
     });
@@ -609,6 +645,11 @@
         } else {
           div.style.display = 'none';
         }
+        if (active8 || active1 || active2 || active3 || active4 || active7) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          }
+        }
       });
       lastButton = this;
     });
@@ -636,6 +677,11 @@
           div.style.display = 'flex';
         } else {
           div.style.display = 'none';
+        }
+        if (active8 || active1 || active2 || active3 || active4 || active7) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          }
         }
       });
       lastButton = this;
@@ -670,6 +716,15 @@
         } else {
           div.style.display = 'none';
         }
+        if (active3) {
+          if (hasKeyword) {
+            div.style.display = "flex";
+          }
+        } else if (active1 || active2) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          }
+        }
       });
       lastButton = this;
     });
@@ -702,6 +757,15 @@
           div.style.display = 'flex';
         } else {
           div.style.display = 'none';
+        }
+        if (active1) {
+          if (hasKeyword) {
+            div.style.display = "flex";
+          }
+        } else if (active1 || active3) {
+          if (hasKeyword) {
+            div.style.display = "none";
+          }
         }
       });
       lastButton = this;
