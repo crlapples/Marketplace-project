@@ -157,6 +157,9 @@
   padding: 10px;
   margin-top: 50px;
 }
+.hide {
+  display: none;
+}
 #filter-with-types {
   display: flex;
   flex-direction: column;
@@ -265,7 +268,7 @@
       </ul>
     </nav>
     <div id="column-container">
-      <button id="filters">Filters</button>
+      <button id="filters" class="hide">Filters</button>
       <div id="filter-options" class="hidden">
         <div id="filter-with-types">
           <label class="filter-category-name">Categories:</label>
@@ -359,7 +362,12 @@
         const noMatchNote = document.createElement('p');
         noMatchNote.textContent = 'No items matched your search';
         document.getElementById('promotedItemsContainer').appendChild(noMatchNote);
-      };
+        document.getElementById('promotedItemsContainer').style.justifyContent = "center";
+        document.getElementById("filters").classList.add('hide');
+      } else {
+        document.getElementById("filters").classList.remove('hide');
+        document.getElementById('promotedItemsContainer').style.justifyContent = "flex-start";
+      }
     });
     function sliceText(text){
       const words = text.split(' ');
