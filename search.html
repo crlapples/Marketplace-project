@@ -361,6 +361,7 @@
       if(filteredItems.length === 0){
         const noMatchNote = document.createElement('p');
         noMatchNote.textContent = 'No items matched your search';
+        noMatchNote.style.color = "darkgray";
         document.getElementById('promotedItemsContainer').appendChild(noMatchNote);
         if (window.innerWidth >= 768) {
           document.getElementById('promotedItemsContainer').style.justifyContent = "center";
