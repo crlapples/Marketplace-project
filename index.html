@@ -454,9 +454,6 @@
     let selectedFilters = [];
     let active1 = false;
     document.getElementById("electronics-filter").addEventListener("click", function () {
-      if (!document.getElementById("black-filter").classList.contains("highlight")) {
-        return;
-      }
       const div4s = document.querySelectorAll(".include");
       active1 = !document.getElementById("electronics-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
@@ -499,9 +496,6 @@
       });
     });
     document.getElementById("clothing-filter").addEventListener("click", function () {
-      if (!document.getElementById("red-filter").classList.contains("highlight")) {
-        return;
-      }
       const div4s = document.querySelectorAll(".include");
       active2 = !document.getElementById("clothing-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
@@ -544,9 +538,6 @@
       });
     });
     document.getElementById("jewelry-filter").addEventListener("click", function () {
-      if (!document.getElementById("yellow-filter").classList.contains("highlight")) {
-        return;
-      }
       const div4s = document.querySelectorAll(".include");
       active3 = !document.getElementById("jewelry-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
@@ -589,9 +580,6 @@
       });
     });
     document.getElementById("red-filter").addEventListener("click", function () {
-      if (!document.getElementById("clothing-filter").classList.contains("highlight")) {
-        return;
-      }
       const div4s = document.querySelectorAll(".include");
       active4 = !document.getElementById("red-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
@@ -706,9 +694,6 @@
       });
     });
     document.getElementById("yellow-filter").addEventListener("click", function () {
-      if (!document.getElementById("jewelry-filter").classList.contains("highlight")) {
-        return;
-      }
       const div4s = document.querySelectorAll(".include");
       active7 = !document.getElementById("yellow-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
@@ -751,9 +736,6 @@
       });
     });
     document.getElementById("black-filter").addEventListener("click", function () {
-      if (!document.getElementById("electronics-filter").classList.contains("highlight")) {
-        return;
-      }
       const div4s = document.querySelectorAll(".include");
       active8 = !document.getElementById("black-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
