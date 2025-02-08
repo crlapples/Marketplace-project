@@ -442,7 +442,6 @@
       });
     });
     div4.classList.add("include");
-    const div4s = document.querySelectorAll(".include");
     let on = false;
     let lastButton = null;
     let selectedFilters = [];
@@ -455,6 +454,7 @@
     let active7 = false;
     let active8 = false;
     document.getElementById("electronics-filter").addEventListener("click", function () {
+      const div4s = document.querySelectorAll(".include");
       active1 = !document.getElementById("electronics-filter").classList.contains("highlight");
       if (!document.getElementById("black-filter").classList.contains("highlight")) {
         return;
