@@ -483,7 +483,20 @@ document.getElementById("electronics-filter").addEventListener("click", function
     } else {
       div.style.display = 'none';
     }
-
+    if (active4) {
+      if (hasKeyword) {
+        div.style.display = "flex";
+      }
+    } else if (active8 || active5 || active6 || active7) {
+      if (hasKeyword) {
+        div.style.display = "none";
+      }
+    } 
+    if (active8 || active7) {
+      if (hasKeyword && !active2) {
+        div.style.display = "flex";
+      }
+    }
     // Now handle div4s based on the parent display style
     div4s.forEach(d => {
       // Get the computed style of the parent element
