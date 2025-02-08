@@ -463,6 +463,10 @@
       } else {
         selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
         selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
+        if (active1) {
+          selectedFilters.push("Laptop");
+          selectedFilters.push("laptop");
+        }
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
@@ -505,6 +509,10 @@
       } else {
         selectedFilters = selectedFilters.filter(filter => filter !== "Jacket");
         selectedFilters = selectedFilters.filter(filter => filter !== "jacket");
+        if (active1) {
+          selectedFilters.push("Jacket");
+          selectedFilters.push("jacket");
+        }
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
@@ -547,6 +555,10 @@
       } else {
         selectedFilters = selectedFilters.filter(filter => filter !== "Ring");
         selectedFilters = selectedFilters.filter(filter => filter !== "jewelry");
+        if (active7) {
+          selectedFilters.push("Ring");
+          selectedFilters.push("jewelry");
+        }
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
@@ -589,6 +601,10 @@
       } else {
         selectedFilters = selectedFilters.filter(filter => filter !== "Jacket");
         selectedFilters = selectedFilters.filter(filter => filter !== "jacket");
+        if (active1) {
+          selectedFilters.push("Jacket");
+          selectedFilters.push("jacket");
+        }
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
@@ -703,6 +719,10 @@
       } else {
         selectedFilters = selectedFilters.filter(filter => filter !== "Ring");
         selectedFilters = selectedFilters.filter(filter => filter !== "jewelry");
+        if (active3) {
+          selectedFilters.push("Ring");
+          selectedFilters.push("jewelry");
+        }
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
@@ -745,6 +765,10 @@
       } else {
         selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
         selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
+        if (active1) {
+          selectedFilters.push("Laptop");
+          selectedFilters.push("laptop");
+        }
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
@@ -763,7 +787,7 @@
           }
         } 
         if (active2 || active3) {
-          if (hasKeyword && !active4) {
+          if (hasKeyword && !active8) {
             div.style.display = "flex";
           }
         }
