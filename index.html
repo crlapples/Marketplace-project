@@ -453,7 +453,42 @@
     div4.classList.add("include");
     let selectedFilters = [];
     let active1 = false;
+    function updateFilters() {
+      active1 = !document.getElementById("electronics-filter").classList.contains("highlight");
+      active2 = !document.getElementById("clothing-filter").classList.contains("highlight");
+      active3 = !document.getElementById("jewelry-filter").classList.contains("highlight");
+      active4 = !document.getElementById("red-filter").classList.contains("highlight");
+      active5 = !document.getElementById("blue-filter").classList.contains("highlight");
+      active6 = !document.getElementById("green-filter").classList.contains("highlight");
+      active7 = !document.getElementById("yellow-filter").classList.contains("highlight");
+      active8 = !document.getElementById("black-filter").classList.contains("highlight");
+      if (!active1) {
+        selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
+        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
+      }
+      if (!active2) {
+        selectedFilters = selectedFilters.filter(filter => filter !== "Jacket");
+        selectedFilters = selectedFilters.filter(filter => filter !== "jacket");
+      }
+      if (!active3) {
+        selectedFilters = selectedFilters.filter(filter => filter !== "Ring");
+        selectedFilters = selectedFilters.filter(filter => filter !== "jewelry");
+      }
+      if (!active4) {
+        selectedFilters = selectedFilters.filter(filter => filter !== "Jacket");
+        selectedFilters = selectedFilters.filter(filter => filter !== "jacket");
+      }
+      if (!active7) {
+        selectedFilters = selectedFilters.filter(filter => filter !== "Ring");
+        selectedFilters = selectedFilters.filter(filter => filter !== "jewelry");
+      }
+      if (!active8) {
+        selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
+        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
+      }
+    }
     document.getElementById("electronics-filter").addEventListener("click", function () {
+      updateFilters();
       const div4s = document.querySelectorAll(".include");
       active1 = !document.getElementById("electronics-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
@@ -500,6 +535,7 @@
       });
     });
     document.getElementById("clothing-filter").addEventListener("click", function () {
+      updateFilters();
       const div4s = document.querySelectorAll(".include");
       active2 = !document.getElementById("clothing-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
@@ -546,6 +582,7 @@
       });
     });
     document.getElementById("jewelry-filter").addEventListener("click", function () {
+      updateFilters();
       const div4s = document.querySelectorAll(".include");
       active3 = !document.getElementById("jewelry-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
@@ -592,6 +629,7 @@
       });
     });
     document.getElementById("red-filter").addEventListener("click", function () {
+      updateFilters();
       const div4s = document.querySelectorAll(".include");
       active4 = !document.getElementById("red-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
@@ -638,6 +676,7 @@
       });
     });
     document.getElementById("blue-filter").addEventListener("click", function () {
+      updateFilters();
       const div4s = document.querySelectorAll(".include");
       active5 = !document.getElementById("blue-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
@@ -674,6 +713,7 @@
       });
     });
     document.getElementById("green-filter").addEventListener("click", function () {
+      updateFilters();
       const div4s = document.querySelectorAll(".include");
       active6 = !document.getElementById("green-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
@@ -710,6 +750,7 @@
       });
     });
     document.getElementById("yellow-filter").addEventListener("click", function () {
+      updateFilters();
       const div4s = document.querySelectorAll(".include");
       active7 = !document.getElementById("yellow-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
@@ -756,6 +797,7 @@
       });
     });
     document.getElementById("black-filter").addEventListener("click", function () {
+      updateFilters();
       const div4s = document.querySelectorAll(".include");
       active8 = !document.getElementById("black-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
