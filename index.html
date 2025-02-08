@@ -480,14 +480,16 @@
         if (selectedFilters.length === 0) {
           div.style.display = 'flex';
           div4s.forEach(d => {
-            if (d.parentElement.style.display === "flex") {
+            let parentStyle = window.getComputedStyle(d.parentElement);
+            if (parentStyle.display === "flex") {
               d.style.display = "flex";
             }
           });
         } else if (hasKeyword) {
           div.style.display = 'flex';
           div4s.forEach(d => {
-            if (d.parentElement.style.display === "flex") {
+            let parentStyle = window.getComputedStyle(d.parentElement);
+            if (parentStyle.display === "flex") {
               d.style.display = "flex";
             }
           });
@@ -498,7 +500,8 @@
           if (hasKeyword) {
             div.style.display = "flex";
             div4s.forEach(d => {
-              if (d.parentElement.style.display === "flex") {
+              let parentStyle = window.getComputedStyle(d.parentElement);
+              if (parentStyle.display === "flex") {
                 d.style.display = "flex";
               }
             });
@@ -512,7 +515,8 @@
           if (hasKeyword && !active1) {
             div.style.display = "flex";
             div4s.forEach(d => {
-              if (d.parentElement.style.display === "flex") {
+              let parentStyle = window.getComputedStyle(d.parentElement);
+              if (parentStyle.display === "flex") {
                 d.style.display = "flex";
               }
             });
