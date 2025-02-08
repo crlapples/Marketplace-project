@@ -441,11 +441,8 @@
         }
       });
     });
-    div4.classList.add("include");
     let on = false;
     let lastButton = null;
-    let selectedFilters = [];
-    let active1 = false;
     let active2 = false;
     let active3 = false;
     let active4 = false;
@@ -453,78 +450,54 @@
     let active6 = false;
     let active7 = false;
     let active8 = false;
-    document.getElementById("electronics-filter").addEventListener("click", function () {
-      const div4s = document.querySelectorAll(".include");
-      active1 = !document.getElementById("electronics-filter").classList.contains("highlight");
-      if (!document.getElementById("black-filter").classList.contains("highlight")) {
-        return;
-      }
-      let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton === document.getElementById("clothing-filter") || lastButton === document.getElementById("jewelry-filter")) {
-        on = false;
-        selectedFilters = selectedFilters.filter(filter => filter !== "Jacket");
-        selectedFilters = selectedFilters.filter(filter => filter !== "jacket");
-        selectedFilters = selectedFilters.filter(filter => filter !== "Ring");
-        selectedFilters = selectedFilters.filter(filter => filter !== "jewelry");
-      }
-      on = !on;
-      if (active1) {
-        selectedFilters.push("Laptop");
-        selectedFilters.push("laptop");
+    div4.classList.add("include");
+
+let selectedFilters = [];
+let active1 = false;
+
+document.getElementById("electronics-filter").addEventListener("click", function () {
+  const div4s = document.querySelectorAll(".include");
+  
+  // Flip the active1 state when clicked
+  active1 = !document.getElementById("electronics-filter").classList.contains("highlight");
+  
+  // Assuming you want to filter divs based on selected filters
+  let divs = document.querySelectorAll("#promotedItemsContainer div");
+
+  // Check selected filters
+  if (active1) {
+    selectedFilters.push("Laptop");
+    selectedFilters.push("laptop");
+  } else {
+    selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
+    selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
+  }
+
+  // Go through each div and check if it should be visible based on filters
+  divs.forEach(div => {
+    let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
+    
+    // Show divs based on the filter
+    if (selectedFilters.length === 0 || hasKeyword) {
+      div.style.display = 'flex';
+    } else {
+      div.style.display = 'none';
+    }
+
+    // Now handle div4s based on the parent display style
+    div4s.forEach(d => {
+      // Get the computed style of the parent element
+      let parentStyle = window.getComputedStyle(d.parentElement);
+
+      // Only show div4 if its parent has display: flex
+      if (parentStyle.display === "flex") {
+        d.style.display = "flex";
       } else {
-        selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
-        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
+        d.style.display = "none";  // Hide it if parent isn't flex
       }
-      divs.forEach(div => {
-        let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
-        if (selectedFilters.length === 0) {
-          div.style.display = 'flex';
-          div4s.forEach(d => {
-            let parentStyle = window.getComputedStyle(d.parentElement);
-            if (parentStyle.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
-        } else if (hasKeyword) {
-          div.style.display = 'flex';
-          div4s.forEach(d => {
-            let parentStyle = window.getComputedStyle(d.parentElement);
-            if (parentStyle.display === "flex") {
-              d.style.display = "flex";
-            }
-          });
-        } else {
-          div.style.display = 'none';
-        }
-        if (active8) {
-          if (hasKeyword) {
-            div.style.display = "flex";
-            div4s.forEach(d => {
-              let parentStyle = window.getComputedStyle(d.parentElement);
-              if (parentStyle.display === "flex") {
-                d.style.display = "flex";
-              }
-            });
-          }
-        } else if (active4 || active5 || active6 || active7) {
-          if (hasKeyword) {
-            div.style.display = "none";
-          }
-        }
-        if (active4 || active7) {
-          if (hasKeyword && !active1) {
-            div.style.display = "flex";
-            div4s.forEach(d => {
-              let parentStyle = window.getComputedStyle(d.parentElement);
-              if (parentStyle.display === "flex") {
-                d.style.display = "flex";
-              }
-            });
-          }
-        }
-      });
-      lastButton = this;
     });
+  });
+});
     document.getElementById("clothing-filter").addEventListener("click", function () {
       if (!document.getElementById("red-filter").classList.contains("highlight")) {
         return;
