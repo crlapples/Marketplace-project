@@ -194,7 +194,7 @@
   border-radius: 5px;
   background-color: lightblue;
   padding: 10px;
-  margin-top: 9px;
+  margin-top: 8.5px;
   top: 350px;
 }
 .types button.highlight {
@@ -620,35 +620,18 @@
         });
       });
     });
-    
-    
-    
     document.getElementById("yellow-filter").addEventListener("click", function () {
+      updateFilters();
+      const div4s = document.querySelectorAll(".include");
       active7 = !document.getElementById("yellow-filter").classList.contains("highlight");
-      if (!document.getElementById("jewelry-filter").classList.contains("highlight")) {
-        return;
-      }
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("blue-filter") || lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("black-filter")) {
-        on = false;
-        selectedFilters = selectedFilters.filter(filter => filter !== "green");
-        selectedFilters = selectedFilters.filter(filter => filter !== "blue");
-        selectedFilters = selectedFilters.filter(filter => filter !== "green");
-        selectedFilters = selectedFilters.filter(filter => filter !== "black");
-      }
-      on = !on;
-      if (active7) {
+      if (active3) {
         selectedFilters.push("Ring");
         selectedFilters.push("jewelry");
-      } else {
-        selectedFilters = selectedFilters.filter(filter => filter !== "Ring");
-        selectedFilters = selectedFilters.filter(filter => filter !== "jewelry");
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
-        if (selectedFilters.length === 0) {
-          div.style.display = 'flex';
-        } else if (hasKeyword) {
+        if (selectedFilters.length === 0 || hasKeyword) {
           div.style.display = 'flex';
         } else {
           div.style.display = 'none';
@@ -667,35 +650,28 @@
             div.style.display = "flex";
           }
         }
+        div4s.forEach(d => {
+          let parentStyle = window.getComputedStyle(d.parentElement);
+          if (parentStyle.display === "flex") {
+            d.style.display = "flex";
+          } else {
+            d.style.display = "none";
+          }
+        });
       });
-      lastButton = this;
     });
     document.getElementById("black-filter").addEventListener("click", function () {
-      if (!document.getElementById("electronics-filter").classList.contains("highlight")) {
-        return;
-      }
+      updateFilters();
+      const div4s = document.querySelectorAll(".include");
       active8 = !document.getElementById("black-filter").classList.contains("highlight");
       let divs = document.querySelectorAll("#promotedItemsContainer div");
-      if (lastButton === document.getElementById("red-filter") || lastButton === document.getElementById("blue-filter") || lastButton === document.getElementById("green-filter") || lastButton === document.getElementById("yellow-filter")) {
-        on = false;
-        selectedFilters = selectedFilters.filter(filter => filter !== "green");
-        selectedFilters = selectedFilters.filter(filter => filter !== "blue");
-        selectedFilters = selectedFilters.filter(filter => filter !== "yellow");
-        selectedFilters = selectedFilters.filter(filter => filter !== "red");
-      }
-      on = !on;
-      if (active8) {
-        selectedFilters.push("laptop");
+      if (active1) {
         selectedFilters.push("Laptop");
-      } else {
-        selectedFilters = selectedFilters.filter(filter => filter !== "laptop");
-        selectedFilters = selectedFilters.filter(filter => filter !== "Laptop");
+        selectedFilters.push("laptop");
       }
       divs.forEach(div => {
         let hasKeyword = selectedFilters.some(filter => div.textContent.includes(filter));
-        if (selectedFilters.length === 0) {
-          div.style.display = 'flex';
-        } else if (hasKeyword) {
+        if (selectedFilters.length === 0 || hasKeyword) {
           div.style.display = 'flex';
         } else {
           div.style.display = 'none';
@@ -714,8 +690,15 @@
             div.style.display = "flex";
           }
         }
+        div4s.forEach(d => {
+          let parentStyle = window.getComputedStyle(d.parentElement);
+          if (parentStyle.display === "flex") {
+            d.style.display = "flex";
+          } else {
+            d.style.display = "none";
+          }
+        });
       });
-      lastButton = this;
     });
     div5.appendChild(title);
     div5.appendChild(rating);
